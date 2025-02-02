@@ -22,8 +22,8 @@
 	<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 	<link href="https://fonts.googleapis.com/css2?family=Urbanist:ital,wght@0,100..900;1,100..900&display=swap"
 		rel="stylesheet">
-		<link rel="icon" href="https://imraan.in/wp-content/uploads/2020/12/cropped-fav-32x32.png" sizes="32x32" />
-		<link rel="icon" href="https://imraan.in/wp-content/uploads/2020/12/cropped-fav-192x192.png" sizes="192x192" />
+	<link rel="icon" href="https://imraan.in/wp-content/uploads/2020/12/cropped-fav-32x32.png" sizes="32x32" />
+	<link rel="icon" href="https://imraan.in/wp-content/uploads/2020/12/cropped-fav-192x192.png" sizes="192x192" />
 	<?php wp_head(); ?>
 </head>
 
@@ -41,7 +41,20 @@
 					<ul class="nav-links">
 						<label for="close-btn" class="btn close-btn"><i class="fas fa-times"></i></label>
 						<li><a href="/">Home</a></li>
-						<li><a href="#">My Apps</a></li>
+						<li><a href="#">My Apps</a>
+							<input type="checkbox" id="showDrop">
+							<label for="showDrop" class="mobile-item">My Apps</label>
+							<ul class="drop-menu">
+								<li><a href="#ai-fitness-app">AI Fitness App</a></li>
+								<li><a href="#in-house-llm">In-house LLM</a></li>
+								<li><a href="#developer-efficiency-portal">Developer Efficiency Portal</a></li>
+								<li><a href="#com.advancedjavascript18">Quiz Android App</a></li>
+								<li><a href="#website-optimizer">Website Optimizer</a></li>
+								<li><a href="#image-optimizer">Image Optimizer</a></li>
+								<li><a href="#awards-automation">Awards Automation</a></li>
+								<li><a href="#calendar-invite-builder">Calendar Invite Builder</a></li>
+							</ul>
+						</li>
 
 						<li>
 							<a href="/blog" class="desktop-item">My Blog</a>
