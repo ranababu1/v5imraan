@@ -99,7 +99,7 @@ get_header(); ?>
         </div>
     </section>
     <section class="marquee-box">
-        <div class="logos-marquee">
+        <div class="container logos-marquee">
 
             <div class="logos-track">
                 <img src="<?php echo get_template_directory_uri(); ?>/img/amex.png" alt="amex" class="logo logo-width">
@@ -301,7 +301,7 @@ get_header(); ?>
             <div class="subscribe-block">
                 <div class="subscribe-inblock">
                     <p>Have a concept you’re passionate about?</p>
-                    <h2>Let’s <a href="https://wa.me/9854082826">connect</a> and make it happen.</h2>
+                    <h2>Let’s <a href="https://wa.me/9854082826">connect</a> and make it happen</h2>
                     <div class="form-subscribe">
 
                         <!-- <button class="btn-green-linear">Get in Touch
