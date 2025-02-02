@@ -102,7 +102,7 @@
 							<input type="checkbox" id="showDrop">
 							<label for="showDrop" class="mobile-item">Chat With Me</label>
 							<ul class="drop-menu">
-								<li><a href="https://wa.me/9964180587">via Whatsapp</a></li>
+								<li><a href="https://wa.me/9854082826">via Whatsapp</a></li>
 								<li><a href="https://t.me/i18587">via Telegram</a></li>
 							</ul>
 						</li>
