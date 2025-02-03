@@ -69,10 +69,10 @@ get_header(); ?>
                         </div>
                         <div class="ourfeatures-sm__dflexright">
                             <div class="ourfeatures-sm__box">
-                                <h3 id="pdt--0">90% +</h3>
-                                <h4 id="pdt--0">CSAT Score</h4>
+                                <h3 id="pdt--0">50%</h3>
+                                <h4 id="pdt--0">Cost Savings</h4>
                                 <p>
-                                    Consistently delivering high-quality solutions, managing right expectations & maintaining good CSAT.
+                                Successfully optimized cloud and infrastructure costs, delivering up to 50% savings for clients.
                                 </p>
 
 
