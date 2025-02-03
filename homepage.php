@@ -72,7 +72,7 @@ get_header(); ?>
                                 <h3 id="pdt--0">50%</h3>
                                 <h4 id="pdt--0">Cost Savings</h4>
                                 <p>
-                                Successfully optimized cloud and infrastructure costs, delivering up to 50% savings for clients.
+                                Optimized cloud and infrastructure costs, saving 50% while enhancing performance and scalability.
                                 </p>
 
 
