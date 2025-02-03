@@ -553,11 +553,17 @@ nav input {
 }
 
 .logo {
-  max-height: 40px;
   vertical-align: middle;
   margin: 0 50px;
   transition: transform 0.5s ease, box-shadow 0.5s ease;
   filter: drop-shadow(0 2px 4px rgba(0, 0, 0, 0.2));
+}
+
+.logos-track img{
+  max-height: 40px;
+}
+nav .wrapper ul li{
+  list-style-type:none;
 }
 
 .logo-width {
