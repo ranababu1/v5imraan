@@ -277,6 +277,30 @@ nav .wrapper {
   font-size: 14px !important;
 }
 
+blockquote {
+  color:#203da9;
+    border-left:2px solid #2340ad;
+    margin: 1.5em 10px;
+    padding: .7em 25px;
+    quotes: "\201C""\201D""\2018""\2019";
+  }
+  blockquote:before {
+    content: open-quote;
+    font-size: 8em;
+    line-height: .1em;
+    margin-right: .25em;
+    vertical-align: -.4em;
+    opacity:0.60;
+      color:#2340ad
+  }
+  blockquote p {
+    display: inline;
+    font-size: 1.5rem;
+    line-height:1.5;
+  }
+
+  
+
 @media screen and (max-width: 970px) {
   .wrapper .btn {
     display: block;
