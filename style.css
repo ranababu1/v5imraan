@@ -798,17 +798,38 @@ nav .wrapper ul li{
   border: 1px solid #fff;
   background: linear-gradient(127deg, #dfdfdf 0%, #d0c8f6 86%, #ac9bf9 100%);
 }
+
+@keyframes heartbeat {
+  0% {
+      transform: scale(1);
+  }
+  14% {
+      transform: scale(1.3); /* Sudden jump */
+  }
+  28% {
+      transform: scale(1);
+  }
+  42% {
+      transform: scale(1.2); /* Second, smaller beat */
+  }
+  70% {
+      transform: scale(1);
+  }
+}
+
 .ourfeatures-gradient small {
   display: inline-block;
-  width: 42px;
-  height: 42px;
+  width: 40px;
+  height: 40px;
   border-radius: 50%;
   margin-right: 10px;
   background-color: #01163b;
   line-height: 42px;
   text-align: center;
   vertical-align: middle;
+  animation: heartbeat 1.3s infinite;
 }
+
 .ourfeatures-box h3 {
   font-size: 40px;
   line-height: 112%;
