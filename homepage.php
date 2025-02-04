@@ -60,8 +60,8 @@ get_header(); ?>
                     <div class="ourfeatures-sm__dflex">
                         <div class="ourfeatures-sm__dflexleft">
                             <div class="ourfeatures-sm__box">
-                                <h3 id="pdt--0">12 yrs of</h3>
-                                <h4 id="pdt--0">Experience</h4>
+                                <h3 id="pdt--0">12 yrs</h3>
+                                <h4 id="pdt--0">of Experience</h4>
                                 <p>
                                     Full Stack Dev, DevOps, Orchestration, Security, Complaince, CRO, Analytics, SEO, Martech, CRM, CMS and AI.
                                 </p>
