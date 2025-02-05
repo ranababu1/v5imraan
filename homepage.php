@@ -69,7 +69,7 @@ get_header(); ?>
                         </div>
                         <div class="ourfeatures-sm__dflexright">
                             <div class="ourfeatures-sm__box">
-                                <h3 id="pdt--0">50%</h3>
+                                <h3 id="pdt--0">70%</h3>
                                 <h4 id="pdt--0">Cost Savings</h4>
                                 <p>
                                 Optimized cloud and infrastructure costs, saving 50% while enhancing performance and scalability.
