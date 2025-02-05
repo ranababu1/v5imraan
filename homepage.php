@@ -44,7 +44,7 @@ get_header(); ?>
 
     <section>
         <div class="container">
-            <h2 class="ourfeatures-heading">Driven by curiosity, solving complex problems</h2>
+            <h1 class="ourfeatures-heading">Driven by curiosity, solving complex problems</h1>
             <div class="ourfeatures-dflex">
                 <div class="ourfeatures-dflex__left">
                     <div class="ourfeatures-box">
