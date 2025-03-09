@@ -100,11 +100,11 @@
 									<div class="row">
 										<header>Digital</header>
 										<ul class="mega-links">
-											<li><a href="https://imraan.in/seo/">SEO</a></li>
-											<li><a href="https://imraan.in/cro/">CRO</a></li>
-											<li><a href="https://imraan.in/analytics/">Analytics</a></li>
-											<li><a href="https://imraan.in/martech/">Martech</a></li>
-											<li><a href="https://imraan.in/crm/">CRM</a></li>
+											<li><a href="https://imraan.in/digital-marketing/seo/">SEO</a></li>
+											<li><a href="https://imraan.in/digital-marketing/cro/">CRO</a></li>
+											<li><a href="https://imraan.in/digital-marketing/analytics/">Analytics</a></li>
+											<li><a href="https://imraan.in/digital-marketing/martech/">Martech</a></li>
+											<li><a href="https://imraan.in/digital-marketing/crm/">CRM</a></li>
 										</ul>
 									</div>
 								</div>
