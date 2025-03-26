@@ -76,12 +76,12 @@
 									<div class="row">
 										<header>Backend + Db</header>
 										<ul class="mega-links">
-											<li><a href="https://imraan.in/java/">Java</a></li>
-											<li><a href="https://imraan.in/springboot/">Springboot</a></li>
-											<li><a href="https://imraan.in/postgres/">Postgres</a></li>
-											<li><a href="https://imraan.in/mongodb/">MongoDB</a></li>
-											<li><a href="https://imraan.in/web-development/nodejs/">NodeJS</a></li>
-											<li><a href="https://imraan.in/microservices/">Microservices</a></li>
+											<li><a href="https://imraan.in/backend-development/java/">Java</a></li>
+											<li><a href="https://imraan.in/backend-development/springboot/">Springboot</a></li>
+											<li><a href="https://imraan.in/backend-development/postgres/">Postgres</a></li>
+											<li><a href="https://imraan.in/backend-development/mongodb/">MongoDB</a></li>
+											<li><a href="https://imraan.in/backend-development/web-development/nodejs/">NodeJS</a></li>
+											<li><a href="https://imraan.in/backend-development/microservices/">Microservices</a></li>
 										</ul>
 									</div>
 									<div class="row">
