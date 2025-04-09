@@ -6,41 +6,6 @@
 get_header(); ?>
 
 <main>
-    <!-- <section class="hero-banner__sec">
-        <div class="hero-container">
-            <div class="hb-flex">
-                <div class="hb-flex__left">
-                    <div class="hero-banner__text">
-                        <h1>Artifical Intelligence for Enterprise Business Solutions</h1>
-                    </div>
-                    <div class="hb-card__flexbox">
-                        <div class="hb-card__flexboxleft">
-                            <div class="hb-card__box">
-                                <h3>Manage All Your Projects In One Place</h3>
-                            </div>
-                        </div>
-                        <div class="hb-card__flexboxright">
-                            <div class="hb-card__box blue-gradient">
-                                <h3>Dynamic features for a distinctive and refreshing customer experience</h3>
-                            </div>
-                        </div>
-                    </div>
-                    <div>
-                        <a class="hb-cta" href="#" title="">
-                            <img src="<?php echo get_template_directory_uri(); ?>/img/start.svg" alt="">
-                            <span>Start Your Free Trial today</span>
-                            <svg width="76" height="26" viewBox="0 0 76 26" fill="none" xmlns="http://www.w3.org/2000/svg">
-                                <path d="M76 12.9998L63.837 0.836914V10.606H0V15.3938H63.837V25.1631L76 12.9998Z" fill=""></path>
-                            </svg>
-                        </a>
-                    </div>
-                </div>
-                <div class="hb-flex__right">
-                    <img class="img-responsive" src="<?php echo get_template_directory_uri(); ?>/img/imran.jpg" alt="Banner Image">
-                </div>
-            </div>
-        </div>
-    </section> -->
 
     <section>
         <div class="container">
@@ -118,126 +83,6 @@ get_header(); ?>
         </div>
     </section>
 
-    <!-- <section>
-        <div class="container">
-            <div class="flexbox-col2">
-                <div class="flexbox-col-left">
-                    <img class="img-responsive" src="<?php echo get_template_directory_uri(); ?>/img/card.jpg" alt="card">
-                </div>
-                <div class="flexbox-col-right">
-                    <div class="flexcard-text">
-                        <h2>We make it easy to track all users analytics</h2>
-                        <div class="card-inline-text">
-                            <div class="card-inline-left">
-                                <img width="70" height="56" src="<?php echo get_template_directory_uri(); ?>/img/icon.jpg" alt="card">
-                            </div>
-                            <div class="card-inline-right">
-                                <h4>Automated reports</h4>
-                                <p>Eu morbi orci ultricies vel congue sagittis lgula urna viverra vestibulum.</p>
-                            </div>
-                        </div>
-                        <div class="card-inline-text">
-                            <div class="card-inline-left">
-                                <img width="70" height="56" src="<?php echo get_template_directory_uri(); ?>/img/icon.jpg" alt="card">
-                            </div>
-                            <div class="card-inline-right">
-                                <h4>Automated reports</h4>
-                                <p>Eu morbi orci ultricies vel congue sagittis lgula urna viverra vestibulum.</p>
-                            </div>
-                        </div>
-                        <div class="card-inline-text">
-                            <div class="card-inline-left">
-                                <img width="70" height="56" src="<?php echo get_template_directory_uri(); ?>/img/icon.jpg" alt="card">
-                            </div>
-                            <div class="card-inline-right">
-                                <h4>Automated reports</h4>
-                                <p>Eu morbi orci ultricies vel congue sagittis lgula urna viverra vestibulum.</p>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section> -->
-
-    <!-- <section class="card-box">
-        <div class="container">
-            <div class="cards-heading">
-                <h2>Tech Insights From My Blog</h2>  <span class="cards-smtext">Stay ahead with the latest trends, tools & strategies in development, AI & beyond.</span>
-            </div>
-            <ul class="flexbox-col3">
-                <li>
-                    <div class="flexbox-col3-box">
-                        <img width="84" height="84" src="<?php echo get_template_directory_uri(); ?>/img/ideas.png" alt="">
-                        <h4>Bring your ideas to life</h4>
-                        <p>Eu morbi orci ultricies vel congue sagittis lgula urna viverra vestibulum.</p>
-                        <a class="cards-cta" href="http://"><svg width="38" height="38" viewBox="0 0 38 38" fill="none" xmlns="http://www.w3.org/2000/svg">
-                                <rect width="38" height="38" rx="19" fill="url(#paint0_linear_15_1041)"></rect>
-                                <g clip-path="url(#clip0_15_1041)">
-                                    <path d="M23.6557 16.8139L14.72 25.7497L13.252 24.2817L22.1866 15.3459H14.3119V13.2695H25.7321V24.6897H23.6557V16.8139Z" fill="true"></path>
-                                </g>
-                                <defs>
-                                    <linearGradient id="paint0_linear_15_1041" x1="39.3571" y1="5.62961" x2="-3.06271" y2="8.58385" gradientUnits="userSpaceOnUse">
-                                        <stop stop-color="#22D1EE"></stop>
-                                        <stop offset="1" stop-color="#C5FF41"></stop>
-                                    </linearGradient>
-                                    <clipPath id="clip0_15_1041">
-                                        <rect width="13" height="13" fill="white" transform="translate(13 13)"></rect>
-                                    </clipPath>
-                                </defs>
-                            </svg> Read More</a>
-                    </div>
-                </li>
-                <li>
-                    <div class="flexbox-col3-box">
-                        <img width="84" height="84" src="<?php echo get_template_directory_uri(); ?>/img/ideas.png" alt="">
-                        <h4>Bring your ideas to life</h4>
-                        <p>Eu morbi orci ultricies vel congue sagittis lgula urna viverra vestibulum.</p>
-                        <a class="cards-cta" href="http://"><svg width="38" height="38" viewBox="0 0 38 38" fill="none" xmlns="http://www.w3.org/2000/svg">
-                                <rect width="38" height="38" rx="19" fill="url(#paint0_linear_15_1041)"></rect>
-                                <g clip-path="url(#clip0_15_1041)">
-                                    <path d="M23.6557 16.8139L14.72 25.7497L13.252 24.2817L22.1866 15.3459H14.3119V13.2695H25.7321V24.6897H23.6557V16.8139Z" fill="true"></path>
-                                </g>
-                                <defs>
-                                    <linearGradient id="paint0_linear_15_1041" x1="39.3571" y1="5.62961" x2="-3.06271" y2="8.58385" gradientUnits="userSpaceOnUse">
-                                        <stop stop-color="#22D1EE"></stop>
-                                        <stop offset="1" stop-color="#C5FF41"></stop>
-                                    </linearGradient>
-                                    <clipPath id="clip0_15_1041">
-                                        <rect width="13" height="13" fill="white" transform="translate(13 13)"></rect>
-                                    </clipPath>
-                                </defs>
-                            </svg> Read More</a>
-                    </div>
-                </li>
-                <li>
-                    <div class="flexbox-col3-box">
-                        <img width="84" height="84" src="<?php echo get_template_directory_uri(); ?>/img/ideas.png" alt="">
-                        <h4>Bring your ideas to life</h4>
-                        <p>Eu morbi orci ultricies vel congue sagittis lgula urna viverra vestibulum.</p>
-                        <a class="cards-cta" href="http://"><svg width="38" height="38" viewBox="0 0 38 38" fill="none" xmlns="http://www.w3.org/2000/svg">
-                                <rect width="38" height="38" rx="19" fill="url(#paint0_linear_15_1041)"></rect>
-                                <g clip-path="url(#clip0_15_1041)">
-                                    <path d="M23.6557 16.8139L14.72 25.7497L13.252 24.2817L22.1866 15.3459H14.3119V13.2695H25.7321V24.6897H23.6557V16.8139Z" fill="true"></path>
-                                </g>
-                                <defs>
-                                    <linearGradient id="paint0_linear_15_1041" x1="39.3571" y1="5.62961" x2="-3.06271" y2="8.58385" gradientUnits="userSpaceOnUse">
-                                        <stop stop-color="#22D1EE"></stop>
-                                        <stop offset="1" stop-color="#C5FF41"></stop>
-                                    </linearGradient>
-                                    <clipPath id="clip0_15_1041">
-                                        <rect width="13" height="13" fill="white" transform="translate(13 13)"></rect>
-                                    </clipPath>
-                                </defs>
-                            </svg> Read More</a>
-                    </div>
-                </li>
-                
-            </ul>
-        </div>
-    </section> -->
-
-
     <section class="card-box">
         <div class="container">
             <div class="cards-heading">
@@ -291,12 +136,7 @@ get_header(); ?>
                 ?>
             </ul>
         </div>
-    </section>
-
-
-
-
-    <section class="subscribe-section">
+        <div class="subscribe-section">
         <div class="container">
             <div class="subscribe-block">
                 <div class="subscribe-inblock">
@@ -314,7 +154,9 @@ get_header(); ?>
                 </div>
             </div>
         </div>
+            </div>
     </section>
+    
 </main>
 
 <?php get_footer(); ?>
