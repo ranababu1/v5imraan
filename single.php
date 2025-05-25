@@ -1,4 +1,5 @@
 <?php
+
 /**
  * The template for displaying all single posts
  *
@@ -18,11 +19,11 @@ get_header();
                     <div class="zwvf-blogpost__hbcontent">
                         <div class="breadcrumb-block">
                             <a href="/blog">
-                                <img width="6" height="10" src="https://imraan.in/wp-content/uploads/2025/01/white-arrow-right.svg" alt="Arrow"> 
+                                <img width="6" height="10" src="https://imraan.in/wp-content/uploads/2025/01/white-arrow-right.svg" alt="Arrow">
                                 Blog
-                            </a> 
+                            </a>
                         </div>
-                        <h1><?php the_title(); ?></h1> 
+                        <h1><?php the_title(); ?></h1>
                         <ul>
                             <?php
                             $categories = get_the_category();
@@ -45,16 +46,21 @@ get_header();
     </div>
 </section>
 
-<section class="bloghub-body__cntr">  
+<section class="bloghub-body__cntr">
     <div class="container">
         <div class="bloghub-container">
             <div class="bloghub-sticky-nav">
                 <article class="bloghub-article__tag">
-                    <h5><?php echo get_the_date(); ?></h5> <!-- Display the post date -->
-                    <p>By <a href="#" title="<?php the_author(); ?>"><?php the_author(); ?></a></p>
-                    <time><?php echo human_time_diff(get_the_time('U'), current_time('timestamp')) . ' ago'; ?></time> <!-- Display the time ago -->
+                    <?php
+                    $author_id = get_the_author_meta('ID');
+                    $author_name = get_the_author_meta('display_name', $author_id);
+                    ?>
+                    <h5><?php echo get_the_date(); ?></h5> 
+                    <p>By <a href="<?php echo get_author_posts_url($author_id); ?>" title="<?php echo esc_attr($author_name); ?>">
+                            <?php echo $author_name; ?>
+                        </a></p> <time><?php echo human_time_diff(get_the_time('U'), current_time('timestamp')) . ' ago'; ?></time> <!-- Display the time ago -->
                 </article>
-             
+
             </div>
             <div class="bloghub-content">
                 <section class="bloghub-thecontent__block">
@@ -64,7 +70,7 @@ get_header();
                 <!-- <section>
                     <div class="blogpost-tags__group">
                         Tags: 
-                        <?php 
+                        <?php
                         $tags = get_the_tags();
                         if ($tags) {
                             foreach ($tags as $tag) {

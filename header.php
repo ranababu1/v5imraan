@@ -45,14 +45,16 @@
 							<input type="checkbox" id="showDrop">
 							<label for="showDrop" class="mobile-item">My Apps</label>
 							<ul class="drop-menu">
-								<li><a href="#ai-fitness-app">AI Fitness App</a></li>
 								<li><a href="#agentic-ai-analyst">Agentic AI Analyst</a></li>
 								<li><a href="#agentic-ai-project-manager">Agentic AI PM</a></li>
+								<li><a href="#ai-fitness-app">AI Fitness App</a></li>
 								<li><a href="#developer-efficiency-portal">Developer Productivity</a></li>
 								<li><a href="#com.advancedjavascript18">Programming Quiz</a></li>
 								<li><a href="https://audit.optimize.best/">Website Optimizer</a></li>
 								<li><a href="https://optimize.best/">Image Optimizer</a></li>
 								<li><a href="https://ical.imrn.dev/">Calendar Invite Builder</a></li>
+								<li><a href="#pch">Programmable Content Hub</a></li>
+								<li><a href="#irp">Intelligent Resource Portal</a></li>
 							</ul>
 						</li>
 

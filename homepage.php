@@ -107,32 +107,58 @@ get_header(); ?>
   </section> -->
 
   <!-- Featured Projects -->
-  <!-- <section id="projects" class="card-box">
-    <div class="container">
-      <div class="cards-heading">
-        <h2>Featured Projects</h2>
-      </div>
-      <ul class="flexbox-col3">
-        <?php
-        $projects = [
-          ['title' => 'Zeta Careers Site', 'text' => 'React + Tailwind + CMS | 200k+ MAUs', 'link' => '#'],
-          ['title' => 'AI Document Parser', 'text' => 'Automated workflows, 90% manual effort reduced', 'link' => '#'],
-          ['title' => 'Amex MarTech Portal', 'text' => 'Improved lead flow by 25%', 'link' => '#'],
-        ];
-        foreach ($projects as $proj) : ?>
-          <li>
-            <div class="flexbox-col3-box">
-              <h4><?php echo esc_html($proj['title']); ?></h4>
-              <p><?php echo esc_html($proj['text']); ?></p>
-              <?php if ($proj['link'] !== '#') : ?>
-                <a href="<?php echo esc_url($proj['link']); ?>" class="cards-cta">View Project</a>
-              <?php endif; ?>
-            </div>
-          </li>
-        <?php endforeach; ?>
-      </ul>
+<section id="projects" class="card-box">
+  <div class="container">
+    <div class="cards-heading">
+      <h2>Featured Projects</h2>
     </div>
-  </section> -->
+    <ul class="flexbox-col3">
+      <?php
+      $projects = [
+        [
+          'title' => 'Agentic AI - Analyst', 
+          'text' => 'LangChain + Tavily + Next.js + Typescript + Tailwind  | AI-powered autonomous agent which surfs internet on its own and analyzes target banks and its data like QBR, AR etc to derive meaningful insights and recommends internal company products to solve the pain points.', 
+          'link' => '#'
+        ],
+        [
+          'title' => 'Agentic AI - Project Manager', 
+          'text' => 'Python + FastAPI + OPENAI API + Whisper + JIRA API + MS Graph API + OAuth 2.0 + Supabase + Next.js + Tailwind + Google GenAI | Autonomous AI Agent that handles daily standups, meeting transcription, action item tracking and JIRA updates. Automates PM tasks reducing 40% of PM overhead.', 
+          'link' => '#'
+        ],
+        [
+          'title' => 'AI - Website + Image Optimizer', 
+          'text' => 'NodeJS + Reactjs + Webassembly | Automated performance optimization audit and optimization of image assets for websites. Uses AI to analyze images and suggest optimizations, significantly improving load times and user experience.', 
+          'link' => '#'
+        ],   [
+          'title' => 'Developer Productivity', 
+          'text' => 'Java + Springboot + Maven +  Postgres +  Metabase + Bitbucket API  | Gathering millions of datapoints from bitbucket to analyze developer productivityand storing all the data in postgres database which is then made available to SLT via a Metabase dashboard for quick insights.', 
+          'link' => '#'
+        ],
+        [
+          'title' => 'Programmable Content Hub', 
+          'text' => 'PHP + MySQL + Javascript + HTML + CSS + WP + ACF  | Architected and developed a low-code no-code system eliminating developer bottlenecks that let business teams quickly launch target account content hubs with dynamic messaging—cutting production time from days to 30mins.', 
+          'link' => '#'
+        ],
+        [
+          'title' => 'Intelligent Resource Portal', 
+          'text' => 'WP + PHP + MySQL + Javascript + WPE Geotarget | Developed a sophisticated location-based-content-delivery algorithm to serve content based on user IP address. This helped in serving relevant content to users based on their geographical location.', 
+          'link' => '#'
+        ]
+      ];
+      foreach ($projects as $proj) : ?>
+        <li>
+          <div class="flexbox-col3-box">
+            <h4><?php echo esc_html($proj['title']); ?></h4>
+            <p><?php echo esc_html($proj['text']); ?></p>
+            <?php if ($proj['link'] !== '#') : ?>
+              <a href="<?php echo esc_url($proj['link']); ?>" class="cards-cta">View Project</a>
+            <?php endif; ?>
+          </div>
+        </li>
+      <?php endforeach; ?>
+    </ul>
+  </div>
+</section>
 
   <!-- Awards & Recognition -->
   <!-- <section id="awards" class="flexbox-col2">
