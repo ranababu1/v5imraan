@@ -46,13 +46,13 @@
 							<label for="showDrop" class="mobile-item">My Apps</label>
 							<ul class="drop-menu">
 								<li><a href="#ai-fitness-app">AI Fitness App</a></li>
-								<li><a href="#in-house-llm">In-house LLM</a></li>
+								<li><a href="#agentic-ai-analyst">Agentic AI Analyst</a></li>
+								<li><a href="#agentic-ai-project-manager">Agentic AI PM</a></li>
 								<li><a href="#developer-efficiency-portal">Developer Productivity</a></li>
-								<li><a href="#com.advancedjavascript18">Programming Quiz App(Android)</a></li>
-								<li><a href="#website-optimizer">Website Optimizer</a></li>
-								<li><a href="#image-optimizer">Image Optimizer</a></li>
-								<li><a href="#awards-automation">Cert Automation</a></li>
-								<li><a href="#calendar-invite-builder">Calendar Invite Builder</a></li>
+								<li><a href="#com.advancedjavascript18">Programming Quiz</a></li>
+								<li><a href="https://audit.optimize.best/">Website Optimizer</a></li>
+								<li><a href="https://optimize.best/">Image Optimizer</a></li>
+								<li><a href="https://ical.imrn.dev/">Calendar Invite Builder</a></li>
 							</ul>
 						</li>
 
