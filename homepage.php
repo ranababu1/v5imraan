@@ -9,7 +9,15 @@ get_header(); ?>
 
   <section>
     <div class="container">
-      <h1 class="ourfeatures-heading">Driven by curiosity, solving complex problems</h1>
+      <h1 class="ourfeatures-heading">
+        <?php 
+        if (isset($_GET['test']) && $_GET['test'] === 'messaging2025') {
+          echo 'Problem-solver with a curiosity-driven approach.';
+        } else {
+          echo 'Driven by curiosity, solving complex problems';
+        }
+        ?>
+      </h1>
       <div class="ourfeatures-dflex">
         <div class="ourfeatures-dflex__left">
           <div class="ourfeatures-box">
