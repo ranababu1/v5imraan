@@ -12,9 +12,9 @@ get_header(); ?>
       <h1 class="ourfeatures-heading">
         <?php 
         if (isset($_GET['test']) && $_GET['test'] === 'messaging2025') {
-          echo 'Problem-solver with a curiosity-driven approach.';
+          echo 'Engineering Leader. AI Systems. Platform Architecture.';
         } else {
-          echo 'Driven by curiosity, solving complex problems';
+          echo 'I build AI-driven systems, scalable platforms, and high-performance engineering teams.';
         }
         ?>
       </h1>
@@ -22,9 +22,9 @@ get_header(); ?>
         <div class="ourfeatures-dflex__left">
           <div class="ourfeatures-box">
             <span class="ourfeatures-gradient"><small></small> Imranul Haque Mazumder</span>
-            <h4>I build end to end solutions.</h4>
+            <h4>I build end-to-end AI-driven systems.</h4>
             <p>
-              Turning real-world challenges into opportunities, producing tangible business outcomes and improving the bottom line.
+              Delivering measurable business outcomes through scalable platforms, intelligent automation, and high-performance engineering teams.
             </p>
             <img class="img-responsive ourfeatures-img" src="<?php echo get_template_directory_uri(); ?>/img/imrn.png" alt="imrans image">
           </div>
@@ -33,33 +33,30 @@ get_header(); ?>
           <div class="ourfeatures-sm__dflex">
             <div class="ourfeatures-sm__dflexleft">
               <div class="ourfeatures-sm__box">
-                <h3 id="pdt--0">12 yrs</h3>
+                <h3 id="pdt--0">13+ yrs</h3>
                 <h4 id="pdt--0">of Experience</h4>
                 <p>
-                  Full Stack Dev, DevOps, Orchestration, Security, Complaince, CRO, Analytics, SEO, Martech, CRM, CMS and AI.
+                  AI Systems, Full Stack, DevOps, Platform Architecture, Security, CRO, Analytics, SEO, Martech, CRM and CMS.
                 </p>
               </div>
             </div>
             <div class="ourfeatures-sm__dflexright">
               <div class="ourfeatures-sm__box">
-                <h3 id="pdt--0">70%</h3>
-                <h4 id="pdt--0">Cost Savings</h4>
+                <h3 id="pdt--0">~80%</h3>
+                <h4 id="pdt--0">Cost Reduction</h4>
                 <p>
-                  Optimized cloud and infrastructure costs, saving 50% while enhancing performance and scalability.
+                  Reduced cloud infrastructure costs by ~80% through architectural and operational optimizations.
                 </p>
-
-
               </div>
             </div>
           </div>
           <div class="ourfeatures-box green-gradient mg-25">
             <h3>150+</h3>
-            <h4>Successful Projects</h4>
+            <h4>Projects Delivered</h4>
             <p>
-              Delivered scalable and impactful solutions for over 150 projects across industries like finance, hospitality, technology, and e-commerce.
-              Led cross-functional teams, optimized workflows, and achieved tangible business outcomes for global clients.
+              Scalable, AI-driven solutions for 150+ projects across enterprise and Fortune 500 domains — finance, hospitality, technology, and e-commerce.
+              Led cross-functional teams, built delivery systems, and drove measurable outcomes for global clients.
             </p>
-
           </div>
         </div>
       </div>
@@ -71,9 +68,9 @@ get_header(); ?>
       <h3>I had the pleasure to work with</h3>
     </div>
   </section>
+
   <section class="marquee-box">
     <div class="container logos-marquee">
-
       <div class="logos-track">
         <img src="<?php echo get_template_directory_uri(); ?>/img/amex.png" alt="amex" class="logo logo-width">
         <img src="<?php echo get_template_directory_uri(); ?>/img/fox-sports.png" alt="fox-sports" class="logo logo-width">
@@ -91,98 +88,77 @@ get_header(); ?>
     </div>
   </section>
 
-  <!-- Expertise Section -->
-  <!-- <section id="expertise" class="ourfeatures-section">
-    <h2 class="ourfeatures-heading">My Expertise</h2>
-    <div class="ourfeatures-dflex">
-      <div class="ourfeatures-box">
-        <h3>Full-Stack Development</h3>
-        <p>React, Next.js, Java, Spring Boot, PHP, WordPress</p>
+  <!-- Flagship Systems -->
+  <section id="projects" class="card-box">
+    <div class="container">
+      <div class="cards-heading">
+        <h2>Flagship Systems</h2>
+        <span class="cards-smtext">AI-driven systems and platforms built for enterprise scale and measurable outcomes.</span>
       </div>
-      <div class="ourfeatures-box">
-        <h3>Cloud &amp; DevOps</h3>
-        <p>AWS, Docker, Kubernetes, CI/CD pipelines</p>
-      </div>
-      <div class="ourfeatures-box">
-        <h3>AI &amp; Automation</h3>
-        <p>OpenAI API, GPT integration, process automations</p>
-      </div>
-      <div class="ourfeatures-box">
-        <h3>Leadership &amp; PMP®</h3>
-        <p>Team leadership, Agile methodologies, PMP certified</p>
-      </div>
+      <ul class="flexbox-col3">
+        <?php
+        $projects = [
+          [
+            'title' => 'Agentic AI — Analyst',
+            'text' => 'LangChain + Tavily + Next.js + TypeScript + Tailwind | Autonomous AI agent that independently surfs the internet, analyzes target bank data (QBRs, ARs, etc.), derives meaningful insights, and recommends internal products to address identified pain points.',
+            'link' => '#'
+          ],
+          [
+            'title' => 'Agentic AI — Project Manager',
+            'text' => 'Python + FastAPI + OpenAI API + Whisper + JIRA API + MS Graph API + OAuth 2.0 + Supabase + Next.js + Tailwind + Google GenAI | Autonomous agent handling daily standups, meeting transcription, action item tracking, and JIRA updates — reducing PM overhead by 40%.',
+            'link' => '#'
+          ],
+          [
+            'title' => 'Infrastructure Optimization',
+            'text' => 'AWS + Terraform + Docker + Kubernetes | Reduced cloud infrastructure costs by ~80% through architectural redesign, right-sizing, and operational automation — while improving performance and scalability across production environments.',
+            'link' => '#'
+          ],
+          [
+            'title' => 'Developer Productivity Analytics',
+            'text' => 'Java + Spring Boot + Maven + PostgreSQL + Metabase + Bitbucket API | Ingests millions of data points from Bitbucket to surface engineering bottlenecks and productivity trends. Delivered to SLT via Metabase dashboard for real-time insight.',
+            'link' => '#'
+          ],
+          [
+            'title' => 'Programmable Content Platform',
+            'text' => 'PHP + MySQL + JavaScript + WP + ACF | Low-code, no-code system that eliminated developer bottlenecks — enabling business teams to launch targeted content hubs with dynamic messaging. Cut production time from days to under 30 minutes.',
+            'link' => '#'
+          ],
+          [
+            'title' => 'AI Website & Image Optimizer',
+            'text' => 'Node.js + React + WebAssembly | Automated performance audit and AI-driven image optimization pipeline. Analyzes assets, suggests and applies optimizations — significantly improving page load times and user experience.',
+            'link' => '#'
+          ],
+        ];
+        foreach ($projects as $proj) : ?>
+          <li>
+            <div class="flexbox-col3-box">
+              <h4><?php echo esc_html($proj['title']); ?></h4>
+              <p><?php echo esc_html($proj['text']); ?></p>
+              <?php if ($proj['link'] !== '#') : ?>
+                <a href="<?php echo esc_url($proj['link']); ?>" class="cards-cta">View Project</a>
+              <?php endif; ?>
+            </div>
+          </li>
+        <?php endforeach; ?>
+      </ul>
     </div>
-  </section> -->
-
-  <!-- Featured Projects -->
-<section id="projects" class="card-box">
-  <div class="container">
-    <div class="cards-heading">
-      <h2>Featured Projects</h2>
-    </div>
-    <ul class="flexbox-col3">
-      <?php
-      $projects = [
-        [
-          'title' => 'Agentic AI - Analyst', 
-          'text' => 'LangChain + Tavily + Next.js + Typescript + Tailwind  | AI-powered autonomous agent which surfs internet on its own and analyzes target banks and its data like QBR, AR etc to derive meaningful insights and recommends internal company products to solve the pain points.', 
-          'link' => '#'
-        ],
-        [
-          'title' => 'Agentic AI - Project Manager', 
-          'text' => 'Python + FastAPI + OPENAI API + Whisper + JIRA API + MS Graph API + OAuth 2.0 + Supabase + Next.js + Tailwind + Google GenAI | Autonomous AI Agent that handles daily standups, meeting transcription, action item tracking and JIRA updates. Automates PM tasks reducing 40% of PM overhead.', 
-          'link' => '#'
-        ],
-        [
-          'title' => 'AI - Website + Image Optimizer', 
-          'text' => 'NodeJS + Reactjs + Webassembly | Automated performance optimization audit and optimization of image assets for websites. Uses AI to analyze images and suggest optimizations, significantly improving load times and user experience.', 
-          'link' => '#'
-        ],   [
-          'title' => 'Developer Productivity', 
-          'text' => 'Java + Springboot + Maven +  Postgres +  Metabase + Bitbucket API  | Gathering millions of datapoints from bitbucket to analyze developer productivityand storing all the data in postgres database which is then made available to SLT via a Metabase dashboard for quick insights.', 
-          'link' => '#'
-        ],
-        [
-          'title' => 'Programmable Content Hub', 
-          'text' => 'PHP + MySQL + Javascript + HTML + CSS + WP + ACF  | Architected and developed a low-code no-code system eliminating developer bottlenecks that let business teams quickly launch target account content hubs with dynamic messaging—cutting production time from days to 30mins.', 
-          'link' => '#'
-        ],
-        [
-          'title' => 'Intelligent Resource Portal', 
-          'text' => 'WP + PHP + MySQL + Javascript + WPE Geotarget | Developed a sophisticated location-based-content-delivery algorithm to serve content based on user IP address. This helped in serving relevant content to users based on their geographical location.', 
-          'link' => '#'
-        ]
-      ];
-      foreach ($projects as $proj) : ?>
-        <li>
-          <div class="flexbox-col3-box">
-            <h4><?php echo esc_html($proj['title']); ?></h4>
-            <p><?php echo esc_html($proj['text']); ?></p>
-            <?php if ($proj['link'] !== '#') : ?>
-              <a href="<?php echo esc_url($proj['link']); ?>" class="cards-cta">View Project</a>
-            <?php endif; ?>
-          </div>
-        </li>
-      <?php endforeach; ?>
-    </ul>
-  </div>
-</section>
+  </section>
 
   <!-- Awards & Recognition -->
-  <!-- <section id="awards" class="flexbox-col2">
+  <section id="awards" class="flexbox-col2">
     <div class="container flexy">
       <div class="flexbox-col-left">
         <h2>Awards &amp; Promotions</h2>
-        <div class="card-inline-text" id="a1">
+        <div class="card-inline-text" id="a1" onmouseover="showAwardDetails('a1')">
           <div class="card-inline-left">
-            <img src="<?php echo get_template_directory_uri(); ?>/img/awards.webp" alt="Trailblazer Award">
+            <img src="<?php echo get_template_directory_uri(); ?>/img/awards.webp" alt="Shining Star Award">
           </div>
           <div class="card-inline-right">
             <h4>Shining Star Award</h4>
             <p>2024</p>
           </div>
         </div>
-        <div class="card-inline-text" id="a2">
+        <div class="card-inline-text" id="a2" onmouseover="showAwardDetails('a2')">
           <div class="card-inline-left">
             <img src="<?php echo get_template_directory_uri(); ?>/img/awards.webp" alt="Ultimate Team Award">
           </div>
@@ -191,25 +167,16 @@ get_header(); ?>
             <p>2023</p>
           </div>
         </div>
-        <div class="card-inline-text" id="a3">
+        <div class="card-inline-text" id="a3" onmouseover="showAwardDetails('a3')">
           <div class="card-inline-left">
-            <img src="<?php echo get_template_directory_uri(); ?>/img/promotions.webp" alt="Trailblazer Award">
+            <img src="<?php echo get_template_directory_uri(); ?>/img/promotions.webp" alt="Promotion to Team Lead">
           </div>
           <div class="card-inline-right">
-            <h4>Promoted to Team Lead</h4>
+            <h4>Promoted to Associate Director</h4>
             <p>2022</p>
           </div>
         </div>
-        <div class="card-inline-text" id="a4">
-          <div class="card-inline-left">
-            <img src="<?php echo get_template_directory_uri(); ?>/img/awards.webp" alt="Trailblazer Award">
-          </div>
-          <div class="card-inline-right">
-            <h4>Mountain Mover Award</h4>
-            <p>2022</p>
-          </div>
-        </div>
-        <div class="card-inline-text" id="a5">
+        <div class="card-inline-text" id="a5" onmouseover="showAwardDetails('a5')">
           <div class="card-inline-left">
             <img src="<?php echo get_template_directory_uri(); ?>/img/awards.webp" alt="Trailblazer Award">
           </div>
@@ -218,18 +185,18 @@ get_header(); ?>
             <p>2021</p>
           </div>
         </div>
-        <div class="card-inline-text" id="a6">
+        <div class="card-inline-text" id="a6" onmouseover="showAwardDetails('a6')">
           <div class="card-inline-left">
-            <img src="<?php echo get_template_directory_uri(); ?>/img/promotions.webp" alt="Trailblazer Award">
+            <img src="<?php echo get_template_directory_uri(); ?>/img/promotions.webp" alt="Promotion to Team Lead">
           </div>
           <div class="card-inline-right">
             <h4>Promoted to Team Lead</h4>
             <p>2019</p>
           </div>
         </div>
-        <div class="card-inline-text" id="a7">
+        <div class="card-inline-text" id="a7" onmouseover="showAwardDetails('a7')">
           <div class="card-inline-left">
-            <img src="<?php echo get_template_directory_uri(); ?>/img/awards.webp" alt="Trailblazer Award">
+            <img src="<?php echo get_template_directory_uri(); ?>/img/awards.webp" alt="iLead Award">
           </div>
           <div class="card-inline-right">
             <h4>iLead Award</h4>
@@ -240,140 +207,61 @@ get_header(); ?>
       <div class="flexbox-col-right">
         <h2>&nbsp;</h2>
 
-        <div class="card-inline-text" id="a7details">
-          <p>Successfully retained a critical account by quickly learning and delivering MarTech solutions. Replacement was not available as it a niche skill and availability was very scarce. Excelled at it, continued and got even accolades from the client.</p>
+        <div class="award-details" id="a1details" style="display: block;">
+          <p>Recognized for exceptional performance and outstanding contributions to engineering outcomes — delivering high-impact systems that moved the needle on business results.</p>
+        </div>
+
+        <div class="award-details" id="a2details" style="display: none;">
+          <p>Awarded for driving exceptional cross-functional collaboration that brought a critical, high-stakes project to completion under tight deadlines and complex stakeholder dynamics.</p>
+        </div>
+
+        <div class="award-details" id="a3details" style="display: none;">
+          <p>Promoted in recognition of engineering leadership, platform delivery expertise, and a consistent track record of mentoring and growing high-performing teams.</p>
+        </div>
+
+        <div class="award-details" id="a5details" style="display: none;">
+          <p>Awarded for pioneering AI-driven approaches and platform innovations that set new delivery standards across the organization.</p>
+        </div>
+
+        <div class="award-details" id="a6details" style="display: none;">
+          <p>First promotion to Team Lead — recognizing demonstrated leadership potential, technical depth, and consistent high performance as an individual contributor.</p>
+        </div>
+
+        <div class="award-details" id="a7details" style="display: none;">
+          <p>Successfully retained a critical account by rapidly acquiring and delivering niche MarTech expertise. With no available replacement, stepped up, excelled, and earned direct accolades from the client.</p>
         </div>
       </div>
     </div>
-  </section> -->
+  </section>
 
-  <!-- Awards & Recognition -->
-<section id="awards" class="flexbox-col2">
-  <div class="container flexy">
-    <div class="flexbox-col-left">
-      <h2>Awards &amp; Promotions</h2>
-      <div class="card-inline-text" id="a1" onmouseover="showAwardDetails('a1')">
-        <div class="card-inline-left">
-          <img src="<?php echo get_template_directory_uri(); ?>/img/awards.webp" alt="Trailblazer Award">
-        </div>
-        <div class="card-inline-right">
-          <h4>Shining Star Award</h4>
-          <p>2024</p>
-        </div>
-      </div>
-      <div class="card-inline-text" id="a2" onmouseover="showAwardDetails('a2')">
-        <div class="card-inline-left">
-          <img src="<?php echo get_template_directory_uri(); ?>/img/awards.webp" alt="Ultimate Team Award">
-        </div>
-        <div class="card-inline-right">
-          <h4>Ultimate Team Award</h4>
-          <p>2023</p>
-        </div>
-      </div>
-      <div class="card-inline-text" id="a3" onmouseover="showAwardDetails('a3')">
-        <div class="card-inline-left">
-          <img src="<?php echo get_template_directory_uri(); ?>/img/promotions.webp" alt="Promotion to Team Lead">
-        </div>
-        <div class="card-inline-right">
-          <h4>Promoted to Team Lead</h4>
-          <p>2022</p>
-        </div>
-      </div>
-
-      <div class="card-inline-text" id="a5" onmouseover="showAwardDetails('a5')">
-        <div class="card-inline-left">
-          <img src="<?php echo get_template_directory_uri(); ?>/img/awards.webp" alt="Trailblazer Award">
-        </div>
-        <div class="card-inline-right">
-          <h4>Trailblazer Award</h4>
-          <p>2021</p>
-        </div>
-      </div>
-      <div class="card-inline-text" id="a6" onmouseover="showAwardDetails('a6')">
-        <div class="card-inline-left">
-          <img src="<?php echo get_template_directory_uri(); ?>/img/promotions.webp" alt="Promotion to Team Lead">
-        </div>
-        <div class="card-inline-right">
-          <h4>Promoted to Team Lead</h4>
-          <p>2019</p>
-        </div>
-      </div>
-      <div class="card-inline-text" id="a7" onmouseover="showAwardDetails('a7')">
-        <div class="card-inline-left">
-          <img src="<?php echo get_template_directory_uri(); ?>/img/awards.webp" alt="iLead Award">
-        </div>
-        <div class="card-inline-right">
-          <h4>iLead Award</h4>
-          <p>2018</p>
-        </div>
-      </div>
-    </div>
-    <div class="flexbox-col-right">
-      <h2>&nbsp;</h2>
-
-      <!-- Award Details -->
-      <div class="award-details" id="a1details" style="display: block;">
-        <p>Recognized for exceptional performance and outstanding contributions to the team's success.</p>
-      </div>
-      
-      <div class="award-details" id="a2details" style="display: none;">
-        <p>Awarded for demonstrating exceptional teamwork and collaboration that led to the successful completion of a critical project under tight deadlines.</p>
-      </div>
-      
-      <div class="award-details" id="a3details" style="display: none;">
-        <p>Promoted to Team Lead in recognition of leadership skills, technical expertise, and ability to mentor junior team members effectively.</p>
-      </div>
-
-      
-      <div class="award-details" id="a5details" style="display: none;">
-        <p>Awarded for pioneering innovative solutions and demonstrating forward-thinking approaches that set new standards in the organization.</p>
-      </div>
-      
-      <div class="award-details" id="a6details" style="display: none;">
-        <p>First promotion to Team Lead role, recognizing demonstrated leadership potential and consistent high performance as an individual contributor.</p>
-      </div>
-      
-      <div class="award-details" id="a7details" style="display: none;">
-        <p>Successfully retained a critical account by quickly learning and delivering MarTech solutions. Replacement was not available as it a niche skill and availability was very scarce. Excelled at it, continued and got even accolades from the client.</p>
-      </div>
-    </div>
-  </div>
-</section>
-
-<script>
-  function showAwardDetails(awardId) {
-    document.querySelectorAll('.award-details').forEach(detail => {
-      detail.style.display = 'none';
-    });
-
-    const detailsId = awardId + 'details';
-    const detailsElement = document.getElementById(detailsId);
-    if (detailsElement) {
-      detailsElement.style.display = 'block';
+  <script>
+    function showAwardDetails(awardId) {
+      document.querySelectorAll('.award-details').forEach(detail => {
+        detail.style.display = 'none';
+      });
+      const detailsElement = document.getElementById(awardId + 'details');
+      if (detailsElement) {
+        detailsElement.style.display = 'block';
+      }
     }
-  }
-  document.addEventListener('DOMContentLoaded', function() {
-    showAwardDetails('a1');
-  });
-</script>
+    document.addEventListener('DOMContentLoaded', function() {
+      showAwardDetails('a1');
+    });
+  </script>
 
-
-
-
+  <!-- Blog Section -->
   <section class="card-box">
     <div class="container">
       <div class="cards-heading">
         <h2>Tech Insights From My Blog</h2>
-        <span class="cards-smtext">Stay ahead with the latest trends, tools & strategies in development, AI & beyond.</span>
+        <span class="cards-smtext">Stay ahead with the latest on AI systems, platform engineering, and scalable architecture.</span>
       </div>
       <ul class="flexbox-col3">
         <?php
-        // Fetch featured posts
         $args = array(
           'category_name' => 'featured',
           'posts_per_page' => 3
         );
-
         $query = new WP_Query($args);
         if ($query->have_posts()) :
           while ($query->have_posts()) :
@@ -381,15 +269,15 @@ get_header(); ?>
         ?>
             <li>
               <div class="flexbox-col3-box">
-                <?php
-                if (has_post_thumbnail()) : ?>
+                <?php if (has_post_thumbnail()) : ?>
                   <!-- <img width="84" height="84" src="<?php the_post_thumbnail_url('thumbnail'); ?>" alt="<?php the_title_attribute(); ?>"> -->
                 <?php else : ?>
                   <!-- <img width="84" height="84" src="<?php echo get_template_directory_uri(); ?>/img/ideas.png" alt="Default Image"> -->
                 <?php endif; ?>
                 <h4><?php the_title(); ?></h4>
                 <p><?php echo get_the_excerpt(); ?></p>
-                <a class="cards-cta" href="<?php the_permalink(); ?>"><svg width="38" height="38" viewBox="0 0 38 38" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <a class="cards-cta" href="<?php the_permalink(); ?>">
+                  <svg width="38" height="38" viewBox="0 0 38 38" fill="none" xmlns="http://www.w3.org/2000/svg">
                     <rect width="38" height="38" rx="19" fill="url(#paint0_linear_15_1041)"></rect>
                     <g clip-path="url(#clip0_15_1041)">
                       <path d="M23.6557 16.8139L14.72 25.7497L13.252 24.2817L22.1866 15.3459H14.3119V13.2695H25.7321V24.6897H23.6557V16.8139Z" fill="true"></path>
@@ -403,7 +291,8 @@ get_header(); ?>
                         <rect width="13" height="13" fill="white" transform="translate(13 13)"></rect>
                       </clipPath>
                     </defs>
-                  </svg> Read More</a>
+                  </svg> Read More
+                </a>
               </div>
             </li>
         <?php
@@ -417,17 +306,9 @@ get_header(); ?>
       <div class="container">
         <div class="subscribe-block">
           <div class="subscribe-inblock">
-            <p>Have a concept you’re passionate about?</p>
-            <h2>Let’s <a href="https://wa.me/9854082826">connect</a> and make it happen</h2>
-            <div class="form-subscribe">
-
-              <!-- <button class="btn-green-linear">Get in Touch
-                            <svg width="22" height="22" viewBox="0 0 22 22" fill="none" xmlns="http://www.w3.org/2000/svg">
-                                <path d="M22 11.0003L18.4791 7.47949V10.3074H0V11.6933H18.4791V14.5213L22 11.0003Z" fill="true"></path>
-                            </svg>
-                        </button> -->
-
-            </div>
+            <p>Have an AI system or platform challenge you're working through?</p>
+            <h2>Let's <a href="https://wa.me/9854082826">connect</a> and build something that scales</h2>
+            <div class="form-subscribe"></div>
           </div>
         </div>
       </div>
