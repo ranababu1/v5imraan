@@ -45,16 +45,16 @@
 						<input type="checkbox" id="showDropApps">
 						<label for="showDropApps" class="mobile-item">My Apps</label>
 						<ul class="drop-menu">
-							<li><a href="#agentic-ai-analyst">Agentic AI Analyst</a></li>
-							<li><a href="#agentic-ai-project-manager">Agentic AI PM</a></li>
-							<li><a href="#ai-fitness-app">AI Fitness App</a></li>
-							<li><a href="#developer-efficiency-portal">Developer Productivity</a></li>
-							<li><a href="#com.advancedjavascript18">Programming Quiz</a></li>
-							<li><a href="https://audit.optimize.best/">Website Optimizer</a></li>
-							<li><a href="https://optimize.best/">Image Optimizer</a></li>
+							<li><a href="https://crawler.imrn.dev/?ref=imraan.in">Website Crawler</a></li>
+							<li><a href="https://audit.imrn.dev">Website Optimizer</a></li>
+							<li><a href="https://pixfix.imrn.dev/?ref=imraan.in">Image Optimizer</a></li>
 							<li><a href="https://ical.imrn.dev/">Calendar Invite Builder</a></li>
 							<li><a href="#pch">Programmable Content Hub</a></li>
 							<li><a href="#irp">Intelligent Resource Portal</a></li>
+							<li><a href="#agentic-ai-analyst">Agentic AI Analyst</a></li>
+							<li><a href="#ai-fitness-app">AI Fitness App</a></li>
+							<li><a href="#developer-efficiency-portal">Developer Productivity</a></li>
+							<li><a href="#com.advancedjavascript18">Programming Quiz</a></li>
 						</ul>
 					</li>
 					<li>
@@ -96,13 +96,25 @@
 									</ul>
 								</div>
 								<div class="row">
-									<header>Digital</header>
+									<header>AI &amp; Automation</header>
 									<ul class="mega-links">
-										<li><a href="https://imraan.in/digital-marketing/seo/">SEO</a></li>
-										<li><a href="https://imraan.in/digital-marketing/cro/">CRO</a></li>
-										<li><a href="https://imraan.in/digital-marketing/analytics/">Analytics</a></li>
-										<li><a href="https://imraan.in/digital-marketing/martech/">Martech</a></li>
-										<li><a href="https://imraan.in/digital-marketing/crm/">CRM</a></li>
+										<li><a href="https://imraan.in/ai/">AI</a></li>
+										<li><a href="https://imraan.in/ai/llm/">LLMs</a></li>
+										<li><a href="https://imraan.in/ai/prompt-engineering/">Prompt Engineering</a></li>
+										<li><a href="https://imraan.in/ai/agentic/">AI Agents</a></li>
+										<li><a href="https://imraan.in/ai/n8n/">n8n</a></li>
+										<li><a href="https://imraan.in/ai/langchain/">LangChain</a></li>
+									</ul>
+								</div>
+								<div class="row">
+									<header>AI Tools</header>
+									<ul class="mega-links">
+										<li><a href="https://imraan.in/ai/chatgpt/">ChatGPT</a></li>
+										<li><a href="https://imraan.in/ai/github-copilot/">Github Copilot</a></li>
+										<li><a href="https://imraan.in/ai/gemeni/">Gemeni</a></li>
+										<li><a href="https://imraan.in/ai/claude/">Claude</a></li>
+										<li><a href="https://imraan.in/ai/claude-code/">Claude Code</a></li>
+										<li><a href="https://imraan.in/ai/ollama/">Ollama</a></li>
 									</ul>
 								</div>
 							</div>
