@@ -31,12 +31,18 @@ if ( ! function_exists( 'v5imraan_strip_archive_prefix' ) ) :
 	/**
 	 * Strip the "Category:" / "Tag:" / "Author:" prefix from archive titles.
 	 *
+	 * get_the_archive_title() wraps the title part in <span> tags
+	 * (since WP 5.5, e.g. "Category: <span>Claude</span>"), so those
+	 * are removed too - otherwise the hero heading prints the escaped
+	 * tag markup literally on category and tag pages.
+	 *
 	 * @param string $title Raw archive title.
-	 * @return string Title without the prefix.
+	 * @return string Title without the prefix or span wrapper.
 	 */
 	function v5imraan_strip_archive_prefix( $title ) {
-		$trimmed = trim( preg_replace( '/^[A-Za-z ]+:\s*/', '', (string) $title ) );
-		return '' === $trimmed ? (string) $title : $trimmed;
+		$title   = trim( wp_strip_all_tags( (string) $title ) );
+		$trimmed = trim( preg_replace( '/^[A-Za-z ]+:\s*/', '', $title ) );
+		return '' === $trimmed ? $title : $trimmed;
 	}
 endif;
 
