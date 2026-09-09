@@ -1,83 +1,83 @@
 <?php
 /**
- * The template for displaying archive pages
+ * The template for displaying archive pages (category, tag, date, author).
+ *
+ * Uses the main query so tag, date and author archives work correctly
+ * (the old custom WP_Query ignored everything except categories).
  *
  * @link https://developer.wordpress.org/themes/basics/template-hierarchy/
- *
  * @package v5imraan
  */
 
 get_header();
+
+$archive = v5imraan_archive_heading();
 ?>
-<section class="card-box">
-    <div class="container">
-        <div class="cards-heading">
-            <h1><?php single_cat_title(); ?> </h1>
-            <!-- <span class="cards-smtext">category description goes here</span> -->
-        </div>
-        <ul class="flexbox-col3">
-            <?php
-            // Query posts from the current category
-            $args = array(
-                'posts_per_page' => 9, 
-                'paged' => get_query_var('paged') ? get_query_var('paged') : 1,
-                'category_name' => single_cat_title('', false), 
-            );
 
-            $query = new WP_Query($args);
-            if ($query->have_posts()) :
-                while ($query->have_posts()) :
-                    $query->the_post();
-                    ?>
-                    <li>
-                        <div class="flexbox-col3-box">
-                            <?php 
-                            if (has_post_thumbnail()) : ?>
-                                <!-- <img width="84" height="84" src="<?php the_post_thumbnail_url('thumbnail'); ?>" alt="<?php the_title_attribute(); ?>"> -->
-                            <?php else : ?>
-                                <!-- <img width="84" height="84" src="<?php echo get_template_directory_uri(); ?>/img/ideas.png" alt="Default Image"> -->
-                            <?php endif; ?>
-                            <h4><?php the_title(); ?></h4>
-                            <p><?php echo get_the_excerpt(); ?></p>
-                            <a class="cards-cta" href="<?php the_permalink(); ?>">
-                                <svg width="38" height="38" viewBox="0 0 38 38" fill="none" xmlns="http://www.w3.org/2000/svg">
-                                    <rect width="38" height="38" rx="19" fill="url(#paint0_linear_15_1041)"></rect>
-                                    <g clip-path="url(#clip0_15_1041)">
-                                        <path d="M23.6557 16.8139L14.72 25.7497L13.252 24.2817L22.1866 15.3459H14.3119V13.2695H25.7321V24.6897H23.6557V16.8139Z" fill="true"></path>
-                                    </g>
-                                    <defs>
-                                        <linearGradient id="paint0_linear_15_1041" x1="39.3571" y1="5.62961" x2="-3.06271" y2="8.58385" gradientUnits="userSpaceOnUse">
-                                            <stop stop-color="#22D1EE"></stop>
-                                            <stop offset="1" stop-color="#C5FF41"></stop>
-                                        </linearGradient>
-                                        <clipPath id="clip0_15_1041">
-                                            <rect width="13" height="13" fill="white" transform="translate(13 13)"></rect>
-                                        </clipPath>
-                                    </defs>
-                                </svg> Read More
-                            </a>
-                        </div>
-                    </li>
-                    <?php
-                endwhile;
-            endif;
-            wp_reset_postdata();
-            ?>
-        </ul>
+<main id="primary" class="site-main">
 
-        <div class="pagination">
-            <?php
-            echo paginate_links(array(
-                'total' => $query->max_num_pages, 
-                'current' => max(1, get_query_var('paged')), 
-                'format' => '?paged=%#%', 
-                'prev_text' => '&laquo; Prev',
-                'next_text' => 'Next &raquo;',
-            ));
-            ?>
-        </div>
-    </div>
-</section>
+	<section class="blog-hero blog-hero--archive">
+		<div class="container">
+			<?php v5imraan_the_breadcrumbs(); ?>
+			<p class="blog-hero__kicker"><?php echo esc_html( $archive[0] ); ?></p>
+			<h1 class="blog-hero__title"><?php echo esc_html( $archive[1] ); ?></h1>
+			<?php
+			$archive_desc = get_the_archive_description();
+			if ( $archive_desc ) :
+				?>
+				<div class="blog-hero__tagline"><?php echo wp_kses_post( $archive_desc ); ?></div>
+			<?php endif; ?>
+			<?php if ( is_author() ) : ?>
+				<div class="blog-hero__author">
+					<?php echo get_avatar( get_queried_object_id(), 56, '', get_the_archive_title() ); ?>
+				</div>
+			<?php endif; ?>
+		</div>
+	</section>
+
+	<div class="blog-listing">
+		<div class="container">
+
+			<?php if ( have_posts() ) : ?>
+
+				<p class="blog-listing__count">
+					<?php
+					/* translators: %s: number of articles. */
+					printf( esc_html( _n( '%s article', '%s articles', (int) $GLOBALS['wp_query']->found_posts, 'v5imraan' ) ), esc_html( number_format_i18n( (int) $GLOBALS['wp_query']->found_posts ) ) );
+					?>
+				</p>
+
+				<ul class="post-grid">
+					<?php
+					$first = ! is_paged();
+					while ( have_posts() ) :
+						the_post();
+						?>
+						<li class="post-grid__item<?php echo $first ? ' post-grid__item--featured' : ''; ?>">
+							<?php get_template_part( 'template-parts/post-card', null, array( 'featured' => $first, 'heading' => $first ? 'h2' : 'h3' ) ); ?>
+						</li>
+						<?php
+						$first = false;
+					endwhile;
+					?>
+				</ul>
+
+				<?php get_template_part( 'template-parts/pagination' ); ?>
+
+			<?php else : ?>
+
+				<div class="blog-empty">
+					<h2><?php esc_html_e( 'Nothing here yet', 'v5imraan' ); ?></h2>
+					<p><?php esc_html_e( 'No articles have been published in this archive yet.', 'v5imraan' ); ?></p>
+					<a class="blog-empty__cta" href="<?php echo esc_url( home_url( '/' ) ); ?>"><?php esc_html_e( 'Back to homepage', 'v5imraan' ); ?></a>
+				</div>
+
+			<?php endif; ?>
+
+		</div>
+	</div>
+
+</main>
 
 <?php
 get_footer();

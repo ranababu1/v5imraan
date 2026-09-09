@@ -1,84 +1,98 @@
 <?php
 /**
- * The main template file
+ * The main template file — blog listing.
  *
- * This is the most generic template file in a WordPress theme
- * and one of the two required files for a theme (the other being style.css).
- * It is used to display a page when nothing more specific matches a query.
- * E.g., it puts together the home page when no home.php file exists.
+ * Uses the main query (instead of a custom WP_Query) so pagination,
+ * canonical URLs and SEO plugins all behave correctly.
  *
  * @link https://developer.wordpress.org/themes/basics/template-hierarchy/
- *
  * @package v5imraan
  */
 
 get_header();
 ?>
 
-<section class="card-box">
-    <div class="container">
-        <div class="cards-heading">
-            <h2>Tech Insights From My Blog</h2>
-            <!-- <span class="cards-smtext">sub title goes here</span> -->
-        </div>
-        <ul class="flexbox-col3">
-            <?php
-            $args = array(
-                'posts_per_page' => 9, 
-                'paged' => get_query_var('paged') ? get_query_var('paged') : 1,
-            );
+<main id="primary" class="site-main">
 
-            $query = new WP_Query($args);
-            if ($query->have_posts()) :
-                while ($query->have_posts()) :
-                    $query->the_post();
-                    ?>
-                    <li>
-                        <div class="flexbox-col3-box">
-                         
-                            <h4><?php the_title(); ?></h4>
-                            <p class="list-para"><?php echo wp_trim_words( get_the_excerpt(), 20, '...' ); ?></p>
-                            <a class="cards-cta" href="<?php the_permalink(); ?>">
-                                <svg width="38" height="38" viewBox="0 0 38 38" fill="none" xmlns="http://www.w3.org/2000/svg">
-                                    <rect width="38" height="38" rx="19" fill="url(#paint0_linear_15_1041)"></rect>
-                                    <g clip-path="url(#clip0_15_1041)">
-                                        <path d="M23.6557 16.8139L14.72 25.7497L13.252 24.2817L22.1866 15.3459H14.3119V13.2695H25.7321V24.6897H23.6557V16.8139Z" fill="true"></path>
-                                    </g>
-                                    <defs>
-                                        <linearGradient id="paint0_linear_15_1041" x1="39.3571" y1="5.62961" x2="-3.06271" y2="8.58385" gradientUnits="userSpaceOnUse">
-                                            <stop stop-color="#22D1EE"></stop>
-                                            <stop offset="1" stop-color="#C5FF41"></stop>
-                                        </linearGradient>
-                                        <clipPath id="clip0_15_1041">
-                                            <rect width="13" height="13" fill="white" transform="translate(13 13)"></rect>
-                                        </clipPath>
-                                    </defs>
-                                </svg> Read More
-                            </a>
-                        </div>
-                    </li>
-                    <?php
-                endwhile;
-            endif;
-            wp_reset_postdata();
-            ?>
-        </ul>
+	<section class="blog-hero">
+		<div class="container">
+			<?php v5imraan_the_breadcrumbs(); ?>
+			<p class="blog-hero__kicker"><?php esc_html_e( 'Blog', 'v5imraan' ); ?></p>
+			<h1 class="blog-hero__title"><?php esc_html_e( 'Tech Insights &amp; Engineering Notes', 'v5imraan' ); ?></h1>
+			<p class="blog-hero__tagline"><?php esc_html_e( 'AI systems, platform engineering and architecture — lessons from 13+ years of building at scale.', 'v5imraan' ); ?></p>
+			<div class="blog-hero__search">
+				<?php get_search_form(); ?>
+			</div>
+		</div>
+	</section>
 
-        <div class="pagination">
-            <?php
+	<div class="blog-listing">
+		<div class="container">
 
-            echo paginate_links(array(
-                'total' => $query->max_num_pages, 
-                'current' => max(1, get_query_var('paged')), 
-                'format' => '?paged=%#%', 
-                'prev_text' => '&laquo; Prev',
-                'next_text' => 'Next &raquo;',
-            ));
-            ?>
-        </div>
-    </div>
-</section>
+			<nav class="blog-chips" aria-label="<?php esc_attr_e( 'Filter by category', 'v5imraan' ); ?>">
+				<?php
+				$blog_page_id = (int) get_option( 'page_for_posts' );
+				$chips_base   = $blog_page_id ? get_permalink( $blog_page_id ) : home_url( '/' );
+				$chip_current = is_category() ? (int) get_queried_object_id() : 0;
+				?>
+				<a class="blog-chip<?php echo is_home() ? ' is-active' : ''; ?>" href="<?php echo esc_url( $chips_base ); ?>"><?php esc_html_e( 'All Posts', 'v5imraan' ); ?></a>
+				<?php
+				$chips = get_categories(
+					array(
+						'parent'     => 0,
+						'orderby'    => 'count',
+						'order'      => 'DESC',
+						'number'     => 8,
+						'hide_empty' => true,
+					)
+				);
+				foreach ( $chips as $chip ) :
+					?>
+					<a class="blog-chip<?php echo $chip->term_id === $chip_current ? ' is-active' : ''; ?>" href="<?php echo esc_url( get_category_link( $chip ) ); ?>"><?php echo esc_html( $chip->name ); ?></a>
+				<?php endforeach; ?>
+			</nav>
 
+			<?php if ( have_posts() ) : ?>
+
+				<ul class="post-grid">
+					<?php
+					$first = ! is_paged();
+					while ( have_posts() ) :
+						the_post();
+						?>
+						<li class="post-grid__item<?php echo $first ? ' post-grid__item--featured' : ''; ?>">
+							<?php
+							get_template_part(
+								'template-parts/post-card',
+								null,
+								array(
+									'featured' => $first,
+									'heading'  => $first ? 'h2' : 'h3',
+								)
+							);
+							?>
+						</li>
+						<?php
+						$first = false;
+					endwhile;
+					?>
+				</ul>
+
+				<?php
+				get_template_part( 'template-parts/pagination' );
+
+			else :
+				?>
+				<div class="blog-empty">
+					<h2><?php esc_html_e( 'No posts yet', 'v5imraan' ); ?></h2>
+					<p><?php esc_html_e( 'New articles are on the way. Check back soon.', 'v5imraan' ); ?></p>
+				</div>
+			<?php endif; ?>
+
+		</div>
+	</div>
+
+</main>
 
 <?php
 get_footer();

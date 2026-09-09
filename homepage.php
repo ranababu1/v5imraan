@@ -11,11 +11,7 @@ get_header(); ?>
     <div class="container">
       <h1 class="ourfeatures-heading">
         <?php 
-        if (isset($_GET['test']) && $_GET['test'] === 'messaging2025') {
-          echo 'Engineering Leader. AI Systems. Platform Architecture.';
-        } else {
-          echo 'I build AI-driven systems, scalable platforms, and high-performance engineering teams.';
-        }
+        echo 'I build AI-driven systems, scalable platforms, and high-performance engineering teams.';
         ?>
       </h1>
       <div class="ourfeatures-dflex">
@@ -26,15 +22,15 @@ get_header(); ?>
             <p>
               Delivering measurable business outcomes through scalable platforms, intelligent automation, and high-performance engineering teams.
             </p>
-            <img class="img-responsive ourfeatures-img" src="<?php echo get_template_directory_uri(); ?>/img/imrn.png" alt="imrans image">
+            <img class="img-responsive ourfeatures-img" src="<?php echo esc_url( get_stylesheet_directory_uri() ); ?>/img/imrn.png" alt="Portrait of Imranul Haque Mazumder" loading="lazy" decoding="async">
           </div>
         </div>
         <div class="ourfeatures-dflex__right">
           <div class="ourfeatures-sm__dflex">
             <div class="ourfeatures-sm__dflexleft">
               <div class="ourfeatures-sm__box">
-                <h3 id="pdt--0">13+ yrs</h3>
-                <h4 id="pdt--0">of Experience</h4>
+                <h3 class="pdt-0">13+ yrs</h3>
+                <h4 class="pdt-0">of Experience</h4>
                 <p>
                   AI Systems, Full Stack, DevOps, Platform Architecture, Security, CRO, Analytics, SEO, Martech, CRM and CMS.
                 </p>
@@ -149,54 +145,54 @@ get_header(); ?>
     <div class="container flexy">
       <div class="flexbox-col-left">
         <h2>Awards &amp; Promotions</h2>
-        <div class="card-inline-text" id="a1" onmouseover="showAwardDetails('a1')">
+        <div class="card-inline-text js-award" data-award="a1" tabindex="0" role="button" aria-pressed="true">
           <div class="card-inline-left">
-            <img src="<?php echo get_template_directory_uri(); ?>/img/awards.webp" alt="Shining Star Award">
+            <img src="<?php echo esc_url( get_stylesheet_directory_uri() ); ?>/img/awards.webp" alt="Shining Star Award" loading="lazy" decoding="async">
           </div>
           <div class="card-inline-right">
             <h4>Shining Star Award</h4>
             <p>2024</p>
           </div>
         </div>
-        <div class="card-inline-text" id="a2" onmouseover="showAwardDetails('a2')">
+        <div class="card-inline-text js-award" data-award="a2" tabindex="0" role="button" aria-pressed="false">
           <div class="card-inline-left">
-            <img src="<?php echo get_template_directory_uri(); ?>/img/awards.webp" alt="Ultimate Team Award">
+            <img src="<?php echo esc_url( get_stylesheet_directory_uri() ); ?>/img/awards.webp" alt="Ultimate Team Award" loading="lazy" decoding="async">
           </div>
           <div class="card-inline-right">
             <h4>Ultimate Team Award</h4>
             <p>2023</p>
           </div>
         </div>
-        <div class="card-inline-text" id="a3" onmouseover="showAwardDetails('a3')">
+        <div class="card-inline-text js-award" data-award="a3" tabindex="0" role="button" aria-pressed="false">
           <div class="card-inline-left">
-            <img src="<?php echo get_template_directory_uri(); ?>/img/promotions.webp" alt="Promotion to Team Lead">
+            <img src="<?php echo esc_url( get_stylesheet_directory_uri() ); ?>/img/promotions.webp" alt="Promotion to Associate Director" loading="lazy" decoding="async">
           </div>
           <div class="card-inline-right">
             <h4>Promoted to Associate Director</h4>
             <p>2022</p>
           </div>
         </div>
-        <div class="card-inline-text" id="a5" onmouseover="showAwardDetails('a5')">
+        <div class="card-inline-text js-award" data-award="a5" tabindex="0" role="button" aria-pressed="false">
           <div class="card-inline-left">
-            <img src="<?php echo get_template_directory_uri(); ?>/img/awards.webp" alt="Trailblazer Award">
+            <img src="<?php echo esc_url( get_stylesheet_directory_uri() ); ?>/img/awards.webp" alt="Trailblazer Award" loading="lazy" decoding="async">
           </div>
           <div class="card-inline-right">
             <h4>Trailblazer Award</h4>
             <p>2021</p>
           </div>
         </div>
-        <div class="card-inline-text" id="a6" onmouseover="showAwardDetails('a6')">
+        <div class="card-inline-text js-award" data-award="a6" tabindex="0" role="button" aria-pressed="false">
           <div class="card-inline-left">
-            <img src="<?php echo get_template_directory_uri(); ?>/img/promotions.webp" alt="Promotion to Team Lead">
+            <img src="<?php echo esc_url( get_stylesheet_directory_uri() ); ?>/img/promotions.webp" alt="Promotion to Team Lead" loading="lazy" decoding="async">
           </div>
           <div class="card-inline-right">
             <h4>Promoted to Team Lead</h4>
             <p>2019</p>
           </div>
         </div>
-        <div class="card-inline-text" id="a7" onmouseover="showAwardDetails('a7')">
+        <div class="card-inline-text js-award" data-award="a7" tabindex="0" role="button" aria-pressed="false">
           <div class="card-inline-left">
-            <img src="<?php echo get_template_directory_uri(); ?>/img/awards.webp" alt="iLead Award">
+            <img src="<?php echo esc_url( get_stylesheet_directory_uri() ); ?>/img/awards.webp" alt="iLead Award" loading="lazy" decoding="async">
           </div>
           <div class="card-inline-right">
             <h4>iLead Award</h4>
@@ -205,7 +201,7 @@ get_header(); ?>
         </div>
       </div>
       <div class="flexbox-col-right">
-        <h2>&nbsp;</h2>
+        <div class="award-heading-spacer" aria-hidden="true"></div>
 
         <div class="award-details" id="a1details" style="display: block;">
           <p>Recognized for exceptional performance and outstanding contributions to engineering outcomes — delivering high-impact systems that moved the needle on business results.</p>
@@ -234,20 +230,7 @@ get_header(); ?>
     </div>
   </section>
 
-  <script>
-    function showAwardDetails(awardId) {
-      document.querySelectorAll('.award-details').forEach(detail => {
-        detail.style.display = 'none';
-      });
-      const detailsElement = document.getElementById(awardId + 'details');
-      if (detailsElement) {
-        detailsElement.style.display = 'block';
-      }
-    }
-    document.addEventListener('DOMContentLoaded', function() {
-      showAwardDetails('a1');
-    });
-  </script>
+  <!-- Award details switching is handled by js/main.js (js-award / data-award hooks). -->
 
   <!-- Blog Section -->
   <section class="card-box">
@@ -258,42 +241,18 @@ get_header(); ?>
       </div>
       <ul class="flexbox-col3">
         <?php
-        $args = array(
+        $featured_query = new WP_Query(array(
           'category_name' => 'featured',
-          'posts_per_page' => 3
-        );
-        $query = new WP_Query($args);
-        if ($query->have_posts()) :
-          while ($query->have_posts()) :
-            $query->the_post();
+          'posts_per_page' => 3,
+          'post_status' => 'publish',
+          'no_found_rows' => true,
+        ));
+        if ($featured_query->have_posts()) :
+          while ($featured_query->have_posts()) :
+            $featured_query->the_post();
         ?>
             <li>
-              <div class="flexbox-col3-box">
-                <?php if (has_post_thumbnail()) : ?>
-                  <!-- <img width="84" height="84" src="<?php the_post_thumbnail_url('thumbnail'); ?>" alt="<?php the_title_attribute(); ?>"> -->
-                <?php else : ?>
-                  <!-- <img width="84" height="84" src="<?php echo get_template_directory_uri(); ?>/img/ideas.png" alt="Default Image"> -->
-                <?php endif; ?>
-                <h4><?php the_title(); ?></h4>
-                <p><?php echo get_the_excerpt(); ?></p>
-                <a class="cards-cta" href="<?php the_permalink(); ?>">
-                  <svg width="38" height="38" viewBox="0 0 38 38" fill="none" xmlns="http://www.w3.org/2000/svg">
-                    <rect width="38" height="38" rx="19" fill="url(#paint0_linear_15_1041)"></rect>
-                    <g clip-path="url(#clip0_15_1041)">
-                      <path d="M23.6557 16.8139L14.72 25.7497L13.252 24.2817L22.1866 15.3459H14.3119V13.2695H25.7321V24.6897H23.6557V16.8139Z" fill="true"></path>
-                    </g>
-                    <defs>
-                      <linearGradient id="paint0_linear_15_1041" x1="39.3571" y1="5.62961" x2="-3.06271" y2="8.58385" gradientUnits="userSpaceOnUse">
-                        <stop stop-color="#22D1EE"></stop>
-                        <stop offset="1" stop-color="#C5FF41"></stop>
-                      </linearGradient>
-                      <clipPath id="clip0_15_1041">
-                        <rect width="13" height="13" fill="white" transform="translate(13 13)"></rect>
-                      </clipPath>
-                    </defs>
-                  </svg> Read More
-                </a>
-              </div>
+              <?php get_template_part('template-parts/post-card', null, array('heading' => 'h3')); ?>
             </li>
         <?php
           endwhile;

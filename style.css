@@ -12,15 +12,21 @@ Tags: custom-background, custom-logo, custom-menu, featured-images, threaded-com
 */
 
 * {
-  outline: 0;
   border: none;
   box-sizing: border-box;
   margin: 0;
   padding: 0;
 }
 
+:focus-visible {
+  outline: 3px solid #22d1ee;
+  outline-offset: 2px;
+}
+
 body {
-  font-family: "Urbanist", serif;
+  font-family: "Urbanist", -apple-system, "Segoe UI", sans-serif;
+  color: #191919;
+  background-color: #ffffff;
 }
 
 .container {
@@ -430,7 +436,8 @@ blockquote p {
     transition: all 0.3s ease;
   }
 
-  #showDrop:checked~.drop-menu,
+  #showDropApps:checked~.drop-menu,
+  #showDropChat:checked~.drop-menu,
   #showMega:checked~.mega-box {
     max-height: 100%;
   }
@@ -1062,7 +1069,7 @@ nav .wrapper ul li {
   margin-top: 25px;
 }
 
-#pdt--0 {
+.pdt-0 {
   padding-top: 0;
 }
 
