@@ -19,7 +19,7 @@ Tags: custom-background, custom-logo, custom-menu, featured-images, threaded-com
 }
 
 :focus-visible {
-  outline: 3px solid #22d1ee;
+  outline: 3px solid #6366f1;
   outline-offset: 2px;
 }
 
@@ -150,7 +150,7 @@ nav .wrapper {
 }
 
 .nav-links li a:hover {
-  color: #c5ff41;
+  color: #a855f7;
 }
 
 .nav-links>li>a::after {
@@ -598,7 +598,7 @@ nav input {
   font-weight: 600;
   padding: 24px;
   border-radius: 34px;
-  background: linear-gradient(236deg, #27d9ae 0%, #23caee 100%);
+  background: linear-gradient(236deg, #818cf8 0%, #38bdf8 100%);
   min-height: 254px;
 }
 
@@ -610,11 +610,11 @@ nav input {
 }
 
 .blue-gradient {
-  background: linear-gradient(236deg, #22d1ee 0%, #3d5af1 100%);
+  background: linear-gradient(236deg, #6366f1 0%, #3b82f6 100%);
 }
 
 .hb-cta {
-  background: linear-gradient(236deg, #22d1ee 0%, #c5ff41 100%);
+  background: linear-gradient(236deg, #818cf8 0%, #c084fc 100%);
   padding: 31px 40px 31px 30px;
   border-radius: 35px;
   width: 100%;
@@ -640,7 +640,7 @@ nav input {
 }
 
 .subscribe-cta {
-  background: linear-gradient(236deg, #22d1ee, #c5ff41);
+  background: linear-gradient(236deg, #818cf8, #c084fc);
   padding: 14px 32px;
   border-radius: 32px;
   font-size: 18px;
@@ -777,7 +777,7 @@ nav .wrapper ul li {
 }
 
 .card-inline-text:hover {
-  border: 2px solid #22d1ee;
+  border: 2px solid #6366f1;
 }
 
 .card-inline-left {
@@ -908,7 +908,7 @@ nav .wrapper ul li {
   padding-right: 30px;
   padding-left: 30px;
   padding-bottom: 10px;
-  background: -webkit-linear-gradient(236deg, #22d1ee, #c5ff41);
+  background: -webkit-linear-gradient(236deg, #6366f1, #a855f7);
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
   font-size: 70px;
@@ -1136,7 +1136,7 @@ nav .wrapper ul li {
   height: 52px;
   margin-right: 10px;
   border-radius: 0;
-  border-image-source: linear-gradient(270deg, #22d1ee, #c5ff41) !important;
+  border-image-source: linear-gradient(270deg, #6366f1, #a855f7) !important;
   padding: 11px 15px 13px;
   width: 100%;
 }
@@ -1147,7 +1147,7 @@ nav .wrapper ul li {
 }
 
 .btn-green-linear {
-  background: linear-gradient(236deg, #22d1ee, #c5ff41);
+  background: linear-gradient(236deg, #818cf8, #c084fc);
   display: flex;
   align-items: center;
   width: -moz-fit-content;
@@ -1183,7 +1183,7 @@ nav .wrapper ul li {
   border-image-slice: 1;
   border-width: 1px;
   /* border-top: 1px solid; */
-  /* border-image-source: linear-gradient(270deg, #22d1ee, #c5ff41) !important; */
+  /* border-image-source: linear-gradient(270deg, #6366f1, #a855f7) !important; */
 }
 
 .footer-dflex {
