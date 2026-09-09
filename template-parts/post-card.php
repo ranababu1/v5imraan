@@ -50,11 +50,5 @@ $reading    = v5imraan_reading_time();
 			<a href="<?php the_permalink(); ?>"><?php the_title(); ?></a>
 		</<?php echo esc_html( $heading ); ?>>
 		<p class="post-card__excerpt"><?php echo esc_html( wp_trim_words( get_the_excerpt(), $featured ? 26 : 18, '…' ) ); ?></p>
-		<a class="post-card__cta" href="<?php the_permalink(); ?>">
-			<span><?php esc_html_e( 'Read article', 'v5imraan' ); ?></span>
-			<span class="post-card__cta-dot" aria-hidden="true">
-				<svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
-			</span>
-		</a>
 	</div>
 </article>

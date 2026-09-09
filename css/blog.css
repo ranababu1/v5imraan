@@ -378,37 +378,11 @@
   font-size: 15px;
   line-height: 1.65;
   color: #4b5563;
-  margin-bottom: 18px;
   flex: 1;
   display: -webkit-box;
   -webkit-box-orient: vertical;
   -webkit-line-clamp: 3;
   overflow: hidden;
-}
-
-.post-card__cta {
-  display: inline-flex;
-  align-items: center;
-  gap: 10px;
-  font-size: 14px;
-  font-weight: 600;
-  color: #191919;
-  text-decoration: none;
-}
-
-.post-card__cta:hover {
-  color: #191919;
-}
-
-.post-card__cta-dot {
-  width: 30px;
-  height: 30px;
-  border-radius: 50%;
-  display: inline-flex;
-  align-items: center;
-  justify-content: center;
-  color: #0e0d0d;
-  background: linear-gradient(120deg, #818cf8, #c084fc);
 }
 
 /* Featured hero card: side-by-side on desktop. */
