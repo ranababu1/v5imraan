@@ -19,53 +19,56 @@ while ( have_posts() ) :
 		<header class="blog-hero sp-hero">
 			<div class="container">
 				<?php v5imraan_the_breadcrumbs(); ?>
-				<div class="sp-hero__meta">
-					<?php
-					$categories = get_the_category();
-					if ( $categories ) :
-						?>
-						<p class="sp-hero__cats">
-							<?php foreach ( $categories as $category ) : ?>
-								<a class="sp-hero__cat" href="<?php echo esc_url( get_category_link( $category ) ); ?>"><?php echo esc_html( $category->name ); ?></a>
-							<?php endforeach; ?>
-						</p>
-					<?php endif; ?>
-					<p class="sp-hero__byline">
-						<?php echo get_avatar( get_the_author_meta( 'ID' ), 40, get_stylesheet_directory_uri() . '/img/imrn.png', get_the_author() ); ?>
-						<span>
+				<div class="sp-hero__inner">
+					<div class="sp-hero__content">
+						<div class="sp-hero__meta">
 							<?php
-							/* translators: %s: author name. */
-							printf( esc_html__( 'By %s', 'v5imraan' ), esc_html( get_the_author() ) );
-							?>
-							&middot;
-							<time datetime="<?php echo esc_attr( get_the_date( DATE_W3C ) ); ?>"><?php echo esc_html( get_the_date() ); ?></time>
-							&middot; <?php echo esc_html( v5imraan_reading_time() ); ?> <?php esc_html_e( 'min read', 'v5imraan' ); ?>
-						</span>
-					</p>
+							$categories = get_the_category();
+							if ( $categories ) :
+								?>
+								<p class="sp-hero__cats">
+									<?php foreach ( $categories as $category ) : ?>
+										<a class="sp-hero__cat" href="<?php echo esc_url( get_category_link( $category ) ); ?>"><?php echo esc_html( $category->name ); ?></a>
+									<?php endforeach; ?>
+								</p>
+							<?php endif; ?>
+							<p class="sp-hero__byline">
+								<?php echo get_avatar( get_the_author_meta( 'ID' ), 40, get_stylesheet_directory_uri() . '/img/imrn.png', get_the_author() ); ?>
+								<span>
+									<?php
+									/* translators: %s: author name. */
+									printf( esc_html__( 'By %s', 'v5imraan' ), esc_html( get_the_author() ) );
+									?>
+									&middot;
+									<time datetime="<?php echo esc_attr( get_the_date( DATE_W3C ) ); ?>"><?php echo esc_html( get_the_date() ); ?></time>
+									&middot; <?php echo esc_html( v5imraan_reading_time() ); ?> <?php esc_html_e( 'min read', 'v5imraan' ); ?>
+								</span>
+							</p>
+						</div>
+						<h1 class="sp-hero__title"><?php the_title(); ?></h1>
+						<?php if ( has_excerpt() ) : ?>
+							<p class="sp-hero__excerpt"><?php echo esc_html( get_the_excerpt() ); ?></p>
+						<?php endif; ?>
+					</div>
+					<?php if ( has_post_thumbnail() ) : ?>
+						<div class="sp-hero__media">
+							<figure class="sp-featured">
+								<?php
+								the_post_thumbnail(
+									'large',
+									array(
+										'class'         => 'sp-featured__img',
+										'fetchpriority' => 'high',
+										'decoding'      => 'async',
+									)
+								);
+								?>
+							</figure>
+						</div>
+					<?php endif; ?>
 				</div>
-				<h1 class="sp-hero__title"><?php the_title(); ?></h1>
-				<?php if ( has_excerpt() ) : ?>
-					<p class="sp-hero__excerpt"><?php echo esc_html( get_the_excerpt() ); ?></p>
-				<?php endif; ?>
 			</div>
 		</header>
-
-		<?php if ( has_post_thumbnail() ) : ?>
-			<div class="container sp-featured-wrap">
-				<figure class="sp-featured">
-					<?php
-					the_post_thumbnail(
-						'v5-blog-wide',
-						array(
-							'class'         => 'sp-featured__img',
-							'fetchpriority' => 'high',
-							'decoding'      => 'async',
-						)
-					);
-					?>
-				</figure>
-			</div>
-		<?php endif; ?>
 
 		<div class="container">
 			<div class="sp-layout">
