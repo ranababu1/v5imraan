@@ -111,7 +111,7 @@
 									<ul class="mega-links">
 										<li><a href="https://imraan.in/ai/chatgpt/">ChatGPT</a></li>
 										<li><a href="https://imraan.in/ai/github-copilot/">Github Copilot</a></li>
-										<li><a href="https://imraan.in/ai/gemeni/">Gemeni</a></li>
+										<li><a href="https://imraan.in/ai/gemini/">Gemini</a></li>
 										<li><a href="https://imraan.in/ai/claude/">Claude</a></li>
 										<li><a href="https://imraan.in/ai/claude-code/">Claude Code</a></li>
 										<li><a href="https://imraan.in/ai/ollama/">Ollama</a></li>
