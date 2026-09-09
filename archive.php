@@ -29,7 +29,7 @@ $archive = v5imraan_archive_heading();
 			<?php endif; ?>
 			<?php if ( is_author() ) : ?>
 				<div class="blog-hero__author">
-					<?php echo get_avatar( get_queried_object_id(), 56, '', get_the_archive_title() ); ?>
+					<?php echo get_avatar( get_queried_object_id(), 56, '', $archive[1] ); ?>
 				</div>
 			<?php endif; ?>
 		</div>
