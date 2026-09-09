@@ -38,8 +38,8 @@ get_header(); ?>
             </div>
             <div class="ourfeatures-sm__dflexright">
               <div class="ourfeatures-sm__box">
-                <h3 id="pdt--0">~80%</h3>
-                <h4 id="pdt--0">Cost Reduction</h4>
+                <h3 class="pdt-0">~80%</h3>
+                <h4 class="pdt-0">Cost Reduction</h4>
                 <p>
                   Reduced cloud infrastructure costs by ~80% through architectural and operational optimizations.
                 </p>
