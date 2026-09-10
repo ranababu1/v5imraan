@@ -989,7 +989,7 @@ nav .wrapper ul li {
 .hp-trusted {
   padding: 56px 0 88px;
   text-align: center;
-  background: #e2e8f0;
+  /* background: #e2e8f0; */
 }
 
 .hp-trusted__kicker {

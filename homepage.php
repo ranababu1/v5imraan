@@ -9,6 +9,7 @@ get_header(); ?>
 
   <section>
     <div class="container">
+      <p class="hp-eyebrow">Engineering Leader. AI Systems. Platform Architecture.</p>
       <h1 class="ourfeatures-heading">
         <?php
         echo 'I build AI-driven systems, scalable platforms, and high-performance engineering teams.';
@@ -18,9 +19,9 @@ get_header(); ?>
         <div class="ourfeatures-dflex__left">
           <div class="ourfeatures-box">
             <span class="ourfeatures-gradient"><small></small> Imranul Haque Mazumder</span>
-            <h4>I build end-to-end AI-driven systems.</h4>
+            <h4>I build end-to-end AI systems</h4>
             <p>
-              Delivering measurable business outcomes through scalable platforms, intelligent automation, and high-performance engineering teams.
+              That transform business operations driving growth, efficiency, and innovation through AI-powered platforms, intelligent automation, and engineering excellence. Scalable systems that deliver measurable enterprise impact.
             </p>
             <img class="img-responsive ourfeatures-img" src="<?php echo esc_url( get_stylesheet_directory_uri() ); ?>/img/imrn.png" alt="Portrait of Imranul Haque Mazumder" loading="lazy" decoding="async">
           </div>
@@ -29,7 +30,7 @@ get_header(); ?>
           <div class="ourfeatures-sm__dflex">
             <div class="ourfeatures-sm__dflexleft">
               <div class="ourfeatures-sm__box">
-                <h3 class="pdt-0">13+ yrs</h3>
+                <h3 class="pdt-0">14+ yrs</h3>
                 <h4 class="pdt-0">of Experience</h4>
                 <p>
                   AI Systems, Full Stack, DevOps, Platform Architecture, Security, CRO, Analytics, SEO, Martech, CRM and CMS.
@@ -39,9 +40,9 @@ get_header(); ?>
             <div class="ourfeatures-sm__dflexright">
               <div class="ourfeatures-sm__box">
                 <h3 class="pdt-0">~80%</h3>
-                <h4 class="pdt-0">Cost Reduction</h4>
+                <h4 class="pdt-0">Cloud Cost Reduction</h4>
                 <p>
-                  Reduced cloud infrastructure costs by ~80% through architectural and operational optimizations.
+                  through cloud architectural and operational optimizations.
                 </p>
               </div>
             </div>
@@ -50,7 +51,7 @@ get_header(); ?>
             <h3>150+</h3>
             <h4>Projects Delivered</h4>
             <p>
-              Scalable, AI-driven solutions for 150+ projects across enterprise and Fortune 500 domains — finance, hospitality, technology, and e-commerce.
+              Scalable solutions for 150+ projects across enterprise and Fortune 500 domains - finance, hospitality, technology, and e-commerce.
               Led cross-functional teams, built delivery systems, and drove measurable outcomes for global clients.
             </p>
           </div>
@@ -101,40 +102,40 @@ get_header(); ?>
         <?php
         $projects = [
           [
-            'title' => 'Agentic AI — Analyst',
-            'text' => 'LangChain + Tavily + Next.js + TypeScript + Tailwind | Autonomous AI agent that independently surfs the internet, analyzes target bank data (QBRs, ARs, etc.), derives meaningful insights, and recommends internal products to address identified pain points.',
+            'title' => 'Product Solution Architect Agent',
+            'text' => 'Architected and delivered an AI-powered strategic advisory platform that autonomously researches target financial institutions, synthesizes business intelligence from public and enterprise sources, identifies strategic opportunities and risks, and recommends solution pathways to support consultative sales and account growth initiatives.',
             'link' => '#'
           ],
           [
-            'title' => 'Agentic AI — Project Manager',
-            'text' => 'Python + FastAPI + OpenAI API + Whisper + JIRA API + MS Graph API + OAuth 2.0 + Supabase + Next.js + Tailwind + Google GenAI | Autonomous agent handling daily standups, meeting transcription, action item tracking, and JIRA updates — reducing PM overhead by 40%.',
+            'title' => 'Content Localization Agent',
+            'text' => 'AI-powered localization platform integrated directly into the CMS, to enable asset creation on the fly, processing thousands of content pages and automatically generating market-specific versions through translation, transcreation, and contextual adaptation. Ensures linguistic accuracy, brand consistency, and user experience parity while enabling large-scale multilingual content delivery.',
             'link' => '#'
           ],
           [
-            'title' => 'Infrastructure Optimization',
-            'text' => 'AWS + Terraform + Docker + Kubernetes | Reduced cloud infrastructure costs by ~80% through architectural redesign, right-sizing, and operational automation — while improving performance and scalability across production environments.',
+            'title' => 'Cloud Infrastructure Optimization',
+            'text' => 'Led a strategic infrastructure modernization initiative that reduced cloud operating costs by over 80% through platform rationalization, architectural redesign, automated scaling, and operational excellence practices. Improved system performance, resilience, and scalability while establishing a sustainable foundation for future growth.',
             'link' => '#'
           ],
           [
-            'title' => 'Developer Productivity Analytics',
-            'text' => 'Java + Spring Boot + Maven + PostgreSQL + Metabase + Bitbucket API | Ingests millions of data points from Bitbucket to surface engineering bottlenecks and productivity trends. Delivered to SLT via Metabase dashboard for real-time insight.',
+            'title' => 'Engineering Intelligence Agent',
+            'text' => 'Engineering intelligence agent that ingests software delivery telemetry from source control systems, continuously analyzes execution patterns, identifies delivery risks and team bottlenecks, and generates leadership-ready insights and recommendations through real-time dashboards.',
             'link' => '#'
           ],
           [
-            'title' => 'Programmable Content Platform',
-            'text' => 'PHP + MySQL + JavaScript + WP + ACF | Low-code, no-code system that eliminated developer bottlenecks — enabling business teams to launch targeted content hubs with dynamic messaging. Cut production time from days to under 30 minutes.',
+            'title' => 'Composable Content Platform',
+            'text' => 'Architected a composable content platform that empowers business teams to independently create, manage, and launch targeted digital experiences without engineering intervention. Accelerated campaign delivery from days to minutes while improving governance, content reuse, and operational efficiency across digital channels.',
             'link' => '#'
           ],
           [
-            'title' => 'AI Website & Image Optimizer',
-            'text' => 'Node.js + React + WebAssembly | Automated performance audit and AI-driven image optimization pipeline. Analyzes assets, suggests and applies optimizations — significantly improving page load times and user experience.',
+            'title' => 'AI Website & Experience Optimizer',
+            'text' => 'Built an AI-driven digital experience optimization platform that audits websites, analyzes performance bottlenecks, and recommends + applies intelligent optimizations across assets and delivery layers. Improved page performance, user experience, and operational efficiency through automated optimization workflows.',
             'link' => '#'
           ],
         ];
         foreach ($projects as $i => $proj) :
           $parts      = array_map( 'trim', explode( '|', $proj['text'], 2 ) );
-          $stack      = isset( $parts[0] ) ? $parts[0] : '';
           $desc       = isset( $parts[1] ) ? $parts[1] : $parts[0];
+          $stack      = isset( $parts[1] ) ? $parts[0] : '';
           $stack_tags = $stack ? array_map( 'trim', explode( '+', $stack ) ) : [];
         ?>
           <li>
@@ -165,26 +166,31 @@ get_header(); ?>
       <div class="hp-section-head">
         <p class="hp-eyebrow">Recognition</p>
         <h2 class="hp-heading hp-heading--gradient">Awards &amp; Promotions</h2>
-        <p class="hp-subtext">Six years of recognized impact — from individual contributor to associate director.</p>
       </div>
       <div class="awards-layout">
         <ul class="awards-list">
           <li>
             <button type="button" class="award-row js-award" data-award="a1" aria-pressed="true">
+              <span class="award-row__year">2025</span>
+              <span class="award-row__title">Promoted to Associate Director</span>
+            </button>
+          </li>
+          <li>
+            <button type="button" class="award-row js-award" data-award="a2" aria-pressed="false">
               <span class="award-row__year">2024</span>
               <span class="award-row__title">Shining Star Award</span>
             </button>
           </li>
           <li>
-            <button type="button" class="award-row js-award" data-award="a2" aria-pressed="false">
+            <button type="button" class="award-row js-award" data-award="a3" aria-pressed="false">
               <span class="award-row__year">2023</span>
               <span class="award-row__title">Ultimate Team Award</span>
             </button>
           </li>
           <li>
-            <button type="button" class="award-row js-award" data-award="a3" aria-pressed="false">
+            <button type="button" class="award-row js-award" data-award="a4" aria-pressed="false">
               <span class="award-row__year">2022</span>
-              <span class="award-row__title">Promoted to Associate Director</span>
+              <span class="award-row__title">Promoted to Head of SW Dev</span>
             </button>
           </li>
           <li>
@@ -209,24 +215,31 @@ get_header(); ?>
 
         <div class="award-panel">
           <div class="award-details" id="a1details" style="display: block;">
-            <img class="award-panel__icon" src="<?php echo esc_url( get_stylesheet_directory_uri() ); ?>/img/awards.webp" alt="" loading="lazy" decoding="async">
-            <span class="award-panel__year">2024</span>
-            <h3 class="award-panel__title">Shining Star Award</h3>
-            <p class="award-panel__desc">Recognized for exceptional performance and outstanding contributions to engineering outcomes — delivering high-impact systems that moved the needle on business results.</p>
+            <img class="award-panel__icon" src="<?php echo esc_url( get_stylesheet_directory_uri() ); ?>/img/promotions.webp" alt="" loading="lazy" decoding="async">
+            <span class="award-panel__year">2025</span>
+            <h3 class="award-panel__title">Promoted to Associate Director</h3>
+            <p class="award-panel__desc">Promoted to Associate Director in recognition of sustained engineering leadership, AI systems delivery, and measurable impact across platform, team, and business outcomes.</p>
           </div>
 
           <div class="award-details" id="a2details" style="display: none;">
+            <img class="award-panel__icon" src="<?php echo esc_url( get_stylesheet_directory_uri() ); ?>/img/awards.webp" alt="" loading="lazy" decoding="async">
+            <span class="award-panel__year">2024</span>
+            <h3 class="award-panel__title">Shining Star Award</h3>
+            <p class="award-panel__desc">Recognized for exceptional performance and outstanding contributions to engineering outcomes, delivering high-impact systems that moved the needle on business results.</p>
+          </div>
+
+          <div class="award-details" id="a3details" style="display: none;">
             <img class="award-panel__icon" src="<?php echo esc_url( get_stylesheet_directory_uri() ); ?>/img/awards.webp" alt="" loading="lazy" decoding="async">
             <span class="award-panel__year">2023</span>
             <h3 class="award-panel__title">Ultimate Team Award</h3>
             <p class="award-panel__desc">Awarded for driving exceptional cross-functional collaboration that brought a critical, high-stakes project to completion under tight deadlines and complex stakeholder dynamics.</p>
           </div>
 
-          <div class="award-details" id="a3details" style="display: none;">
+          <div class="award-details" id="a4details" style="display: none;">
             <img class="award-panel__icon" src="<?php echo esc_url( get_stylesheet_directory_uri() ); ?>/img/promotions.webp" alt="" loading="lazy" decoding="async">
             <span class="award-panel__year">2022</span>
-            <h3 class="award-panel__title">Promoted to Associate Director</h3>
-            <p class="award-panel__desc">Promoted in recognition of engineering leadership, platform delivery expertise, and a consistent track record of mentoring and growing high-performing teams.</p>
+            <h3 class="award-panel__title">Promoted to Head of SW Dev</h3>
+            <p class="award-panel__desc">Promoted to Head of Software Development, recognizing engineering leadership, platform delivery excellence, and a consistent track record of mentoring and growing high-performing teams.</p>
           </div>
 
           <div class="award-details" id="a5details" style="display: none;">
@@ -240,7 +253,7 @@ get_header(); ?>
             <img class="award-panel__icon" src="<?php echo esc_url( get_stylesheet_directory_uri() ); ?>/img/promotions.webp" alt="" loading="lazy" decoding="async">
             <span class="award-panel__year">2019</span>
             <h3 class="award-panel__title">Promoted to Team Lead</h3>
-            <p class="award-panel__desc">First promotion to Team Lead — recognizing demonstrated leadership potential, technical depth, and consistent high performance as an individual contributor.</p>
+            <p class="award-panel__desc">First promotion to Team Lead, recognizing demonstrated leadership potential, technical depth, and consistent high performance as an individual contributor.</p>
           </div>
 
           <div class="award-details" id="a7details" style="display: none;">
