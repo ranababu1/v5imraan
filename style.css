@@ -19,13 +19,13 @@ Tags: custom-background, custom-logo, custom-menu, featured-images, threaded-com
 }
 
 :focus-visible {
-  outline: 3px solid #f59e0b;
+  outline: 3px solid #3b82f6;
   outline-offset: 2px;
 }
 
 body {
   font-family: "Urbanist", -apple-system, "Segoe UI", sans-serif;
-  color: #2a2a2a;
+  color: #1e293b;
   background-color: #ffffff;
 }
 
@@ -56,7 +56,7 @@ body {
   position: fixed;
   z-index: 99;
   width: 100%;
-  background-color: #191d32;
+  background-color: #0f172a;
 }
 
 .site-header nav .wrapper {
@@ -72,7 +72,7 @@ body {
 }
 
 .wrapper .logo a {
-  color: #e4e4e4;
+  color: #e2e8f0;
   font-size: 30px;
   font-weight: 600;
   text-decoration: none;
@@ -89,7 +89,7 @@ body {
 
 .nav-links li a {
   position: relative;
-  color: #e4e4e4;
+  color: #e2e8f0;
   text-decoration: none;
   font-size: 18px;
   font-weight: 500;
@@ -99,7 +99,7 @@ body {
 }
 
 .nav-links li a:hover {
-  color: #fb7185;
+  color: #a78bfa;
 }
 
 .nav-links>li>a::after {
@@ -139,7 +139,7 @@ body {
 
 .nav-links .drop-menu {
   position: absolute;
-  background: #242526;
+  background: #1e293b;
   width: 250px;
   line-height: 45px;
   top: 85px;
@@ -175,7 +175,7 @@ body {
 }
 
 .mega-box .content {
-  background: #242526;
+  background: #1e293b;
   padding: 25px 20px;
   display: flex;
   width: 100%;
@@ -195,7 +195,7 @@ body {
 }
 
 .content .row header {
-  color: #e4e4e4;
+  color: #e2e8f0;
   font-size: 20px;
   font-weight: 500;
 }
@@ -212,17 +212,17 @@ body {
 .row .mega-links li a {
   padding: 0px;
   padding: 0 20px;
-  color: #e4e4e4;
+  color: #e2e8f0;
   font-size: 17px;
   display: block;
 }
 
 .row .mega-links li a:hover {
-  color: #e4e4e4;
+  color: #e2e8f0;
 }
 
 .wrapper .btn {
-  color: #e4e4e4;
+  color: #e2e8f0;
   font-size: 20px;
   cursor: pointer;
   display: none;
@@ -328,7 +328,7 @@ blockquote p {
     max-width: 350px;
     top: 0;
     left: -100%;
-    background: #242526;
+    background: #1e293b;
     display: block;
     padding: 50px 10px;
     line-height: 50px;
@@ -343,11 +343,11 @@ blockquote p {
   }
 
   ::-webkit-scrollbar-track {
-    background: #242526;
+    background: #1e293b;
   }
 
   ::-webkit-scrollbar-thumb {
-    background: #3a3b3c;
+    background: #334155;
   }
 
   #menu-btn:checked~.nav-links {
@@ -397,7 +397,7 @@ blockquote p {
 
   .nav-links .mobile-item {
     display: block;
-    color: #e4e4e4;
+    color: #e2e8f0;
     font-size: 20px;
     font-weight: 500;
     padding-left: 20px;
@@ -407,7 +407,7 @@ blockquote p {
   }
 
   .nav-links .mobile-item:hover {
-    background: #3a3b3c;
+    background: #334155;
   }
 
   .drop-menu li {
@@ -547,7 +547,7 @@ nav input {
   font-weight: 600;
   padding: 24px;
   border-radius: 34px;
-  background: linear-gradient(236deg, #fbbf24 0%, #fdba74 100%);
+  background: linear-gradient(236deg, #60a5fa 0%, #a78bfa 100%);
   min-height: 254px;
 }
 
@@ -559,18 +559,18 @@ nav input {
 }
 
 .blue-gradient {
-  background: linear-gradient(236deg, #f59e0b 0%, #e11d48 100%);
+  background: linear-gradient(236deg, #2563eb 0%, #7c3aed 100%);
 }
 
 .hb-cta {
-  background: linear-gradient(236deg, #fbbf24 0%, #fda4af 100%);
+  background: linear-gradient(236deg, #60a5fa 0%, #a78bfa 100%);
   padding: 31px 40px 31px 30px;
   border-radius: 35px;
   width: 100%;
   font-size: 28px;
   line-height: 34px;
   font-weight: 600;
-  color: #2a2a2a;
+  color: #1e293b;
   text-transform: uppercase;
   display: flex;
   align-items: center;
@@ -580,7 +580,7 @@ nav input {
 }
 
 .hb-cta svg {
-  fill: #2a2a2a;
+  fill: #1e293b;
 }
 
 .hb-cta img {
@@ -589,12 +589,12 @@ nav input {
 }
 
 .subscribe-cta {
-  background: linear-gradient(236deg, #fbbf24, #fda4af);
+  background: linear-gradient(236deg, #60a5fa, #a78bfa);
   padding: 14px 32px;
   border-radius: 32px;
   font-size: 18px;
   font-weight: 400;
-  color: #2a2a2a;
+  color: #1e293b;
   display: inline-flex;
   align-items: center;
   justify-content: space-between;
@@ -609,7 +609,7 @@ nav input {
 }
 
 .subscribe-cta svg {
-  fill: #2a2a2a;
+  fill: #1e293b;
 }
 
 .subscribe-cta:hover {
@@ -636,7 +636,7 @@ nav .wrapper ul li {
   font-size: 50px;
   font-weight: 600;
   line-height: 134%;
-  color: #d1d3d4;
+  color: #1e293b;
 }
 
 /** Our Features **/
@@ -666,7 +666,7 @@ nav .wrapper ul li {
 .ourfeatures-box,
 .ourfeatures-sm__box {
   padding: 43px;
-  background-color: #eceef2;
+  background-color: #e2e8f0;
   border-radius: 32px;
 }
 
@@ -675,9 +675,9 @@ nav .wrapper ul li {
   font-size: 30px;
   border-radius: 32px;
   padding: 4px 20px 8px 10px;
-  color: #2a2a2a;
+  color: #1e293b;
   border: 1px solid #fff;
-  background: linear-gradient(127deg, #dfdfdf 0%, #d0c8f6 86%, #ac9bf9 100%);
+  background: linear-gradient(127deg, #dbeafe 0%, #c7d2fe 86%, #a5b4fc 100%);
 }
 
 @keyframes heartbeat {
@@ -710,7 +710,7 @@ nav .wrapper ul li {
   height: 20px;
   border-radius: 50%;
   margin-right: 10px;
-  background-color: #463e87;
+  background-color: #7c3aed;
   line-height: 42px;
   text-align: center;
   vertical-align: middle;
@@ -735,7 +735,7 @@ nav .wrapper ul li {
   font-size: 20px;
   line-height: 150%;
   font-weight: 500;
-  color: #2a2a2a;
+  color: #1e293b;
 }
 
 .ourfeatures-img {
@@ -773,11 +773,11 @@ nav .wrapper ul li {
   font-size: 18px;
   line-height: 122%;
   font-weight: 500;
-  color: #2a2a2a;
+  color: #1e293b;
 }
 
 .green-gradient {
-  background: linear-gradient(127deg, #dfdfdf 0%, #d0c8f6 86%, #ac9bf9 100%);
+  background: linear-gradient(127deg, #dbeafe 0%, #c7d2fe 86%, #a5b4fc 100%);
 }
 
 .mg-25 {
@@ -794,7 +794,7 @@ nav .wrapper ul li {
   border-image-slice: 1;
   border-width: 1px;
   /* border-top: 1px solid; */
-  /* border-image-source: linear-gradient(270deg, #f59e0b, #fb7185) !important; */
+  /* border-image-source: linear-gradient(270deg, #3b82f6, #8b5cf6) !important; */
 }
 
 .footer-dflex {
@@ -810,7 +810,7 @@ nav .wrapper ul li {
   list-style-type: none;
   font-size: 14px;
   line-height: 132%;
-  color: #727373;
+  color: #64748b;
 }
 
 .footer-dflex li:first-child {
@@ -819,7 +819,7 @@ nav .wrapper ul li {
 
 .footer-dflex li a {
   text-decoration: none;
-  color: #727373;
+  color: #64748b;
 }
 
 @media (max-width: 767px) {
@@ -950,7 +950,7 @@ nav .wrapper ul li {
   font-weight: 700;
   letter-spacing: 0.12em;
   text-transform: uppercase;
-  color: #fbbf24;
+  color: #2563eb;
   margin-bottom: 16px;
 }
 
@@ -959,11 +959,11 @@ nav .wrapper ul li {
   line-height: 1.08;
   font-weight: 800;
   letter-spacing: -0.02em;
-  color: #2a2a2a;
+  color: #1e293b;
 }
 
 .hp-heading--gradient {
-  background: linear-gradient(120deg, #f59e0b, #fb7185);
+  background: linear-gradient(120deg, #2563eb, #7c3aed);
   -webkit-background-clip: text;
   background-clip: text;
   -webkit-text-fill-color: transparent;
@@ -973,19 +973,23 @@ nav .wrapper ul li {
 .hp-subtext {
   font-size: clamp(1.05rem, 0.9rem + 0.5vw, 1.35rem);
   line-height: 1.6;
-  color: #5b5f6b;
+  color: #475569;
   margin-top: 20px;
 }
 
 .hp-dark .hp-subtext {
-  color: rgba(228, 228, 228, 0.72);
+  color: rgba(226, 232, 240, 0.72);
+}
+
+.hp-dark .hp-eyebrow {
+  color: #60a5fa;
 }
 
 /** Trusted-by / logo marquee. **/
 .hp-trusted {
   padding: 56px 0 88px;
   text-align: center;
-  background: #e4e4e4;
+  background: #e2e8f0;
 }
 
 .hp-trusted__kicker {
@@ -993,14 +997,14 @@ nav .wrapper ul li {
   font-weight: 700;
   letter-spacing: 0.12em;
   text-transform: uppercase;
-  color: #fbbf24;
+  color: #2563eb;
   margin-bottom: 10px;
 }
 
 .hp-trusted__heading {
   font-size: clamp(1.5rem, 1.1rem + 1.5vw, 2rem);
   font-weight: 600;
-  color: #2a2a2a;
+  color: #1e293b;
   margin-bottom: 40px;
 }
 
@@ -1051,7 +1055,7 @@ nav .wrapper ul li {
   position: relative;
   isolation: isolate;
   overflow: hidden;
-  background-color: #191d32;
+  background-color: #0f172a;
   padding: 130px 0;
 }
 
@@ -1071,13 +1075,13 @@ nav .wrapper ul li {
 .card-box::before {
   top: -180px;
   left: -140px;
-  background: #f59e0b;
+  background: #3b82f6;
 }
 
 .card-box::after {
   bottom: -200px;
   right: -120px;
-  background: #fb7185;
+  background: #a78bfa;
 }
 
 .card-box .container {
@@ -1103,21 +1107,21 @@ nav .wrapper ul li {
   padding: 40px 32px 32px;
   border-radius: 20px;
   background: linear-gradient(160deg, rgba(255, 255, 255, 0.06), rgba(255, 255, 255, 0.02));
-  border: 1px solid rgba(251, 191, 36, 0.18);
+  border: 1px solid rgba(96, 165, 250, 0.18);
   transition: transform 0.3s ease, border-color 0.3s ease, background 0.3s ease;
 }
 
 .flagship-card:hover {
   transform: translateY(-6px);
-  border-color: rgba(251, 191, 36, 0.5);
-  background: linear-gradient(160deg, rgba(251, 191, 36, 0.12), rgba(251, 113, 133, 0.05));
+  border-color: rgba(96, 165, 250, 0.5);
+  background: linear-gradient(160deg, rgba(96, 165, 250, 0.12), rgba(139, 92, 246, 0.05));
 }
 
 .flagship-card__index {
   font-size: 15px;
   font-weight: 700;
   letter-spacing: 0.08em;
-  background: linear-gradient(120deg, #fbbf24, #fda4af);
+  background: linear-gradient(120deg, #60a5fa, #a78bfa);
   -webkit-background-clip: text;
   background-clip: text;
   -webkit-text-fill-color: transparent;
@@ -1129,14 +1133,14 @@ nav .wrapper ul li {
   font-size: 24px;
   line-height: 1.3;
   font-weight: 700;
-  color: #e4e4e4;
+  color: #e2e8f0;
   margin-bottom: 14px;
 }
 
 .flagship-card__desc {
   font-size: 15.5px;
   line-height: 1.65;
-  color: rgba(228, 228, 228, 0.72);
+  color: rgba(226, 232, 240, 0.72);
   flex: 1;
 }
 
@@ -1153,9 +1157,9 @@ nav .wrapper ul li {
   font-size: 12px;
   font-weight: 600;
   letter-spacing: 0.03em;
-  color: rgba(228, 228, 228, 0.72);
-  background: rgba(251, 191, 36, 0.12);
-  border: 1px solid rgba(251, 191, 36, 0.25);
+  color: rgba(226, 232, 240, 0.72);
+  background: rgba(96, 165, 250, 0.12);
+  border: 1px solid rgba(96, 165, 250, 0.25);
   padding: 5px 12px;
   border-radius: 999px;
 }
@@ -1167,18 +1171,18 @@ nav .wrapper ul li {
   margin-top: 24px;
   font-size: 15px;
   font-weight: 600;
-  color: #e4e4e4;
+  color: #e2e8f0;
   text-decoration: none;
 }
 
 .flagship-card__cta:hover {
-  color: #fda4af;
+  color: #a78bfa;
 }
 
 /** Awards & Promotions. **/
 .hp-awards {
   padding: 120px 0;
-  background: #e4e4e4;
+  background: #e2e8f0;
 }
 
 .awards-layout {
@@ -1205,7 +1209,7 @@ nav .wrapper ul li {
   gap: 18px;
   padding: 18px 22px;
   border-radius: 16px;
-  border: 1px solid #e3e6f1;
+  border: 1px solid #e2e8f0;
   background: #ffffff;
   font: inherit;
   text-align: left;
@@ -1214,15 +1218,15 @@ nav .wrapper ul li {
 }
 
 .award-row:hover {
-  border-color: #fbbf24;
-  box-shadow: 0 12px 28px -18px rgba(245, 158, 11, 0.45);
+  border-color: #60a5fa;
+  box-shadow: 0 12px 28px -18px rgba(59, 130, 246, 0.45);
 }
 
 .award-row.is-active {
   border: 2px solid transparent;
   background: linear-gradient(#ffffff, #ffffff) padding-box,
-    linear-gradient(120deg, #f59e0b, #fb7185) border-box;
-  box-shadow: 0 16px 36px -20px rgba(245, 158, 11, 0.55);
+    linear-gradient(120deg, #2563eb, #7c3aed) border-box;
+  box-shadow: 0 16px 36px -20px rgba(59, 130, 246, 0.55);
 }
 
 .award-row__year {
@@ -1230,8 +1234,8 @@ nav .wrapper ul li {
   font-size: 13px;
   font-weight: 700;
   letter-spacing: 0.05em;
-  color: #c2410c;
-  background: rgba(245, 158, 11, 0.1);
+  color: #2563eb;
+  background: rgba(59, 130, 246, 0.1);
   padding: 6px 14px;
   border-radius: 999px;
 }
@@ -1239,11 +1243,11 @@ nav .wrapper ul li {
 .award-row__title {
   font-size: 17px;
   font-weight: 600;
-  color: #2a2a2a;
+  color: #1e293b;
 }
 
 .award-row.is-active .award-row__title {
-  background: linear-gradient(120deg, #f59e0b, #fb7185);
+  background: linear-gradient(120deg, #2563eb, #7c3aed);
   -webkit-background-clip: text;
   background-clip: text;
   -webkit-text-fill-color: transparent;
@@ -1258,9 +1262,9 @@ nav .wrapper ul li {
 .award-details {
   padding: 48px 44px;
   border-radius: 24px;
-  background: linear-gradient(160deg, #f7f7fc, #ffffff);
-  border: 1px solid #e3e6f1;
-  box-shadow: 0 30px 60px -40px rgba(30, 20, 60, 0.25);
+  background: linear-gradient(160deg, #f8fafc, #ffffff);
+  border: 1px solid #e2e8f0;
+  box-shadow: 0 30px 60px -40px rgba(15, 23, 42, 0.25);
 }
 
 .award-panel__icon {
@@ -1275,8 +1279,8 @@ nav .wrapper ul li {
   font-size: 13px;
   font-weight: 700;
   letter-spacing: 0.08em;
-  color: #c2410c;
-  background: rgba(245, 158, 11, 0.1);
+  color: #2563eb;
+  background: rgba(59, 130, 246, 0.1);
   padding: 6px 14px;
   border-radius: 999px;
   margin-bottom: 18px;
@@ -1285,14 +1289,14 @@ nav .wrapper ul li {
 .award-panel__title {
   font-size: clamp(1.6rem, 1.2rem + 1.5vw, 2.2rem);
   font-weight: 700;
-  color: #2a2a2a;
+  color: #1e293b;
   margin-bottom: 18px;
 }
 
 .award-panel__desc {
   font-size: 19px;
   line-height: 1.7;
-  color: #40424c;
+  color: #475569;
 }
 
 /** Tech Insights From My Blog. **/
@@ -1311,18 +1315,18 @@ nav .wrapper ul li {
   gap: 10px;
   font-size: 17px;
   font-weight: 600;
-  color: #e4e4e4;
+  color: #e2e8f0;
   text-decoration: none;
   padding: 14px 30px;
   border-radius: 999px;
-  border: 1px solid rgba(251, 191, 36, 0.4);
+  border: 1px solid rgba(96, 165, 250, 0.4);
   transition: all 0.3s ease;
 }
 
 .hp-view-all__link:hover {
   gap: 14px;
-  border-color: #fbbf24;
-  background: linear-gradient(120deg, rgba(251, 191, 36, 0.15), rgba(253, 164, 175, 0.15));
+  border-color: #60a5fa;
+  background: linear-gradient(120deg, rgba(96, 165, 250, 0.15), rgba(167, 139, 250, 0.15));
 }
 
 /** Contact CTA. **/
@@ -1331,7 +1335,7 @@ nav .wrapper ul li {
   overflow: hidden;
   padding: 140px 0;
   text-align: center;
-  background: linear-gradient(120deg, #f59e0b, #fb7185);
+  background: linear-gradient(120deg, #2563eb, #7c3aed);
 }
 
 .hp-cta::before {
@@ -1352,7 +1356,7 @@ nav .wrapper ul li {
 .hp-cta__kicker {
   font-size: clamp(1.1rem, 1rem + 0.5vw, 1.4rem);
   font-weight: 500;
-  color: rgba(228, 228, 228, 0.85);
+  color: rgba(226, 232, 240, 0.85);
   margin-bottom: 18px;
 }
 
@@ -1361,19 +1365,19 @@ nav .wrapper ul li {
   line-height: 1.15;
   font-weight: 800;
   letter-spacing: -0.01em;
-  color: #e4e4e4;
+  color: #e2e8f0;
 }
 
 .hp-cta__heading a {
-  color: #e4e4e4;
+  color: #e2e8f0;
   text-decoration: underline;
   text-decoration-thickness: 2px;
-  text-decoration-color: rgba(228, 228, 228, 0.5);
+  text-decoration-color: rgba(226, 232, 240, 0.5);
   text-underline-offset: 6px;
 }
 
 .hp-cta__heading a:hover {
-  text-decoration-color: #e4e4e4;
+  text-decoration-color: #e2e8f0;
 }
 
 .hp-cta__actions {
@@ -1391,7 +1395,7 @@ nav .wrapper ul li {
   padding: 18px 40px;
   border-radius: 999px;
   background: #ffffff;
-  color: #2a2a2a;
+  color: #1e293b;
   font-size: 17px;
   font-weight: 700;
   text-decoration: none;
@@ -1407,13 +1411,13 @@ nav .wrapper ul li {
 .hp-cta__secondary {
   font-size: 15px;
   font-weight: 600;
-  color: rgba(228, 228, 228, 0.85);
+  color: rgba(226, 232, 240, 0.85);
   text-decoration: underline;
   text-underline-offset: 4px;
 }
 
 .hp-cta__secondary:hover {
-  color: #e4e4e4;
+  color: #e2e8f0;
 }
 
 @media (max-width: 1023px) {
