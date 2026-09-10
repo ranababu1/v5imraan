@@ -86,18 +86,52 @@ body {
   font-size: 50px;
   font-weight: 600;
   line-height: 134%;
-  color: #191919;
+  background: linear-gradient(120deg, #6366f1, #a855f7);
+  -webkit-background-clip: text;
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+  color: transparent;
 }
 
-  .card-inline-text:hover {
-    background-color: #f5f5f5;
-    cursor: pointer;
-    transition: background-color 0.3s ease;
+  /** Homepage awards section: soft indigo/purple glow accents. **/
+  #awards {
+    position: relative;
+    overflow: hidden;
+  }
+
+  #awards::before,
+  #awards::after {
+    content: "";
+    position: absolute;
+    width: 420px;
+    height: 420px;
+    border-radius: 50%;
+    filter: blur(90px);
+    opacity: 0.1;
+    pointer-events: none;
+  }
+
+  #awards::before {
+    top: -180px;
+    left: -140px;
+    background: #6366f1;
+  }
+
+  #awards::after {
+    bottom: -200px;
+    right: -140px;
+    background: #a855f7;
+  }
+
+  #awards .container {
+    position: relative;
+    z-index: 1;
   }
   
   .award-details {
     padding: 15px;
-    border-left: 3px solid #ccc;
+    border-left: 3px solid transparent;
+    border-image: linear-gradient(180deg, #6366f1, #a855f7) 1;
     margin-bottom: 20px;
   }
 
@@ -768,16 +802,20 @@ nav .wrapper ul li {
   flex-wrap: wrap;
   align-items: center;
   justify-content: space-between;
-  border: 2px solid #eceef2;
+  border: 2px solid #e3e6f1;
   background-color: #ffffff;
   padding: 23px 32px;
   border-radius: 16px;
   margin: 20px 0;
   transition: all 0.3s;
+  box-shadow: 0 1px 2px rgba(15, 15, 26, 0.04);
 }
 
 .card-inline-text:hover {
-  border: 2px solid #6366f1;
+  border: 2px solid #818cf8;
+  background-image: linear-gradient(120deg, rgba(129, 140, 248, 0.05), rgba(192, 132, 252, 0.05));
+  box-shadow: 0 12px 28px -18px rgba(99, 102, 241, 0.45);
+  cursor: pointer;
 }
 
 .card-inline-left {
@@ -799,16 +837,21 @@ nav .wrapper ul li {
 }
 
 .card-inline-right p {
-  font-size: 16px;
-  line-height: 140%;
-  color: #727373;
-  font-weight: 500;
+  display: inline-block;
+  font-size: 13px;
+  font-weight: 600;
+  letter-spacing: 0.08em;
+  line-height: 1;
+  color: #4f46e5;
+  background: rgba(99, 102, 241, 0.1);
+  padding: 6px 14px;
+  border-radius: 999px;
 }
 
 .card-box {
   /* background: linear-gradient(135deg, #000000, #eceef2, #161616); */
   background-color: #a28efc;
-  background-image: linear-gradient(62deg, #151617 0%, #e0c3fc 100%);
+  background-image: linear-gradient(62deg, #13132b 0%, #e0c3fc 100%);
   padding: 120px 0;
 }
 
@@ -829,21 +872,33 @@ nav .wrapper ul li {
 
 .flexbox-col3-box {
   border-radius: 16px;
-  background-color: #2b2c2d;
+  background-color: #1e1e2e;
+  background-image: linear-gradient(160deg, #24243f 0%, #16162a 100%);
+  border: 1px solid rgba(129, 140, 248, 0.18);
   padding: 32px;
   margin-bottom: 25px;
-  transition: all 0.2s;
+  transition: all 0.3s ease-in-out;
   min-height: 350px;
-  transition: transform 0.3s ease-in-out;
   transform-origin: center bottom;
 }
 
+.flexbox-col3-box::before {
+  content: "";
+  display: block;
+  width: 48px;
+  height: 4px;
+  border-radius: 999px;
+  background: linear-gradient(120deg, #6366f1, #a855f7);
+  margin-bottom: 12px;
+}
+
 .flexbox-col3-box:hover {
-  background-color: #191919;
+  background-color: #16161f;
+  background-image: linear-gradient(160deg, #2b2b4d 0%, #1b1b31 100%);
+  border-color: rgba(129, 140, 248, 0.55);
   transform: perspective(500px) rotateX(5deg) scale(0.98);
   box-shadow: 5px 5px 30px 15px rgba(0, 0, 0, 0.25),
-    -5px -5px 30px 15px rgba(0, 0, 0, 0.22);
-  transition: transform 0.3s ease-in-out;
+    -5px -5px 30px 15px rgba(99, 102, 241, 0.12);
 }
 
 .flexbox-col3-box h4 {
@@ -901,6 +956,15 @@ nav .wrapper ul li {
   font-weight: 600;
   line-height: 134%;
   color: #d1d3d4;
+}
+
+/* Flagship Systems heading only (404 + blog strip keep the light gray). */
+#projects .cards-heading h2 {
+  background: linear-gradient(120deg, #818cf8, #c084fc);
+  -webkit-background-clip: text;
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+  color: transparent;
 }
 
 .cards-num {
@@ -1335,7 +1399,7 @@ nav .wrapper ul li {
   }
 
   .card-inline-right p {
-    font-size: 15px;
+    font-size: 12px;
   }
 
   .flexbox-col2 {

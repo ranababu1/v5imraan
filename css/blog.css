@@ -1098,6 +1098,15 @@ figure.sp-featured {
 
 .card-inline-text.is-active {
   border: 2px solid #6366f1;
+  box-shadow: 0 16px 36px -20px rgba(99, 102, 241, 0.55);
+}
+
+.card-inline-text.is-active .card-inline-right h4 {
+  background: linear-gradient(120deg, #6366f1, #a855f7);
+  -webkit-background-clip: text;
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+  color: transparent;
 }
 
 /* ---------------------------------------------------------------
