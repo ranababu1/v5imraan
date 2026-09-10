@@ -10,7 +10,7 @@ get_header(); ?>
   <section>
     <div class="container">
       <h1 class="ourfeatures-heading">
-        <?php 
+        <?php
         echo 'I build AI-driven systems, scalable platforms, and high-performance engineering teams.';
         ?>
       </h1>
@@ -59,39 +59,45 @@ get_header(); ?>
     </div>
   </section>
 
-  <section class="text-section">
+  <!-- Trusted collaboration / logo marquee -->
+  <section class="hp-trusted">
     <div class="container">
-      <h3>I had the pleasure to work with</h3>
+      <p class="hp-trusted__kicker">Trusted collaboration</p>
+      <h3 class="hp-trusted__heading">I&rsquo;ve had the pleasure to work with</h3>
     </div>
-  </section>
-
-  <section class="marquee-box">
-    <div class="container logos-marquee">
-      <div class="logos-track">
-        <img src="<?php echo get_template_directory_uri(); ?>/img/amex.png" alt="amex" class="logo logo-width">
-        <img src="<?php echo get_template_directory_uri(); ?>/img/fox-sports.png" alt="fox-sports" class="logo logo-width">
-        <img src="<?php echo get_template_directory_uri(); ?>/img/delta.png" alt="delta" class="logo logo-width">
-        <img src="<?php echo get_template_directory_uri(); ?>/img/hilton.png" alt="hilton" class="logo logo-width">
-        <img src="<?php echo get_template_directory_uri(); ?>/img/marriott.png" alt="marriott" class="logo logo-width">
-        <img src="<?php echo get_template_directory_uri(); ?>/img/zeta.png" alt="zeta" class="logo logo-width">
-        <img src="<?php echo get_template_directory_uri(); ?>/img/amex.png" alt="amex" class="logo logo-width">
-        <img src="<?php echo get_template_directory_uri(); ?>/img/fox-sports.png" alt="fox-sports" class="logo logo-width">
-        <img src="<?php echo get_template_directory_uri(); ?>/img/delta.png" alt="delta" class="logo logo-width">
-        <img src="<?php echo get_template_directory_uri(); ?>/img/hilton.png" alt="hilton" class="logo logo-width">
-        <img src="<?php echo get_template_directory_uri(); ?>/img/marriott.png" alt="marriott" class="logo logo-width">
-        <img src="<?php echo get_template_directory_uri(); ?>/img/zeta.png" alt="zeta" class="logo logo-width">
+    <div class="hp-marquee">
+      <div class="hp-marquee__track">
+        <?php
+        $logos = array(
+          array( 'amex.png', 'Amex' ),
+          array( 'fox-sports.png', 'Fox Sports' ),
+          array( 'delta.png', 'Delta' ),
+          array( 'hilton.png', 'Hilton' ),
+          array( 'marriott.png', 'Marriott' ),
+          array( 'zeta.png', 'Zeta' ),
+        );
+        $logo_uri = get_stylesheet_directory_uri() . '/img/';
+        foreach ( array( 1, 2 ) as $pass ) :
+          foreach ( $logos as $logo ) :
+        ?>
+            <img src="<?php echo esc_url( $logo_uri . $logo[0] ); ?>" alt="<?php echo esc_attr( $logo[1] ); ?>" loading="lazy" decoding="async">
+        <?php
+          endforeach;
+        endforeach;
+        ?>
       </div>
     </div>
   </section>
 
   <!-- Flagship Systems -->
-  <section id="projects" class="card-box">
+  <section id="projects" class="card-box hp-dark">
     <div class="container">
-      <div class="cards-heading">
-        <h2>Flagship Systems</h2>
-        <span class="cards-smtext">AI-driven systems and platforms built for enterprise scale and measurable outcomes.</span>
+      <div class="hp-section-head">
+        <p class="hp-eyebrow">Selected work</p>
+        <h2 class="hp-heading hp-heading--gradient">Flagship Systems</h2>
+        <p class="hp-subtext">AI-driven systems and platforms built for enterprise scale and measurable outcomes.</p>
       </div>
-      <ul class="flexbox-col3">
+      <ul class="flagship-grid">
         <?php
         $projects = [
           [
@@ -125,13 +131,26 @@ get_header(); ?>
             'link' => '#'
           ],
         ];
-        foreach ($projects as $proj) : ?>
+        foreach ($projects as $i => $proj) :
+          $parts      = array_map( 'trim', explode( '|', $proj['text'], 2 ) );
+          $stack      = isset( $parts[0] ) ? $parts[0] : '';
+          $desc       = isset( $parts[1] ) ? $parts[1] : $parts[0];
+          $stack_tags = $stack ? array_map( 'trim', explode( '+', $stack ) ) : [];
+        ?>
           <li>
-            <div class="flexbox-col3-box">
-              <h4><?php echo esc_html($proj['title']); ?></h4>
-              <p><?php echo esc_html($proj['text']); ?></p>
+            <div class="flagship-card">
+              <span class="flagship-card__index" aria-hidden="true"><?php echo esc_html( sprintf( '%02d', $i + 1 ) ); ?></span>
+              <h3 class="flagship-card__title"><?php echo esc_html($proj['title']); ?></h3>
+              <p class="flagship-card__desc"><?php echo esc_html($desc); ?></p>
+              <?php if ( $stack_tags ) : ?>
+                <ul class="flagship-card__stack">
+                  <?php foreach ( $stack_tags as $tag ) : ?>
+                    <li><?php echo esc_html( $tag ); ?></li>
+                  <?php endforeach; ?>
+                </ul>
+              <?php endif; ?>
               <?php if ($proj['link'] !== '#') : ?>
-                <a href="<?php echo esc_url($proj['link']); ?>" class="cards-cta">View Project</a>
+                <a href="<?php echo esc_url($proj['link']); ?>" class="flagship-card__cta">View Project</a>
               <?php endif; ?>
             </div>
           </li>
@@ -141,90 +160,95 @@ get_header(); ?>
   </section>
 
   <!-- Awards & Recognition -->
-  <section id="awards" class="flexbox-col2">
-    <div class="container flexy">
-      <div class="flexbox-col-left">
-        <h2>Awards &amp; Promotions</h2>
-        <div class="card-inline-text js-award" data-award="a1" tabindex="0" role="button" aria-pressed="true">
-          <div class="card-inline-left">
-            <img src="<?php echo esc_url( get_stylesheet_directory_uri() ); ?>/img/awards.webp" alt="Shining Star Award" loading="lazy" decoding="async">
-          </div>
-          <div class="card-inline-right">
-            <h4>Shining Star Award</h4>
-            <p>2024</p>
-          </div>
-        </div>
-        <div class="card-inline-text js-award" data-award="a2" tabindex="0" role="button" aria-pressed="false">
-          <div class="card-inline-left">
-            <img src="<?php echo esc_url( get_stylesheet_directory_uri() ); ?>/img/awards.webp" alt="Ultimate Team Award" loading="lazy" decoding="async">
-          </div>
-          <div class="card-inline-right">
-            <h4>Ultimate Team Award</h4>
-            <p>2023</p>
-          </div>
-        </div>
-        <div class="card-inline-text js-award" data-award="a3" tabindex="0" role="button" aria-pressed="false">
-          <div class="card-inline-left">
-            <img src="<?php echo esc_url( get_stylesheet_directory_uri() ); ?>/img/promotions.webp" alt="Promotion to Associate Director" loading="lazy" decoding="async">
-          </div>
-          <div class="card-inline-right">
-            <h4>Promoted to Associate Director</h4>
-            <p>2022</p>
-          </div>
-        </div>
-        <div class="card-inline-text js-award" data-award="a5" tabindex="0" role="button" aria-pressed="false">
-          <div class="card-inline-left">
-            <img src="<?php echo esc_url( get_stylesheet_directory_uri() ); ?>/img/awards.webp" alt="Trailblazer Award" loading="lazy" decoding="async">
-          </div>
-          <div class="card-inline-right">
-            <h4>Trailblazer Award</h4>
-            <p>2021</p>
-          </div>
-        </div>
-        <div class="card-inline-text js-award" data-award="a6" tabindex="0" role="button" aria-pressed="false">
-          <div class="card-inline-left">
-            <img src="<?php echo esc_url( get_stylesheet_directory_uri() ); ?>/img/promotions.webp" alt="Promotion to Team Lead" loading="lazy" decoding="async">
-          </div>
-          <div class="card-inline-right">
-            <h4>Promoted to Team Lead</h4>
-            <p>2019</p>
-          </div>
-        </div>
-        <div class="card-inline-text js-award" data-award="a7" tabindex="0" role="button" aria-pressed="false">
-          <div class="card-inline-left">
-            <img src="<?php echo esc_url( get_stylesheet_directory_uri() ); ?>/img/awards.webp" alt="iLead Award" loading="lazy" decoding="async">
-          </div>
-          <div class="card-inline-right">
-            <h4>iLead Award</h4>
-            <p>2018</p>
-          </div>
-        </div>
+  <section id="awards" class="hp-awards">
+    <div class="container">
+      <div class="hp-section-head">
+        <p class="hp-eyebrow">Recognition</p>
+        <h2 class="hp-heading hp-heading--gradient">Awards &amp; Promotions</h2>
+        <p class="hp-subtext">Six years of recognized impact — from individual contributor to associate director.</p>
       </div>
-      <div class="flexbox-col-right">
-        <div class="award-heading-spacer" aria-hidden="true"></div>
+      <div class="awards-layout">
+        <ul class="awards-list">
+          <li>
+            <button type="button" class="award-row js-award" data-award="a1" aria-pressed="true">
+              <span class="award-row__year">2024</span>
+              <span class="award-row__title">Shining Star Award</span>
+            </button>
+          </li>
+          <li>
+            <button type="button" class="award-row js-award" data-award="a2" aria-pressed="false">
+              <span class="award-row__year">2023</span>
+              <span class="award-row__title">Ultimate Team Award</span>
+            </button>
+          </li>
+          <li>
+            <button type="button" class="award-row js-award" data-award="a3" aria-pressed="false">
+              <span class="award-row__year">2022</span>
+              <span class="award-row__title">Promoted to Associate Director</span>
+            </button>
+          </li>
+          <li>
+            <button type="button" class="award-row js-award" data-award="a5" aria-pressed="false">
+              <span class="award-row__year">2021</span>
+              <span class="award-row__title">Trailblazer Award</span>
+            </button>
+          </li>
+          <li>
+            <button type="button" class="award-row js-award" data-award="a6" aria-pressed="false">
+              <span class="award-row__year">2019</span>
+              <span class="award-row__title">Promoted to Team Lead</span>
+            </button>
+          </li>
+          <li>
+            <button type="button" class="award-row js-award" data-award="a7" aria-pressed="false">
+              <span class="award-row__year">2018</span>
+              <span class="award-row__title">iLead Award</span>
+            </button>
+          </li>
+        </ul>
 
-        <div class="award-details" id="a1details" style="display: block;">
-          <p>Recognized for exceptional performance and outstanding contributions to engineering outcomes — delivering high-impact systems that moved the needle on business results.</p>
-        </div>
+        <div class="award-panel">
+          <div class="award-details" id="a1details" style="display: block;">
+            <img class="award-panel__icon" src="<?php echo esc_url( get_stylesheet_directory_uri() ); ?>/img/awards.webp" alt="" loading="lazy" decoding="async">
+            <span class="award-panel__year">2024</span>
+            <h3 class="award-panel__title">Shining Star Award</h3>
+            <p class="award-panel__desc">Recognized for exceptional performance and outstanding contributions to engineering outcomes — delivering high-impact systems that moved the needle on business results.</p>
+          </div>
 
-        <div class="award-details" id="a2details" style="display: none;">
-          <p>Awarded for driving exceptional cross-functional collaboration that brought a critical, high-stakes project to completion under tight deadlines and complex stakeholder dynamics.</p>
-        </div>
+          <div class="award-details" id="a2details" style="display: none;">
+            <img class="award-panel__icon" src="<?php echo esc_url( get_stylesheet_directory_uri() ); ?>/img/awards.webp" alt="" loading="lazy" decoding="async">
+            <span class="award-panel__year">2023</span>
+            <h3 class="award-panel__title">Ultimate Team Award</h3>
+            <p class="award-panel__desc">Awarded for driving exceptional cross-functional collaboration that brought a critical, high-stakes project to completion under tight deadlines and complex stakeholder dynamics.</p>
+          </div>
 
-        <div class="award-details" id="a3details" style="display: none;">
-          <p>Promoted in recognition of engineering leadership, platform delivery expertise, and a consistent track record of mentoring and growing high-performing teams.</p>
-        </div>
+          <div class="award-details" id="a3details" style="display: none;">
+            <img class="award-panel__icon" src="<?php echo esc_url( get_stylesheet_directory_uri() ); ?>/img/promotions.webp" alt="" loading="lazy" decoding="async">
+            <span class="award-panel__year">2022</span>
+            <h3 class="award-panel__title">Promoted to Associate Director</h3>
+            <p class="award-panel__desc">Promoted in recognition of engineering leadership, platform delivery expertise, and a consistent track record of mentoring and growing high-performing teams.</p>
+          </div>
 
-        <div class="award-details" id="a5details" style="display: none;">
-          <p>Awarded for pioneering AI-driven approaches and platform innovations that set new delivery standards across the organization.</p>
-        </div>
+          <div class="award-details" id="a5details" style="display: none;">
+            <img class="award-panel__icon" src="<?php echo esc_url( get_stylesheet_directory_uri() ); ?>/img/awards.webp" alt="" loading="lazy" decoding="async">
+            <span class="award-panel__year">2021</span>
+            <h3 class="award-panel__title">Trailblazer Award</h3>
+            <p class="award-panel__desc">Awarded for pioneering AI-driven approaches and platform innovations that set new delivery standards across the organization.</p>
+          </div>
 
-        <div class="award-details" id="a6details" style="display: none;">
-          <p>First promotion to Team Lead — recognizing demonstrated leadership potential, technical depth, and consistent high performance as an individual contributor.</p>
-        </div>
+          <div class="award-details" id="a6details" style="display: none;">
+            <img class="award-panel__icon" src="<?php echo esc_url( get_stylesheet_directory_uri() ); ?>/img/promotions.webp" alt="" loading="lazy" decoding="async">
+            <span class="award-panel__year">2019</span>
+            <h3 class="award-panel__title">Promoted to Team Lead</h3>
+            <p class="award-panel__desc">First promotion to Team Lead — recognizing demonstrated leadership potential, technical depth, and consistent high performance as an individual contributor.</p>
+          </div>
 
-        <div class="award-details" id="a7details" style="display: none;">
-          <p>Successfully retained a critical account by rapidly acquiring and delivering niche MarTech expertise. With no available replacement, stepped up, excelled, and earned direct accolades from the client.</p>
+          <div class="award-details" id="a7details" style="display: none;">
+            <img class="award-panel__icon" src="<?php echo esc_url( get_stylesheet_directory_uri() ); ?>/img/awards.webp" alt="" loading="lazy" decoding="async">
+            <span class="award-panel__year">2018</span>
+            <h3 class="award-panel__title">iLead Award</h3>
+            <p class="award-panel__desc">Successfully retained a critical account by rapidly acquiring and delivering niche MarTech expertise. With no available replacement, stepped up, excelled, and earned direct accolades from the client.</p>
+          </div>
         </div>
       </div>
     </div>
@@ -232,14 +256,15 @@ get_header(); ?>
 
   <!-- Award details switching is handled by js/main.js (js-award / data-award hooks). -->
 
-  <!-- Blog Section -->
-  <section class="card-box">
+  <!-- Tech Insights From My Blog -->
+  <section id="tech-insights" class="card-box hp-dark">
     <div class="container">
-      <div class="cards-heading">
-        <h2>Tech Insights From My Blog</h2>
-        <span class="cards-smtext">Stay ahead with the latest on AI systems, platform engineering, and scalable architecture.</span>
+      <div class="hp-section-head">
+        <p class="hp-eyebrow">From the blog</p>
+        <h2 class="hp-heading hp-heading--gradient">Tech Insights From My Blog</h2>
+        <p class="hp-subtext">Stay ahead with the latest on AI systems, platform engineering, and scalable architecture.</p>
       </div>
-      <ul class="flexbox-col3">
+      <ul class="post-grid hp-post-grid">
         <?php
         $featured_query = new WP_Query(array(
           'category_name' => 'featured',
@@ -251,7 +276,7 @@ get_header(); ?>
           while ($featured_query->have_posts()) :
             $featured_query->the_post();
         ?>
-            <li>
+            <li class="post-grid__item">
               <?php get_template_part('template-parts/post-card', null, array('heading' => 'h3')); ?>
             </li>
         <?php
@@ -260,16 +285,20 @@ get_header(); ?>
         wp_reset_postdata();
         ?>
       </ul>
+      <div class="hp-view-all">
+        <a href="/blog" class="hp-view-all__link">View all articles <span aria-hidden="true">&rarr;</span></a>
+      </div>
     </div>
-    <div class="subscribe-section">
-      <div class="container">
-        <div class="subscribe-block">
-          <div class="subscribe-inblock">
-            <p>Have an AI system or platform challenge you're working through?</p>
-            <h2>Let's <a href="https://wa.me/9854082826">connect</a> and build something that scales</h2>
-            <div class="form-subscribe"></div>
-          </div>
-        </div>
+  </section>
+
+  <!-- Contact CTA -->
+  <section class="hp-cta">
+    <div class="container hp-cta__inner">
+      <p class="hp-cta__kicker">Have an AI system or platform challenge you&rsquo;re working through?</p>
+      <h2 class="hp-cta__heading">Let&rsquo;s <a href="https://wa.me/9854082826">connect</a> and build something that scales</h2>
+      <div class="hp-cta__actions">
+        <a href="https://wa.me/9854082826" class="hp-cta__btn">Start the conversation</a>
+        <a href="https://t.me/i18587" class="hp-cta__secondary">or message on Telegram</a>
       </div>
     </div>
   </section>
