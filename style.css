@@ -137,14 +137,14 @@ body {
 
 /** Nav Menu **/
 
-nav {
+.site-header nav {
   position: fixed;
   z-index: 99;
   width: 100%;
   background-color: #000000;
 }
 
-nav .wrapper {
+.site-header nav .wrapper {
   position: relative;
   max-width: 1300px;
   padding: 0px 30px;
