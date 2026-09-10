@@ -409,16 +409,7 @@
   -webkit-line-clamp: 4;
 }
 
-/* Cards inside the homepage flexbox-col3 strip. */
-.flexbox-col3 li {
-  display: flex;
-}
-
-.flexbox-col3 li .post-card {
-  flex: 1;
-  width: 100%;
-}
-
+/* Homepage Tech Insights strip: white cards floating on the dark card-box. */
 .card-box .post-card {
   border: none;
   box-shadow: 0 1px 2px rgba(15, 17, 21, 0.04);
@@ -1087,26 +1078,6 @@ figure.sp-featured {
 .comment-navigation a {
   font-weight: 600;
   color: #4f46e5;
-}
-
-/* ---------------------------------------------------------------
- * Homepage awards (replacement for the old empty <h2> spacer).
- * ------------------------------------------------------------- */
-.award-heading-spacer {
-  height: 34px;
-}
-
-.card-inline-text.is-active {
-  border: 2px solid #6366f1;
-  box-shadow: 0 16px 36px -20px rgba(99, 102, 241, 0.55);
-}
-
-.card-inline-text.is-active .card-inline-right h4 {
-  background: linear-gradient(120deg, #6366f1, #a855f7);
-  -webkit-background-clip: text;
-  background-clip: text;
-  -webkit-text-fill-color: transparent;
-  color: transparent;
 }
 
 /* ---------------------------------------------------------------
