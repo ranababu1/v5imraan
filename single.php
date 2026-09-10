@@ -112,7 +112,7 @@ while ( have_posts() ) :
 								?>
 							</p>
 							<a class="sp-author__link" href="<?php echo esc_url( get_author_posts_url( get_the_author_meta( 'ID' ) ) ); ?>">
-								<?php esc_html_e( 'All articles by this author', 'v5imraan' ); ?> <span aria-hidden="true">&rarr;</span>
+								<?php /* translators: %s: Author display name. */ printf( esc_html__( 'All articles by %s', 'v5imraan' ), esc_html( get_the_author() ) ); ?> <span aria-hidden="true">&rarr;</span>
 							</a>
 						</div>
 					</aside>
