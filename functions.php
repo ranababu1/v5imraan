@@ -229,3 +229,12 @@ function v5imraan_custom_upload_mimes( $existing_mimes = array() ) {
 	return $existing_mimes;
 }
 add_filter( 'upload_mimes', 'v5imraan_custom_upload_mimes' );
+
+/**
+ * Enable Application Passwords (admin: Users → Profile → Application Passwords).
+ *
+ * Core only offers them when wp_is_application_passwords_supported() passes
+ * (which requires HTTPS); this filter forces availability on so REST API
+ * authentication via application passwords always works.
+ */
+add_filter( 'wp_is_application_passwords_available', '__return_true' );
