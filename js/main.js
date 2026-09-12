@@ -75,6 +75,14 @@
 
 					event.preventDefault();
 
+					// Light the clicked item up right away and pin it:
+					// on its own the spy can lag one section behind the
+					// click while the scroll is animating, or stay on the
+					// section above near the end of the article where
+					// the heading cannot be scrolled any higher.
+					pinnedId = heading.id;
+					updateSpy();
+
 					// Smooth-scroll to the heading; the scroll-margin-top
 					// on .sp-content headings keeps the fixed header clear.
 					heading.scrollIntoView( { behavior: 'smooth', block: 'start' } );
@@ -97,15 +105,51 @@
 			} );
 
 			var spyTicking = false;
+			var pinnedId = null;
+
+			/*
+			 * A TOC click lands the heading exactly scroll-margin-top
+			 * (css/blog.css) pixels below the viewport top, so the spy
+			 * must use that same offset — a threshold below the landing
+			 * spot lights the section *above* the one that was clicked.
+			 * +2px absorbs the sub-pixel drift the landing position
+			 * picks up at zoom levels other than 100%.
+			 */
+			var spyThreshold = function ( heading ) {
+				var margin = parseFloat(
+					window.getComputedStyle( heading ).scrollMarginTop
+				);
+
+				return ( isNaN( margin ) ? 110 : margin ) + 2;
+			};
 
 			var updateSpy = function () {
-				var current = null;
+				var current = pinnedId;
 
-				headings.forEach( function ( heading ) {
-					if ( heading.getBoundingClientRect().top <= 130 ) {
-						current = heading.id;
+				if ( ! current ) {
+					headings.forEach( function ( heading ) {
+						if (
+							heading.getBoundingClientRect().top <=
+							spyThreshold( heading )
+						) {
+							current = heading.id;
+						}
+					} );
+
+					/*
+					 * Near the end of the article the last headings can
+					 * never cross the threshold because there is not
+					 * enough content below them to scroll past — once
+					 * the page reaches its bottom, the last heading
+					 * wins.
+					 */
+					if (
+						window.innerHeight + window.scrollY >=
+						document.documentElement.scrollHeight - 4
+					) {
+						current = headings[ headings.length - 1 ].id;
 					}
-				} );
+				}
 
 				links.forEach( function ( entry ) {
 					entry.link.classList.toggle( 'is-active', entry.heading.id === current );
@@ -113,6 +157,37 @@
 
 				spyTicking = false;
 			};
+
+			/*
+			 * A click pins the clicked item (see the click handler
+			 * above) until the reader scrolls manually again — hand
+			 * control back to the spy on the first scroll gesture.
+			 */
+			var releasePin = function () {
+				pinnedId = null;
+				updateSpy();
+			};
+
+			window.addEventListener( 'wheel', releasePin, { passive: true } );
+			window.addEventListener( 'touchstart', releasePin, { passive: true } );
+			window.addEventListener(
+				'keydown',
+				function ( event ) {
+					var key = event.key;
+
+					if (
+						key === 'ArrowUp' ||
+						key === 'ArrowDown' ||
+						key === 'PageUp' ||
+						key === 'PageDown' ||
+						key === 'Home' ||
+						key === 'End' ||
+						key === ' '
+					) {
+						releasePin();
+					}
+				}
+			);
 
 			window.addEventListener(
 				'scroll',
