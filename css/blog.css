@@ -682,29 +682,59 @@ figure.sp-featured {
   border-radius: 12px;
 }
 
-.sp-content pre {
+/* Inline code + code blocks. The classic editor's "Formats" dropdown
+ * (Code / Code block) produces these tags; see inc/editor.php. */
+.sp-content pre,
+.entry-content pre {
   background: #0f172a;
   color: #e2e8f0;
-  padding: 18px 20px;
+  border: 1px solid rgba(148, 163, 184, 0.16);
+  box-shadow: 0 14px 34px rgba(15, 23, 42, 0.14);
+  padding: 20px 24px;
   border-radius: 12px;
   overflow-x: auto;
+  -webkit-overflow-scrolling: touch;
+  font-family: ui-monospace, SFMono-Regular, "SF Mono", Menlo, Consolas, "Liberation Mono", monospace;
   font-size: 14.5px;
-  line-height: 1.6;
-  margin: 0 0 1.4em;
+  line-height: 1.7;
+  tab-size: 4;
+  -moz-tab-size: 4;
+  margin: 0 0 1.6em;
 }
 
-.sp-content code {
-  font-family: Consolas, Monaco, "Courier New", monospace;
-  font-size: 0.92em;
-  background: #f1f5f9;
+.sp-content pre::-webkit-scrollbar,
+.entry-content pre::-webkit-scrollbar {
+  height: 10px;
+}
+
+.sp-content pre::-webkit-scrollbar-thumb,
+.entry-content pre::-webkit-scrollbar-thumb {
+  background: rgba(148, 163, 184, 0.35);
+  border-radius: 999px;
+}
+
+.sp-content :not(pre) > code,
+.entry-content :not(pre) > code,
+.comment-list .comment-body code {
+  font-family: ui-monospace, SFMono-Regular, "SF Mono", Menlo, Consolas, "Liberation Mono", monospace;
+  font-size: 0.875em;
+  background: rgba(124, 58, 237, 0.07);
+  border: 1px solid rgba(124, 58, 237, 0.16);
+  color: #4338ca;
   border-radius: 6px;
-  padding: 2px 6px;
+  padding: 0.15em 0.4em;
+  overflow-wrap: break-word;
+  box-decoration-break: clone;
+  -webkit-box-decoration-break: clone;
 }
 
-.sp-content pre code {
+.sp-content pre code,
+.entry-content pre code {
   background: none;
+  border: 0;
   padding: 0;
   color: inherit;
+  font-size: inherit;
 }
 
 .sp-content table {
