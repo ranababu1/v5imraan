@@ -32,13 +32,13 @@ if ( post_password_required() ) {
 			if ( '1' === $v5imraan_comment_count ) {
 				printf(
 					/* translators: 1: title. */
-					esc_html__( 'One thought on &ldquo;%1$s&rdquo;', 'v5imraan' ),
+					esc_html__( 'One thought on “%1$s”', 'v5imraan' ),
 					'<span>' . wp_kses_post( get_the_title() ) . '</span>'
 				);
 			} else {
 				printf( 
 					/* translators: 1: comment count number, 2: title. */
-					esc_html( _nx( '%1$s thought on &ldquo;%2$s&rdquo;', '%1$s thoughts on &ldquo;%2$s&rdquo;', $v5imraan_comment_count, 'comments title', 'v5imraan' ) ),
+					esc_html( _nx( '%1$s thought on “%2$s”', '%1$s thoughts on “%2$s”', $v5imraan_comment_count, 'comments title', 'v5imraan' ) ),
 					number_format_i18n( $v5imraan_comment_count ), // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped
 					'<span>' . wp_kses_post( get_the_title() ) . '</span>'
 				);

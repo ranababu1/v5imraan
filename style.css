@@ -5,8 +5,8 @@ Author: Imranul Haque Mazumder
 Author URI: https://imrn.dev
 Description: A custom theme for imraan.in site
 Version: 1.0.0
-Tested up to: 5.4
-Requires PHP: 5.6
+Tested up to: 6.8
+Requires PHP: 8.0
 Text Domain: v5imraan
 Tags: custom-background, custom-logo, custom-menu, featured-images, threaded-comments, translation-ready
 */
@@ -226,6 +226,12 @@ body {
   font-size: 20px;
   cursor: pointer;
   display: none;
+}
+
+/* Inline SVG icons (hamburger / close) inherit the label color. */
+.wrapper .btn svg {
+  display: inline-block;
+  vertical-align: middle;
 }
 
 .wrapper .btn.close-btn {
@@ -717,14 +723,15 @@ nav .wrapper ul li {
   animation: heartbeat 1.3s infinite;
 }
 
-.ourfeatures-box h3 {
+.ourfeatures-box .stat-number {
   font-size: 40px;
   line-height: 112%;
   font-weight: 600;
   padding: 20px 0;
 }
 
-.ourfeatures-box h4 {
+.ourfeatures-box h2,
+.ourfeatures-box h3 {
   font-size: 30px;
   line-height: 112%;
   font-weight: 600;
@@ -756,13 +763,13 @@ nav .wrapper ul li {
   width: 48%;
 }
 
-.ourfeatures-sm__box h3 {
+.ourfeatures-sm__box .stat-number {
   font-size: 56px;
   line-height: 112%;
   font-weight: 600;
 }
 
-.ourfeatures-sm__box h4 {
+.ourfeatures-sm__box h3 {
   font-size: 30px;
   line-height: 112%;
   font-weight: 600;

@@ -21,7 +21,7 @@ $browse_url   = $blog_page_id ? get_permalink( $blog_page_id ) : home_url( '/' )
 			<h1 class="blog-hero__title">
 				<?php
 				/* translators: %s: search query. */
-				printf( esc_html__( 'Results for &ldquo;%s&rdquo;', 'v5imraan' ), esc_html( get_search_query() ) );
+				printf( esc_html__( 'Results for “%s”', 'v5imraan' ), esc_html( get_search_query() ) );
 				?>
 			</h1>
 			<div class="blog-hero__search">

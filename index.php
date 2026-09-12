@@ -18,7 +18,7 @@ get_header();
 		<div class="container">
 			<?php v5imraan_the_breadcrumbs(); ?>
 			<p class="blog-hero__kicker"><?php esc_html_e( 'Blog', 'v5imraan' ); ?></p>
-			<h1 class="blog-hero__title"><?php esc_html_e( 'Tech Insights &amp; Engineering Notes', 'v5imraan' ); ?></h1>
+			<h1 class="blog-hero__title"><?php esc_html_e( 'Tech Insights & Engineering Notes', 'v5imraan' ); ?></h1>
 			<p class="blog-hero__tagline"><?php esc_html_e( 'AI systems, platform engineering and architecture — lessons from 13+ years of building at scale.', 'v5imraan' ); ?></p>
 			<div class="blog-hero__search">
 				<?php get_search_form(); ?>

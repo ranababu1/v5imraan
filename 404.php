@@ -14,7 +14,7 @@ get_header();
 	<section class="blog-hero blog-hero--404">
 		<div class="container">
 			<p class="blog-hero__kicker"><?php esc_html_e( 'Error 404', 'v5imraan' ); ?></p>
-			<h1 class="blog-hero__title"><?php esc_html_e( 'This page can&rsquo;t be found.', 'v5imraan' ); ?></h1>
+			<h1 class="blog-hero__title"><?php esc_html_e( 'This page can’t be found.', 'v5imraan' ); ?></h1>
 			<p class="blog-hero__tagline"><?php esc_html_e( 'The link may be broken, or the page may have moved. Try a search, or browse the latest articles below.', 'v5imraan' ); ?></p>
 			<div class="blog-hero__search">
 				<?php get_search_form(); ?>

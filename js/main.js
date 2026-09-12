@@ -1,7 +1,7 @@
 /**
  * v5imraan theme interactions:
- * reading-progress bar, table of contents + scroll spy, copy-link
- * share buttons and homepage award detail switching.
+ * reading-progress bar, table of contents (smooth scroll + scroll spy),
+ * copy-link share buttons and homepage award detail switching.
  *
  * Progressive enhancement only — every feature degrades gracefully
  * and the important SEO/AIO markup is rendered in PHP, not here.
@@ -62,7 +62,29 @@
 				link.href = '#' + heading.id;
 				link.textContent = heading.textContent;
 
-				link.addEventListener( 'click', function () {
+				link.addEventListener( 'click', function ( event ) {
+					var reduceMotion =
+						window.matchMedia &&
+						window.matchMedia( '(prefers-reduced-motion: reduce)' ).matches;
+
+					// Reduced motion (or no smooth-scroll support): fall
+					// back to the browser's native anchor jump.
+					if ( reduceMotion || ! heading.scrollIntoView ) {
+						return;
+					}
+
+					event.preventDefault();
+
+					// Smooth-scroll to the heading; the scroll-margin-top
+					// on .sp-content headings keeps the fixed header clear.
+					heading.scrollIntoView( { behavior: 'smooth', block: 'start' } );
+
+					// Keep the hash in the URL so the section stays linkable.
+					if ( window.history && window.history.pushState ) {
+						window.history.pushState( null, '', '#' + heading.id );
+					}
+
+					// Keep focus on the target for keyboard / screen readers.
 					window.setTimeout( function () {
 						heading.setAttribute( 'tabindex', '-1' );
 						heading.focus( { preventScroll: true } );
