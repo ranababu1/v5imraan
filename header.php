@@ -38,7 +38,7 @@
 				<input type="radio" name="slider" id="menu-btn">
 				<input type="radio" name="slider" id="close-btn">
 				<ul class="nav-links">
-					<label for="close-btn" class="btn close-btn"><i class="fas fa-times"></i></label>
+					<label for="close-btn" class="btn close-btn"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" aria-hidden="true" focusable="false"><path d="M6 6l12 12M18 6L6 18"/></svg></label>
 					<li><a href="<?php echo esc_url( home_url( '/' ) ); ?>">Home</a></li>
 					<li>
 						<a href="#">My Apps</a>
@@ -130,7 +130,7 @@
 						</ul>
 					</li>
 				</ul>
-				<label for="menu-btn" class="btn menu-btn"><i class="fas fa-bars"></i></label>
+				<label for="menu-btn" class="btn menu-btn"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" aria-hidden="true" focusable="false"><path d="M4 7h16M4 12h16M4 17h16"/></svg></label>
 			</div>
 		</nav>
 	</header>

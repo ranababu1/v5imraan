@@ -19,7 +19,7 @@ get_header(); ?>
         <div class="ourfeatures-dflex__left">
           <div class="ourfeatures-box">
             <span class="ourfeatures-gradient"><small></small> Imranul Haque Mazumder</span>
-            <h4>I build end-to-end AI systems</h4>
+            <h2>I build end-to-end AI systems</h2>
             <p>
               That transform business operations driving growth, efficiency, and innovation through AI-powered platforms, intelligent automation, and engineering excellence. Scalable systems that deliver measurable enterprise impact.
             </p>
@@ -30,8 +30,8 @@ get_header(); ?>
           <div class="ourfeatures-sm__dflex">
             <div class="ourfeatures-sm__dflexleft">
               <div class="ourfeatures-sm__box">
-                <h3 class="pdt-0">14+ yrs</h3>
-                <h4 class="pdt-0">of Experience</h4>
+                <p class="stat-number pdt-0">14+ yrs</p>
+                <h3 class="pdt-0">of Experience</h3>
                 <p>
                   AI Systems, Full Stack, DevOps, Platform Architecture, Security, CRO, Analytics, SEO, Martech, CRM and CMS.
                 </p>
@@ -39,8 +39,8 @@ get_header(); ?>
             </div>
             <div class="ourfeatures-sm__dflexright">
               <div class="ourfeatures-sm__box">
-                <h3 class="pdt-0">~80%</h3>
-                <h4 class="pdt-0">Cloud Cost Reduction</h4>
+                <p class="stat-number pdt-0">~80%</p>
+                <h3 class="pdt-0">Cloud Cost Reduction</h3>
                 <p>
                   through cloud architectural and operational optimizations.
                 </p>
@@ -48,8 +48,8 @@ get_header(); ?>
             </div>
           </div>
           <div class="ourfeatures-box green-gradient mg-25">
-            <h3>150+</h3>
-            <h4>Projects Delivered</h4>
+            <p class="stat-number">150+</p>
+            <h3>Projects Delivered</h3>
             <p>
               Scalable solutions for 150+ projects across enterprise and Fortune 500 domains - finance, hospitality, technology, and e-commerce.
               Led cross-functional teams, built delivery systems, and drove measurable outcomes for global clients.
