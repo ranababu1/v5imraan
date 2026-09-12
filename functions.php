@@ -194,6 +194,12 @@ require get_stylesheet_directory() . '/inc/custom-header.php';
 require get_stylesheet_directory() . '/inc/blog.php';
 
 /**
+ * Classic editor enhancements: Code and Code block formats in the
+ * editor's "Formats" dropdown.
+ */
+require get_stylesheet_directory() . '/inc/editor.php';
+
+/**
  * SEO / AIO / GEO layer: JSON-LD schema + social meta tags.
  */
 require get_stylesheet_directory() . '/inc/seo.php';
