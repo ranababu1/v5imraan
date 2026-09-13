@@ -486,14 +486,6 @@ nav input {
   font-weight: 600;
 }
 
-.fa-bars:before {
-  content: "=";
-}
-
-.fa-times:before {
-  content: "+";
-}
-
 /** Hero Banner **/
 .hero-banner__sec {
   background-image: url(./img/bg-banner.png);
