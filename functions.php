@@ -179,16 +179,6 @@ require get_stylesheet_directory() . '/inc/template-tags.php';
 require get_stylesheet_directory() . '/inc/template-functions.php';
 
 /**
- * Customizer additions.
- */
-require get_stylesheet_directory() . '/inc/customizer.php';
-
-/**
- * Implement the Custom Header feature.
- */
-require get_stylesheet_directory() . '/inc/custom-header.php';
-
-/**
  * Blog helpers: reading time, breadcrumbs, TOC anchors, related posts.
  */
 require get_stylesheet_directory() . '/inc/blog.php';
