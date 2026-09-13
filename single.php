@@ -106,15 +106,7 @@ while ( have_posts() ) :
 						<div>
 							<h2 class="sp-author__title"><?php the_author(); ?></h2>
 							<p class="sp-author__bio">
-								<?php
-								$author_bio = get_the_author_meta( 'description' );
-
-								echo esc_html(
-									$author_bio
-										? $author_bio
-										: __( 'Engineering leader and AI architect with 13+ years of experience building scalable platforms and AI-powered systems. I write about Applied AI, Agentic AI, software architecture, cloud, DevOps, platform engineering, and the practical side of building reliable technology at scale.', 'v5imraan' )
-								);
-								?>
+								<?php echo esc_html( v5imraan_get_author_bio( get_the_author_meta( 'ID' ) ) ); ?>
 							</p>
 							<a class="sp-author__link" href="<?php echo esc_url( get_author_posts_url( get_the_author_meta( 'ID' ) ) ); ?>">
 								<?php /* translators: %s: Author display name. */ printf( esc_html__( 'All articles by %s', 'v5imraan' ), esc_html( get_the_author() ) ); ?> <span aria-hidden="true">&rarr;</span>

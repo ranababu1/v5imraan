@@ -199,6 +199,40 @@ if ( ! function_exists( 'v5imraan_archive_heading' ) ) :
 	}
 endif;
 
+if ( ! function_exists( 'v5imraan_get_author_bio' ) ) :
+	/**
+	 * Author biography with the theme's fallback text.
+	 *
+	 * Shared by the single-post author aside and the author archive hero
+	 * so both always show the same bio.
+	 *
+	 * @param int $user_id Author user ID.
+	 * @return string
+	 */
+	function v5imraan_get_author_bio( $user_id ) {
+		$bio = get_the_author_meta( 'description', (int) $user_id );
+
+		return $bio
+			? $bio
+			: __( 'Engineering leader and AI architect with 13+ years of experience building scalable platforms and AI-powered systems. I write about Applied AI, Agentic AI, software architecture, cloud, DevOps, platform engineering, and the practical side of building reliable technology at scale.', 'v5imraan' );
+	}
+endif;
+
+if ( ! function_exists( 'v5imraan_author_social_links' ) ) :
+	/**
+	 * The site author's social profiles (chips on the author archive hero).
+	 *
+	 * @return array Network label => profile URL.
+	 */
+	function v5imraan_author_social_links() {
+		return array(
+			'X (Twitter)' => 'https://x.com/ihm185',
+			'Instagram'   => 'https://www.instagram.com/imraan.dev/',
+			'Quora'       => 'https://www.quora.com/profile/Imran-M-4',
+		);
+	}
+endif;
+
 if ( ! function_exists( 'v5imraan_share_links' ) ) :
 	/**
 	 * Share URLs for the current post.
