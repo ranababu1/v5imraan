@@ -66,11 +66,11 @@
 								<div class="row">
 									<header>Frontend</header>
 									<ul class="mega-links">
-										<li><a href="https://imraan.in/web-development/html5/">HTML5</a></li>
-										<li><a href="https://imraan.in/web-development/css/">CSS</a></li>
-										<li><a href="https://imraan.in/web-development/javascript/">Javascript</a></li>
-										<li><a href="https://imraan.in/web-development/jquery/">jQuery</a></li>
-										<li><a href="https://imraan.in/reactjs/">ReactJS</a></li>
+										<li><a href="https://imraan.in/frontend-development/html5/">HTML5</a></li>
+										<li><a href="https://imraan.in/frontend-development/css/">CSS</a></li>
+										<li><a href="https://imraan.in/frontend-development/javascript/">Javascript</a></li>
+										<li><a href="https://imraan.in/frontend-development/jquery/">jQuery</a></li>
+										<li><a href="https://imraan.in/frontend-development/reactjs/">ReactJS</a></li>
 									</ul>
 								</div>
 								<div class="row">
@@ -80,19 +80,19 @@
 										<li><a href="https://imraan.in/backend-development/springboot/">Springboot</a></li>
 										<li><a href="https://imraan.in/backend-development/postgres/">Postgres</a></li>
 										<li><a href="https://imraan.in/backend-development/mongodb/">MongoDB</a></li>
-										<li><a href="https://imraan.in/backend-development/web-development/nodejs/">NodeJS</a></li>
+										<li><a href="https://imraan.in/backend-development/nodejs/">NodeJS</a></li>
 										<li><a href="https://imraan.in/backend-development/microservices/">Microservices</a></li>
 									</ul>
 								</div>
 								<div class="row">
 									<header>DevOps</header>
 									<ul class="mega-links">
-										<li><a href="https://imraan.in/aws/">AWS</a></li>
-										<li><a href="https://imraan.in/azure/">Azure</a></li>
-										<li><a href="https://imraan.in/cicd/">CI/CD</a></li>
-										<li><a href="https://imraan.in/docker/">Docker</a></li>
-										<li><a href="https://imraan.in/kubernetes/">Kubernetes</a></li>
-										<li><a href="https://imraan.in/jenkins/">Jenkins</a></li>
+										<li><a href="https://imraan.in/devops/aws/">AWS</a></li>
+										<li><a href="https://imraan.in/devops/azure/">Azure</a></li>
+										<li><a href="https://imraan.in/devops/cicd/">CI/CD</a></li>
+										<li><a href="https://imraan.in/devops/docker/">Docker</a></li>
+										<li><a href="https://imraan.in/devops/kubernetes/">Kubernetes</a></li>
+										<li><a href="https://imraan.in/devops/jenkins/">Jenkins</a></li>
 									</ul>
 								</div>
 								<div class="row">
