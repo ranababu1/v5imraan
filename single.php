@@ -108,7 +108,12 @@ while ( have_posts() ) :
 							<p class="sp-author__bio">
 								<?php
 								$author_bio = get_the_author_meta( 'description' );
-								echo esc_html( $author_bio ? $author_bio : __( 'Engineering leader building AI-driven systems and scalable platforms. Writes about architecture, DevOps and the AI ecosystem.', 'v5imraan' ) );
+
+								echo esc_html(
+									$author_bio
+										? $author_bio
+										: __( 'Engineering leader and AI architect with 13+ years of experience building scalable platforms and AI-powered systems. I write about Applied AI, Agentic AI, software architecture, cloud, DevOps, platform engineering, and the practical side of building reliable technology at scale.', 'v5imraan' )
+								);
 								?>
 							</p>
 							<a class="sp-author__link" href="<?php echo esc_url( get_author_posts_url( get_the_author_meta( 'ID' ) ) ); ?>">
