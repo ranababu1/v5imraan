@@ -19,7 +19,7 @@
 	<link rel="profile" href="https://gmpg.org/xfn/11">
 	<link rel="preconnect" href="https://fonts.googleapis.com">
 	<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-	<link href="https://fonts.googleapis.com/css2?family=Urbanist:ital,wght@0,100..900;1,100..900&display=swap" rel="stylesheet">
+	<link href="https://fonts.googleapis.com/css2?family=Urbanist:ital,wght@0,100..900;1,100..900&family=Shadows+Into+Light&display=swap" rel="stylesheet">
 	<link rel="icon" href="https://imraan.in/wp-content/uploads/2020/12/cropped-fav-32x32.png" sizes="32x32">
 	<link rel="icon" href="https://imraan.in/wp-content/uploads/2020/12/cropped-fav-192x192.png" sizes="192x192">
 	<?php wp_head(); ?>

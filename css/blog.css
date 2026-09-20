@@ -1117,24 +1117,165 @@ figure.sp-featured {
   padding: 0;
 }
 
+.comment-list > li {
+  margin-bottom: 30px;
+}
+
+.comment-list > li:last-child {
+  margin-bottom: 0;
+}
+
+/* ---------------------------------------------------------------
+ * Comment cards: name + response only, handwritten look
+ * ("Shadows Into Light"), each wrapped in big decorative quotes.
+ * ------------------------------------------------------------- */
 .comment-list .comment-body {
+  position: relative;
   border: 1px solid #e2e8f0;
-  border-radius: 14px;
-  padding: 16px 18px;
-  margin-bottom: 16px;
+  border-radius: 16px;
+  background: linear-gradient(160deg, #f7f9ff, #f9f6ff);
+  box-shadow: 0 1px 3px rgba(15, 23, 42, 0.06);
+  padding: 18px 40px 12px 46px;
+  font-family: "Shadows Into Light", "Segoe Script", cursive;
+  font-size: 20px;
+  line-height: 1.55;
+  color: #1e293b;
+}
+
+.comment-list .comment-body::before {
+  content: "\201C"; /* Opening double quotation mark. */
+  position: absolute;
+  top: 4px;
+  left: 12px;
+  font-family: Georgia, "Times New Roman", serif;
+  font-size: 46px;
+  line-height: 1;
+  color: rgba(124, 58, 237, 0.3);
+  user-select: none;
+}
+
+.comment-list .comment-body::after {
+  content: "\201D"; /* Closing double quotation mark. */
+  position: absolute;
+  bottom: -12px;
+  right: 12px;
+  font-family: Georgia, "Times New Roman", serif;
+  font-size: 46px;
+  line-height: 1;
+  color: rgba(59, 130, 246, 0.35);
+  user-select: none;
+}
+
+.comment-list .comment-author {
+  margin: 0 0 4px;
+  line-height: 1.3;
+}
+
+.comment-list .comment-author .fn {
+  font-size: 21px;
+  color: #7c3aed;
+}
+
+.comment-list .comment-author .fn a {
+  color: inherit;
+}
+
+.comment-list .comment-awaiting-moderation {
+  font-size: 15px;
+  color: #94a3b8;
+}
+
+.comment-list .comment-content {
+  margin: 0;
+}
+
+.comment-list .comment-content p {
+  margin: 0 0 12px;
+}
+
+.comment-list .comment-content > :last-child {
+  margin-bottom: 0;
+}
+
+.comment-list .comment-content a {
+  color: #2563eb;
+  text-decoration-color: rgba(37, 99, 235, 0.4);
+}
+
+.comment-list .reply {
+  margin-top: 4px;
+  text-align: right;
+}
+
+.comment-list .reply .comment-reply-link {
+  display: inline-block;
+  font-family: "Urbanist", -apple-system, "Segoe UI", sans-serif;
+  font-size: 12.5px;
+  font-weight: 600;
+  line-height: 1.2;
+  color: #7c3aed;
+  text-decoration: none;
+  background: rgba(255, 255, 255, 0.6);
+  border: 1px solid rgba(124, 58, 237, 0.35);
+  border-radius: 999px;
+  padding: 5px 14px;
+  transition: background 0.2s ease, border-color 0.2s ease, color 0.2s ease;
+}
+
+.comment-list .reply .comment-reply-link:hover,
+.comment-list .reply .comment-reply-link:focus {
+  background: linear-gradient(120deg, #60a5fa, #a78bfa);
+  border-color: transparent;
+  color: #1e293b;
+}
+
+/* comment-reply.js moves the reply form INTO the card; keep it in the
+   regular theme font instead of the cursive card font. */
+.comment-list .comment-body #respond {
+  font-family: "Urbanist", -apple-system, "Segoe UI", sans-serif;
   font-size: 15px;
   line-height: 1.65;
 }
 
-.comment-list .avatar {
-  border-radius: 50%;
-  margin-right: 10px;
-}
-
+/* Threaded replies: up to 3 levels, indented along a dashed thread line. */
 .comment-list .children {
   list-style: none;
-  margin-top: 16px;
+  margin: 14px 0 0;
   padding-left: 24px;
+  border-left: 2px dashed rgba(124, 58, 237, 0.28);
+}
+
+.comment-list .children > li {
+  margin-bottom: 18px;
+}
+
+.comment-list .children > li:last-child {
+  margin-bottom: 0;
+}
+
+@media (max-width: 640px) {
+  .comment-list > li {
+    margin-bottom: 24px;
+  }
+
+  .comment-list .comment-body {
+    font-size: 18px;
+    padding: 14px 28px 10px 34px;
+  }
+
+  .comment-list .comment-body::before,
+  .comment-list .comment-body::after {
+    font-size: 34px;
+  }
+
+  .comment-list .comment-author .fn {
+    font-size: 19px;
+  }
+
+  .comment-list .children {
+    margin-top: 12px;
+    padding-left: 14px;
+  }
 }
 
 .comment-form {
