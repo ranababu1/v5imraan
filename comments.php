@@ -52,8 +52,9 @@ if ( post_password_required() ) {
 			<?php
 			wp_list_comments(
 				array(
-					'style'      => 'ol',
-					'short_ping' => true,
+					'style'     => 'ol',
+					'callback'  => 'v5imraan_comment',
+					'max_depth' => 3,
 				)
 			);
 			?>

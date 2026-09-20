@@ -153,6 +153,77 @@ if ( ! function_exists( 'v5imraan_post_thumbnail' ) ) :
 	}
 endif;
 
+if ( ! function_exists( 'v5imraan_comment' ) ) :
+	/**
+	 * Template for comments and pingbacks.
+	 *
+	 * Used as a custom callback for wp_list_comments() in comments.php.
+	 * Renders just the author name and the comment text - no date, no
+	 * avatar, no "says" - in markup styled in css/blog.css as a handwritten
+	 * quote card (cursive "Shadows Into Light" font, big quote marks).
+	 *
+	 * Only the opening <li> tag is printed here; the closing </li> is
+	 * added by the core walker (Walker_Comment::end_el()).
+	 *
+	 * @global int $comment_depth Threading depth of the current comment.
+	 *
+	 * @param WP_Comment $comment Current comment object.
+	 * @param array      $args    An array of wp_list_comments() arguments.
+	 * @param int        $depth   Depth of the current comment.
+	 */
+	function v5imraan_comment( $comment, $args, $depth ) {
+		$commenter          = wp_get_current_commenter();
+		$show_pending_links = ! empty( $commenter['comment_author'] );
+
+		$comment_author = get_comment_author_link( $comment );
+		if ( '0' === $comment->comment_approved && ! $show_pending_links ) {
+			$comment_author = esc_html( get_comment_author( $comment ) );
+		}
+		?>
+		<li id="comment-<?php comment_ID(); ?>" <?php comment_class( empty( $args['has_children'] ) ? '' : 'parent', $comment ); ?>>
+			<article id="div-comment-<?php comment_ID(); ?>" class="comment-body">
+				<div class="comment-author vcard">
+					<cite class="fn"><?php echo $comment_author; // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped ?></cite>
+				</div><!-- .comment-author -->
+
+				<?php if ( '0' === $comment->comment_approved ) : ?>
+					<p class="comment-awaiting-moderation"><?php esc_html_e( 'Your comment is awaiting moderation.', 'v5imraan' ); ?></p>
+				<?php endif; ?>
+
+				<div class="comment-content">
+					<?php
+					if ( '0' === $comment->comment_approved && ! $show_pending_links ) {
+						// Privacy fallback, mirroring the core walker: strip markup
+						// from pending comments of visitors without a commenter cookie.
+						echo wp_kses( get_comment_text( $comment ), array() ); // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped
+					} else {
+						comment_text( $comment );
+					}
+					?>
+				</div><!-- .comment-content -->
+
+				<?php if ( '1' === $comment->comment_approved || $show_pending_links ) : ?>
+					<?php
+					comment_reply_link(
+						array_merge(
+							$args,
+							array(
+								'add_below' => 'div-comment',
+								'depth'     => $depth,
+								'max_depth' => $args['max_depth'],
+								'before'    => '<div class="reply">',
+								'after'     => '</div>',
+							)
+						)
+					);
+					?>
+				<?php endif; ?>
+			</article><!-- .comment-body -->
+		<?php
+		/* Note: The closing </li> is added by the walker itself. */
+	}
+endif;
+
 if ( ! function_exists( 'wp_body_open' ) ) :
 	/**
 	 * Shim for sites older than 5.2.

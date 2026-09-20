@@ -30,7 +30,7 @@ get_header(); ?>
           <div class="ourfeatures-sm__dflex">
             <div class="ourfeatures-sm__dflexleft">
               <div class="ourfeatures-sm__box">
-                <p class="stat-number pdt-0">14+ yrs</p>
+                <p class="stat-number pdt-0">13+ yrs</p>
                 <h3 class="pdt-0">of Experience</h3>
                 <p>
                   AI Systems, Full Stack, DevOps, Platform Architecture, Security, CRO, Analytics, SEO, Martech, CRM and CMS.
