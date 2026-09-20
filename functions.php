@@ -139,7 +139,7 @@ function v5imraan_scripts() {
 
 	wp_enqueue_style( 'v5-blog', get_stylesheet_directory_uri() . '/css/blog.css', array( 'main-style' ), v5imraan_asset_version( 'css/blog.css' ) );
 
-	wp_enqueue_script( 'v5imraan-navigation', get_stylesheet_directory_uri() . '/js/navigation.js', array(), _S_VERSION, true );
+	wp_enqueue_script( 'v5imraan-navigation', get_stylesheet_directory_uri() . '/js/navigation.js', array(), v5imraan_asset_version( 'js/navigation.js' ), true );
 	wp_enqueue_script( 'main-js', get_stylesheet_directory_uri() . '/js/main.js', array(), v5imraan_asset_version( 'js/main.js' ), true );
 
 	if ( is_singular() && comments_open() && get_option( 'thread_comments' ) ) {
