@@ -348,6 +348,24 @@
   grid-column: span 2;
 }
 
+/* Equal-height cards: grid items already stretch to the row height
+ * (grid default align-items: stretch), but the .post-card inside only
+ * keeps its own content height, so different title/excerpt lengths
+ * made the bordered cards end unevenly. Making the item a flex wrapper
+ * and letting the card fill it stretches the card - border and
+ * background included - to the row height, so every card in a row
+ * matches. No fixed heights, content stays top-aligned (the body's
+ * flex: 1 lets the excerpt area absorb the slack). Applies wherever
+ * .post-grid is used: blog index, related posts, archives, search,
+ * 404 and the homepage strip, at every breakpoint. */
+.post-grid__item {
+  display: flex;
+}
+
+.post-grid__item > .post-card {
+  flex: 1;
+}
+
 .post-card {
   display: flex;
   flex-direction: column;
