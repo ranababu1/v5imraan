@@ -93,6 +93,14 @@
   padding: 0;
 }
 
+/* ">" divider between trail items (kept in CSS so the breadcrumb markup and
+ * the BreadcrumbList JSON-LD in inc/seo.php stay untouched). */
+.breadcrumbs__item + .breadcrumbs__item::before {
+  content: ">";
+  margin-right: 8px;
+  color: rgba(226, 232, 240, 0.35);
+}
+
 .breadcrumbs__item a {
   color: rgba(226, 232, 240, 0.75);
   text-decoration: none;
@@ -1155,7 +1163,7 @@ figure.sp-featured {
   box-shadow: 0 1px 3px rgba(15, 23, 42, 0.06);
   padding: 18px 40px 12px 46px;
   font-family: "Handlee", cursive;
-  font-size: 20px;
+  font-size: 16px;
   line-height: 1.55;
   color: #1e293b;
 }
