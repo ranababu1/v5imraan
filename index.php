@@ -29,29 +29,6 @@ get_header();
 	<div class="blog-listing">
 		<div class="container">
 
-			<nav class="blog-chips" aria-label="<?php esc_attr_e( 'Filter by category', 'v5imraan' ); ?>">
-				<?php
-				$blog_page_id = (int) get_option( 'page_for_posts' );
-				$chips_base   = $blog_page_id ? get_permalink( $blog_page_id ) : home_url( '/' );
-				$chip_current = is_category() ? (int) get_queried_object_id() : 0;
-				?>
-				<a class="blog-chip<?php echo is_home() ? ' is-active' : ''; ?>" href="<?php echo esc_url( $chips_base ); ?>"><?php esc_html_e( 'All Posts', 'v5imraan' ); ?></a>
-				<?php
-				$chips = get_categories(
-					array(
-						'parent'     => 0,
-						'orderby'    => 'count',
-						'order'      => 'DESC',
-						'number'     => 8,
-						'hide_empty' => true,
-					)
-				);
-				foreach ( $chips as $chip ) :
-					?>
-					<a class="blog-chip<?php echo $chip->term_id === $chip_current ? ' is-active' : ''; ?>" href="<?php echo esc_url( get_category_link( $chip ) ); ?>"><?php echo esc_html( $chip->name ); ?></a>
-				<?php endforeach; ?>
-			</nav>
-
 			<?php if ( have_posts() ) : ?>
 
 				<ul class="post-grid">
