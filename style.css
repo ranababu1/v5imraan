@@ -211,13 +211,15 @@ body {
   background: #1e293b;
   padding: 25px 20px;
   display: flex;
+  flex-wrap: wrap;
+  row-gap: 30px;
   width: 100%;
   justify-content: space-between;
   box-shadow: 0 6px 10px rgba(0, 0, 0, 0.15);
 }
 
 .mega-box .content .row {
-  width: calc(16.666% - 30px);
+  width: calc(33.333% - 30px);
   line-height: 45px;
 }
 
