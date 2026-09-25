@@ -17,9 +17,6 @@
 	<meta name="viewport" content="width=device-width, initial-scale=1">
 	<meta name="theme-color" content="#0f172a">
 	<link rel="profile" href="https://gmpg.org/xfn/11">
-	<link rel="preconnect" href="https://fonts.googleapis.com">
-	<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-	<link href="https://fonts.googleapis.com/css2?family=Urbanist:ital,wght@0,100..900;1,100..900&family=Handlee&display=swap" rel="stylesheet">
 	<link rel="icon" href="https://imraan.in/wp-content/uploads/2020/12/cropped-fav-32x32.png" sizes="32x32">
 	<link rel="icon" href="https://imraan.in/wp-content/uploads/2020/12/cropped-fav-192x192.png" sizes="192x192">
 	<?php wp_head(); ?>
@@ -107,14 +104,25 @@
 									</ul>
 								</div>
 								<div class="row">
-									<header>AI Tools</header>
+									<header>System Design</header>
 									<ul class="mega-links">
-										<li><a href="https://imraan.in/ai/chatgpt/">ChatGPT</a></li>
-										<li><a href="https://imraan.in/ai/github-copilot/">Github Copilot</a></li>
-										<li><a href="https://imraan.in/ai/gemini/">Gemini</a></li>
-										<li><a href="https://imraan.in/ai/claude/">Claude</a></li>
-										<li><a href="https://imraan.in/ai/claude-code/">Claude Code</a></li>
-										<li><a href="https://imraan.in/ai/ollama/">Ollama</a></li>
+										<li><a href="https://imraan.in/system-design/distributed-systems/">Distributed Systems</a></li>
+										<li><a href="https://imraan.in/system-design/caching/">Caching</a></li>
+										<li><a href="https://imraan.in/system-design/networking/">Networking</a></li>
+										<li><a href="https://imraan.in/system-design/observability/">Observability</a></li>
+										<li><a href="https://imraan.in/system-design/reliability/">Reliability</a></li>
+									</ul>
+								</div>
+								<div class="row">
+									<header>Security &amp; Compliance</header>
+									<ul class="mega-links">
+										<li><a href="https://imraan.in/security/ai-security/">AI Security</a></li>
+										<li><a href="https://imraan.in/security/application-security/">Application Security</a></li>
+										<li><a href="https://imraan.in/security/cloud-security/">Cloud Security</a></li>
+										<li><a href="https://imraan.in/security/devsecops/">DevSecOps</a></li>
+										<li><a href="https://imraan.in/compliance/cookie-compliance/">Cookie Compliance</a></li>
+										<li><a href="https://imraan.in/compliance/data-privacy-user-rights/">Data Privacy &amp; User Rights</a></li>
+										<li><a href="https://imraan.in/compliance/sensitive-data-protection/">Sensitive Data Protection</a></li>
 									</ul>
 								</div>
 							</div>
