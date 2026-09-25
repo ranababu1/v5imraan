@@ -89,7 +89,6 @@
 										<li><a href="https://imraan.in/devops/cicd/">CI/CD</a></li>
 										<li><a href="https://imraan.in/devops/docker/">Docker</a></li>
 										<li><a href="https://imraan.in/devops/kubernetes/">Kubernetes</a></li>
-										<li><a href="https://imraan.in/devops/jenkins/">Jenkins</a></li>
 									</ul>
 								</div>
 								<div class="row">
