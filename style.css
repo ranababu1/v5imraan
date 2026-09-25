@@ -217,7 +217,7 @@ body {
 }
 
 .mega-box .content .row {
-  width: calc(20% - 30px);
+  width: calc(16.666% - 30px);
   line-height: 45px;
 }
 
