@@ -96,8 +96,7 @@
 									<header>AI &amp; Automation</header>
 									<ul class="mega-links">
 										<li><a href="https://imraan.in/ai/">AI</a></li>
-										<li><a href="https://imraan.in/ai/llm/">LLMs</a></li>
-										<li><a href="https://imraan.in/ai/prompt-engineering/">Prompt Engineering</a></li>
+										<li><a href="https://imraan.in/ai/claude/">Claude</a></li>
 										<li><a href="https://imraan.in/ai/agentic/">AI Agents</a></li>
 										<li><a href="https://imraan.in/ai/n8n/">n8n</a></li>
 										<li><a href="https://imraan.in/ai/langchain/">LangChain</a></li>
@@ -119,7 +118,6 @@
 										<li><a href="https://imraan.in/security/ai-security/">AI Security</a></li>
 										<li><a href="https://imraan.in/security/application-security/">Application Security</a></li>
 										<li><a href="https://imraan.in/security/cloud-security/">Cloud Security</a></li>
-										<li><a href="https://imraan.in/security/devsecops/">DevSecOps</a></li>
 										<li><a href="https://imraan.in/compliance/cookie-compliance/">Cookie Compliance</a></li>
 										<li><a href="https://imraan.in/compliance/data-privacy-user-rights/">Data Privacy &amp; User Rights</a></li>
 										<li><a href="https://imraan.in/compliance/sensitive-data-protection/">Sensitive Data Protection</a></li>
