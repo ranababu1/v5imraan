@@ -298,4 +298,53 @@
 
 		activateAward( awardTriggers[ 0 ].getAttribute( 'data-award' ) );
 	}
+
+	/* ---------------------------------------------------------------
+	 * Homepage stat cards: count the numbers up once they're in view.
+	 * The final value is in the markup; only the digits animate.
+	 * ------------------------------------------------------------- */
+	var counters = document.querySelectorAll( '[data-count]' );
+
+	if (
+		counters.length &&
+		'IntersectionObserver' in window &&
+		! ( window.matchMedia && window.matchMedia( '(prefers-reduced-motion: reduce)' ).matches )
+	) {
+		var runCounter = function ( el ) {
+			var target = parseInt( el.getAttribute( 'data-count' ), 10 );
+			var finalText = el.textContent;
+			var start = null;
+			var duration = 1400;
+
+			var step = function ( now ) {
+				if ( start === null ) {
+					start = now;
+				}
+				var t = Math.min( 1, ( now - start ) / duration );
+				var eased = 1 - Math.pow( 1 - t, 3 );
+				el.textContent = t < 1 ? finalText.replace( String( target ), String( Math.round( target * eased ) ) ) : finalText;
+				if ( t < 1 ) {
+					window.requestAnimationFrame( step );
+				}
+			};
+
+			window.requestAnimationFrame( step );
+		};
+
+		var counterObserver = new IntersectionObserver(
+			function ( entries ) {
+				entries.forEach( function ( entry ) {
+					if ( entry.isIntersecting ) {
+						counterObserver.unobserve( entry.target );
+						runCounter( entry.target );
+					}
+				} );
+			},
+			{ threshold: 0.6 }
+		);
+
+		Array.prototype.forEach.call( counters, function ( el ) {
+			counterObserver.observe( el );
+		} );
+	}
 } )();

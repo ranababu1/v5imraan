@@ -872,6 +872,225 @@ nav .wrapper ul li {
   }
 }
 
+/* Stat card micro-animations (homepage hero). Decorative only: every
+ * .stat-fx layer is aria-hidden, clipped to its card and sits behind
+ * the text. Reduced-motion users get the static end state. */
+.stat-card {
+  position: relative;
+  overflow: hidden;
+  isolation: isolate;
+}
+
+.stat-card > :not(.stat-fx) {
+  position: relative;
+  z-index: 1;
+}
+
+.stat-card .stat-number {
+  font-variant-numeric: tabular-nums;
+}
+
+.stat-fx {
+  position: absolute;
+  z-index: 0;
+  pointer-events: none;
+}
+
+.stat-fx i {
+  display: block;
+}
+
+/* 13+ yrs: clock face with a slow sweeping hand. */
+.stat-fx--clock {
+  top: 26px;
+  right: 26px;
+  width: 64px;
+  height: 64px;
+  border-radius: 50%;
+  border: 2px dashed rgba(124, 58, 237, 0.28);
+  animation: statfx-spin 60s linear infinite reverse;
+}
+
+.stat-fx__hand {
+  position: absolute;
+  left: 50%;
+  bottom: 50%;
+  width: 2px;
+  height: 24px;
+  margin-left: -1px;
+  border-radius: 2px;
+  background: linear-gradient(to top, rgba(124, 58, 237, 0.55), rgba(37, 99, 235, 0));
+  transform-origin: 50% 100%;
+  animation: statfx-spin 6s linear infinite;
+}
+
+.stat-fx__hand::after {
+  content: "";
+  position: absolute;
+  left: -2px;
+  bottom: -3px;
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+  background: rgba(124, 58, 237, 0.55);
+}
+
+/* 13+ yrs: one tick per year lighting up along a timeline. */
+.stat-fx--timeline {
+  left: 43px;
+  right: 43px;
+  bottom: 18px;
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-end;
+  height: 12px;
+}
+
+.stat-fx--timeline::before {
+  content: "";
+  position: absolute;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  height: 1px;
+  background: rgba(30, 41, 59, 0.12);
+}
+
+.stat-fx--timeline i {
+  width: 2px;
+  height: 6px;
+  border-radius: 2px;
+  background: rgba(124, 58, 237, 0.18);
+  animation: statfx-tick 6.5s ease-in-out infinite;
+  animation-delay: calc(var(--i) * 0.25s);
+}
+
+.stat-fx--timeline i:last-child {
+  height: 12px;
+}
+
+/* ~80%: cost bars shrinking step by step. */
+.stat-fx--bars {
+  top: 26px;
+  right: 30px;
+  width: 74px;
+  height: 64px;
+  display: flex;
+  align-items: flex-end;
+  gap: 6px;
+  border-bottom: 1px solid rgba(30, 41, 59, 0.14);
+}
+
+.stat-fx--bars i {
+  flex: 1;
+  height: var(--h);
+  border-radius: 3px 3px 0 0;
+  background: linear-gradient(to top, rgba(37, 99, 235, 0.32), rgba(124, 58, 237, 0.18));
+  transform-origin: bottom;
+  animation: statfx-bar 5s cubic-bezier(0.22, 1, 0.36, 1) infinite;
+  animation-delay: calc(var(--i) * 0.18s);
+}
+
+.stat-fx--bars i:last-child {
+  background: linear-gradient(to top, rgba(124, 58, 237, 0.6), rgba(124, 58, 237, 0.3));
+}
+
+/* 150+: project grid twinkling in a diagonal wave. */
+.stat-fx--dots {
+  top: 30px;
+  right: 30px;
+  display: grid;
+  grid-template-columns: repeat(8, 6px);
+  gap: 9px;
+}
+
+.stat-fx--dots i {
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+  background: rgba(79, 70, 229, 0.22);
+  animation: statfx-dot 4.2s ease-in-out infinite;
+  animation-delay: calc(var(--d) * 0.14s);
+}
+
+@keyframes statfx-spin {
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+@keyframes statfx-tick {
+  0%, 100% {
+    background: rgba(124, 58, 237, 0.18);
+    transform: scaleY(1);
+  }
+
+  12% {
+    background: rgba(124, 58, 237, 0.75);
+    transform: scaleY(1.6);
+  }
+
+  30% {
+    background: rgba(124, 58, 237, 0.4);
+    transform: scaleY(1);
+  }
+}
+
+@keyframes statfx-bar {
+  0% {
+    transform: scaleY(0);
+    opacity: 0;
+  }
+
+  25%, 80% {
+    transform: scaleY(1);
+    opacity: 1;
+  }
+
+  100% {
+    transform: scaleY(1);
+    opacity: 0;
+  }
+}
+
+@keyframes statfx-dot {
+  0%, 100% {
+    background: rgba(79, 70, 229, 0.18);
+    transform: scale(1);
+  }
+
+  18% {
+    background: rgba(124, 58, 237, 0.7);
+    transform: scale(1.35);
+  }
+
+  40% {
+    background: rgba(79, 70, 229, 0.18);
+    transform: scale(1);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .stat-fx,
+  .stat-fx * {
+    animation: none !important;
+  }
+}
+
+@media (max-width: 497px) {
+  .stat-fx--timeline {
+    left: 20px;
+    right: 20px;
+  }
+
+  .stat-fx--clock,
+  .stat-fx--bars,
+  .stat-fx--dots {
+    top: 20px;
+    right: 20px;
+  }
+}
+
 /** Footer **/
 .footer-block {
   padding: 20px 0;

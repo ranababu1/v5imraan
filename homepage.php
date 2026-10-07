@@ -29,8 +29,12 @@ get_header(); ?>
         <div class="ourfeatures-dflex__right">
           <div class="ourfeatures-sm__dflex">
             <div class="ourfeatures-sm__dflexleft">
-              <div class="ourfeatures-sm__box">
-                <p class="stat-number pdt-0">13+ yrs</p>
+              <div class="ourfeatures-sm__box stat-card">
+                <div class="stat-fx stat-fx--clock" aria-hidden="true"><span class="stat-fx__hand"></span></div>
+                <div class="stat-fx stat-fx--timeline" aria-hidden="true">
+                  <?php for ( $y = 0; $y < 13; $y++ ) : ?><i style="--i:<?php echo (int) $y; ?>"></i><?php endfor; ?>
+                </div>
+                <p class="stat-number pdt-0" data-count="13">13+ yrs</p>
                 <h3 class="pdt-0">of Experience</h3>
                 <p>
                   AI Systems, Full Stack, DevOps, Platform Architecture, Security, CRO, Analytics, SEO, Martech, CRM and CMS.
@@ -38,8 +42,11 @@ get_header(); ?>
               </div>
             </div>
             <div class="ourfeatures-sm__dflexright">
-              <div class="ourfeatures-sm__box">
-                <p class="stat-number pdt-0">~80%</p>
+              <div class="ourfeatures-sm__box stat-card">
+                <div class="stat-fx stat-fx--bars" aria-hidden="true">
+                  <?php foreach ( array( 100, 80, 58, 38, 20 ) as $b => $h ) : ?><i style="--h:<?php echo (int) $h; ?>%;--i:<?php echo (int) $b; ?>"></i><?php endforeach; ?>
+                </div>
+                <p class="stat-number pdt-0" data-count="80">~80%</p>
                 <h3 class="pdt-0">Cloud Cost Reduction</h3>
                 <p>
                   through cloud architectural and operational optimizations.
@@ -47,8 +54,11 @@ get_header(); ?>
               </div>
             </div>
           </div>
-          <div class="ourfeatures-box green-gradient mg-25">
-            <p class="stat-number">150+</p>
+          <div class="ourfeatures-box green-gradient mg-25 stat-card">
+            <div class="stat-fx stat-fx--dots" aria-hidden="true">
+              <?php for ( $d = 0; $d < 32; $d++ ) : ?><i style="--d:<?php echo (int) ( ( $d % 8 ) + floor( $d / 8 ) ); ?>"></i><?php endfor; ?>
+            </div>
+            <p class="stat-number" data-count="150">150+</p>
             <h3>Projects Delivered</h3>
             <p>
               Scalable solutions for 150+ projects across enterprise and Fortune 500 domains - finance, hospitality, technology, and e-commerce.
