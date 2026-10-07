@@ -783,47 +783,6 @@ nav .wrapper ul li {
   margin-top: 50px;
 }
 
-/* Desktop: the portrait is 3:4, so at natural height the left card ran
- * far taller than the stat column. Stretch both columns to one height
- * and let the photo fill what is left of the left card, cropped around
- * the face; the 150+ card absorbs any slack on the right. */
-@media (min-width: 768px) {
-  .ourfeatures-dflex {
-    align-items: stretch;
-  }
-
-  .ourfeatures-dflex__left,
-  .ourfeatures-dflex__right {
-    display: flex;
-    flex-direction: column;
-  }
-
-  .ourfeatures-dflex__left .ourfeatures-box {
-    flex: 1;
-    display: flex;
-    flex-direction: column;
-  }
-
-  .ourfeatures-dflex__left .ourfeatures-gradient {
-    align-self: flex-start;
-  }
-
-  .ourfeatures-img {
-    flex: 1 1 0;
-    width: 100%;
-    min-height: 360px;
-    margin-top: 32px;
-    object-fit: cover;
-    object-position: center 30%;
-  }
-
-  .ourfeatures-dflex__right .green-gradient {
-    flex: 1;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-  }
-}
 
 .ourfeatures-sm__dflex {
   display: flex;
@@ -867,6 +826,50 @@ nav .wrapper ul li {
 
 .ourfeatures-sm__box .pdt-0 {
   padding-top: 0;
+}
+
+/* Desktop: the portrait is 3:4 and shown uncropped, so the left card is
+ * tall. Stack the two stat cards and stretch both columns to one height;
+ * the right-hand cards share any remaining slack. */
+@media (min-width: 768px) {
+  .ourfeatures-dflex {
+    align-items: stretch;
+  }
+
+  .ourfeatures-dflex__right {
+    display: flex;
+    flex-direction: column;
+  }
+
+  .ourfeatures-sm__dflex {
+    flex: 2;
+    flex-direction: column;
+    gap: 25px;
+  }
+
+  .ourfeatures-sm__dflexleft,
+  .ourfeatures-sm__dflexright {
+    width: 100%;
+    flex: 1;
+    display: flex;
+  }
+
+  .ourfeatures-sm__box,
+  .ourfeatures-dflex__right .green-gradient {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+  }
+
+  .ourfeatures-dflex__right .green-gradient {
+    flex: 1.4;
+  }
+
+  .ourfeatures-img {
+    width: 100%;
+    margin-top: 32px;
+  }
 }
 
 /** Footer **/
