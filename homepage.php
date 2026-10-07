@@ -23,7 +23,7 @@ get_header(); ?>
             <p>
               That transform business operations driving growth, efficiency, and innovation through AI-powered platforms, intelligent automation, and engineering excellence. Scalable systems that deliver measurable enterprise impact.
             </p>
-            <img class="img-responsive ourfeatures-img" src="<?php echo esc_url( get_stylesheet_directory_uri() ); ?>/img/imrn.png" alt="Portrait of Imranul Haque Mazumder" loading="lazy" decoding="async">
+            <img class="img-responsive ourfeatures-img" src="<?php echo esc_url( get_stylesheet_directory_uri() ); ?>/img/imrn.png" alt="Portrait of Imranul Haque Mazumder" fetchpriority="high" decoding="async">
           </div>
         </div>
         <div class="ourfeatures-dflex__right">

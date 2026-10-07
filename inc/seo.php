@@ -8,6 +8,10 @@
  * (Yoast, Rank Math, AIOSEO, SEOPress) or Jetpack's Publicize module
  * handles the same job, so nothing is ever duplicated.
  *
+ * Yoast's own JSON-LD output is blocked here too — schema is written
+ * by hand in every article — while Yoast's remaining output (titles,
+ * meta, robots, Open Graph, sitemaps) keeps running untouched.
+ *
  * @package v5imraan
  */
 
@@ -52,10 +56,68 @@ if ( ! function_exists( 'v5imraan_social_meta_enabled' ) ) :
 	}
 endif;
 
+if ( ! function_exists( 'v5imraan_remove_yoast_schema_presenter' ) ) :
+	/**
+	 * Drop Yoast's schema presenter from the front-end head output
+	 * (Yoast 14+). With the presenter gone, the schema graph is never
+	 * even generated, on any page type.
+	 *
+	 * @param array $presenters Fully qualified presenter class names.
+	 * @return array
+	 */
+	function v5imraan_remove_yoast_schema_presenter( $presenters ) {
+		return array_diff( $presenters, array( 'Yoast\WP\SEO\Presenters\Schema_Presenter' ) );
+	}
+endif;
+
+/*
+ * Permanently block Yoast's JSON-LD schema output.
+ *
+ * Yoast stays installed for titles, meta descriptions, robots, Open
+ * Graph and sitemaps, but its auto-generated schema graph is replaced
+ * by hand-written JSON-LD in every article — any output left here
+ * would only duplicate or contradict that.
+ *
+ * Two independent kill switches keep it dead across Yoast versions:
+ *
+ * 1. 'wpseo_json_ld_output' returning false makes the schema presenter
+ *    bail before printing its script tag — legacy filter, honoured by
+ *    every modern Yoast release (still present in current source).
+ * 2. 'wpseo_frontend_presenter_classes' removes the schema presenter
+ *    from the head output entirely (Yoast 14+).
+ *
+ * Both are registered from the theme, so the block survives plugin
+ * updates and cannot be undone from the Yoast settings UI.
+ */
+add_filter( 'wpseo_json_ld_output', '__return_false', PHP_INT_MAX );
+add_filter( 'wpseo_frontend_presenter_classes', 'v5imraan_remove_yoast_schema_presenter' );
+
+if ( ! function_exists( 'v5imraan_social_profiles' ) ) :
+	/**
+	 * The site author's social profiles — single source of truth.
+	 *
+	 * Used by the Person schema sameAs (inc/seo.php), the author
+	 * archive chips (inc/blog.php) and the footer links (footer.php)
+	 * so the handles can never drift apart between templates.
+	 *
+	 * @return array Network label => profile URL.
+	 */
+	function v5imraan_social_profiles() {
+		return apply_filters(
+			'v5imraan_social_profiles',
+			array(
+				'X (Twitter)' => 'https://x.com/ihm185',
+				'Instagram'   => 'https://www.instagram.com/imraan.dev/',
+				'Quora'       => 'https://www.quora.com/profile/Imran-M-4',
+			)
+		);
+	}
+endif;
+
 if ( ! function_exists( 'v5imraan_person_schema' ) ) :
 	/**
-	 * Person schema for the site owner. Extend sameAs here when
-	 * new social profiles are added.
+	 * Person schema for the site owner. Extend sameAs via the
+	 * 'v5imraan_social_profiles' filter when new profiles are added.
 	 *
 	 * @return array
 	 */
@@ -71,11 +133,7 @@ if ( ! function_exists( 'v5imraan_person_schema' ) ) :
 		if ( $description ) {
 			$person['description'] = $description;
 		}
-		$person['sameAs'] = array(
-			'https://www.instagram.com/imraan.dev/',
-			'https://x.com/ihm185',
-			'https://www.quora.com/profile/Imran-M-4',
-		);
+		$person['sameAs'] = array_values( v5imraan_social_profiles() );
 		return apply_filters( 'v5imraan_person_schema', $person );
 	}
 endif;
@@ -363,7 +421,11 @@ if ( ! function_exists( 'v5imraan_social_meta_tags' ) ) :
 		$height = 630;
 
 		if ( is_singular() && has_post_thumbnail() ) {
-			$img = wp_get_attachment_image_src( get_post_thumbnail_id(), 'large' );
+			// Prefer the 1200x600 v5-blog-wide crop for proper OG card sizing.
+			$img = wp_get_attachment_image_src( get_post_thumbnail_id(), 'v5-blog-wide' );
+			if ( ! $img ) {
+				$img = wp_get_attachment_image_src( get_post_thumbnail_id(), 'large' );
+			}
 			if ( $img ) {
 				$image  = $img[0];
 				$width  = $img[1];
