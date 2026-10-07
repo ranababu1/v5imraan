@@ -783,6 +783,48 @@ nav .wrapper ul li {
   margin-top: 50px;
 }
 
+/* Desktop: the portrait is 3:4, so at natural height the left card ran
+ * far taller than the stat column. Stretch both columns to one height
+ * and let the photo fill what is left of the left card, cropped around
+ * the face; the 150+ card absorbs any slack on the right. */
+@media (min-width: 768px) {
+  .ourfeatures-dflex {
+    align-items: stretch;
+  }
+
+  .ourfeatures-dflex__left,
+  .ourfeatures-dflex__right {
+    display: flex;
+    flex-direction: column;
+  }
+
+  .ourfeatures-dflex__left .ourfeatures-box {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+  }
+
+  .ourfeatures-dflex__left .ourfeatures-gradient {
+    align-self: flex-start;
+  }
+
+  .ourfeatures-img {
+    flex: 1 1 0;
+    width: 100%;
+    min-height: 360px;
+    margin-top: 32px;
+    object-fit: cover;
+    object-position: center 30%;
+  }
+
+  .ourfeatures-dflex__right .green-gradient {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+  }
+}
+
 .ourfeatures-sm__dflex {
   display: flex;
   flex-wrap: wrap;

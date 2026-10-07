@@ -20,7 +20,10 @@ $heading  = empty( $args['heading'] ) ? 'h2' : $args['heading'];
 if ( ! in_array( $heading, array( 'h2', 'h3', 'h4' ), true ) ) {
 	$heading = 'h2';
 }
-$size       = $featured ? 'v5-blog-wide' : 'v5-blog-card';
+// Uncropped sizes: the registered v5-blog-* sizes are hard-cropped and
+// cut into the featured images. The CSS letterboxes instead.
+$size       = $featured ? 'large' : 'medium_large';
+$thumb_url  = has_post_thumbnail() ? get_the_post_thumbnail_url( null, 'medium' ) : '';
 $classes    = 'post-card';
 if ( $featured ) {
 	$classes .= ' post-card--featured';
@@ -30,7 +33,7 @@ $category   = ! empty( $categories ) ? $categories[0] : '';
 $reading    = v5imraan_reading_time();
 ?>
 <article <?php post_class( $classes ); ?>>
-	<a class="post-card__media<?php echo has_post_thumbnail() ? '' : ' post-card__media--ph'; ?>" href="<?php the_permalink(); ?>" tabindex="-1" aria-hidden="true">
+	<a class="post-card__media<?php echo has_post_thumbnail() ? '' : ' post-card__media--ph'; ?>" href="<?php the_permalink(); ?>" tabindex="-1" aria-hidden="true"<?php echo $thumb_url ? ' style="--card-bg: url(\'' . esc_url( $thumb_url ) . '\')"' : ''; ?>>
 		<?php if ( has_post_thumbnail() ) : ?>
 			<?php the_post_thumbnail( $size, array( 'class' => 'post-card__img', 'loading' => $featured ? 'eager' : 'lazy' ) ); ?>
 		<?php else : ?>
