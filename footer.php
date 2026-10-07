@@ -13,9 +13,9 @@
 		<div class="container">
 			<ul class="footer-dflex">
 				<li>imraan.in &copy; 2010 - <?php echo esc_html( gmdate( 'Y' ) ); ?></li>
-				<li><a href="https://www.instagram.com/imraan.dev/">Instagram</a></li>
-				<li><a href="https://x.com/ihm185">Twitter</a></li>
-				<li><a href="https://www.quora.com/profile/Imran-M-4">Quora</a></li>
+				<?php foreach ( v5imraan_social_profiles() as $network_label => $network_url ) : ?>
+					<li><a href="<?php echo esc_url( $network_url ); ?>"><?php echo esc_html( $network_label ); ?></a></li>
+				<?php endforeach; ?>
 			</ul>
 		</div>
 	</div>

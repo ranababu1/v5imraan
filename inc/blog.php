@@ -222,14 +222,13 @@ if ( ! function_exists( 'v5imraan_author_social_links' ) ) :
 	/**
 	 * The site author's social profiles (chips on the author archive hero).
 	 *
+	 * Kept in sync with the Person schema sameAs and the footer links
+	 * through the shared v5imraan_social_profiles() single source of truth.
+	 *
 	 * @return array Network label => profile URL.
 	 */
 	function v5imraan_author_social_links() {
-		return array(
-			'X (Twitter)' => 'https://x.com/ihm185',
-			'Instagram'   => 'https://www.instagram.com/imraan.dev/',
-			'Quora'       => 'https://www.quora.com/profile/Imran-M-4',
-		);
+		return v5imraan_social_profiles();
 	}
 endif;
 

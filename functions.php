@@ -195,6 +195,11 @@ require get_stylesheet_directory() . '/inc/editor.php';
 require get_stylesheet_directory() . '/inc/seo.php';
 
 /**
+ * llms.txt generator (AI/AEO discovery file), served at /llms.txt.
+ */
+require get_stylesheet_directory() . '/inc/llms.php';
+
+/**
  * Load Jetpack compatibility file.
  */
 if ( defined( 'JETPACK__VERSION' ) ) {
@@ -207,12 +212,77 @@ add_filter( 'use_block_editor_for_post_type', '__return_false' );
 add_filter( 'use_widgets_block_editor', '__return_false' );
 
 /**
- * Send a same-origin framing header to protect against clickjacking.
+ * Send security headers: clickjacking protection, HSTS, MIME-sniffing
+ * protection, referrer and permissions policy — and hide the PHP version.
+ *
+ * Every value is filterable via 'v5imraan_security_headers', so an edge
+ * layer (Cloudflare, .htaccess, ...) can later take over any single
+ * header by removing it from the array without touching this code. If
+ * HSTS is ever enabled at Cloudflare as well, keep the max-age there
+ * identical to avoid conflicting directives.
  */
-function v5imraan_block_jacks() {
-	header( 'X-FRAME-OPTIONS: SAMEORIGIN' );
+function v5imraan_security_headers() {
+	$headers = apply_filters(
+		'v5imraan_security_headers',
+		array(
+			'X-Frame-Options'           => 'SAMEORIGIN',
+			'Strict-Transport-Security' => 'max-age=15552000; includeSubDomains',
+			'X-Content-Type-Options'    => 'nosniff',
+			'Referrer-Policy'           => 'strict-origin-when-cross-origin',
+			'Permissions-Policy'        => 'camera=(), microphone=(), geolocation=()',
+		)
+	);
+
+	foreach ( $headers as $name => $value ) {
+		header( $name . ': ' . $value );
+	}
+
+	// Stop disclosing the PHP version (x-powered-by).
+	header_remove( 'X-Powered-By' );
 }
-add_action( 'send_headers', 'v5imraan_block_jacks' );
+add_action( 'send_headers', 'v5imraan_security_headers' );
+
+/**
+ * Keep thin archives out of search indexes.
+ *
+ * Empty category/tag/taxonomy archives ("Nothing here yet" pages) get
+ * noindex automatically, which also covers categories that become empty
+ * in the future. Populated archives — including parent hubs that only
+ * list child-category posts — stay indexable, because the main archive
+ * query already includes descendant posts.
+ *
+ * Runs on the wp_robots directives array so the result merges cleanly
+ * with Yoast's robots output (Yoast builds on the same API since v14).
+ *
+ * Paginated archives (page 2+) stay indexed unless the site opts in;
+ * add this from a plugin or child theme to noindex them:
+ *     add_filter( 'v5imraan_noindex_paged_archives', '__return_true' );
+ *
+ * @param array $robots Associative array of robots meta directives.
+ * @return array
+ */
+function v5imraan_noindex_thin_archives( $robots ) {
+	$query   = isset( $GLOBALS['wp_query'] ) ? $GLOBALS['wp_query'] : null;
+	$noindex = false;
+
+	if ( $query instanceof WP_Query
+		&& ( is_category() || is_tag() || is_tax() )
+		&& ! $query->have_posts() ) {
+		$noindex = true;
+	}
+
+	if ( apply_filters( 'v5imraan_noindex_paged_archives', false ) && is_paged() ) {
+		$noindex = true;
+	}
+
+	if ( $noindex ) {
+		$robots['noindex'] = true;
+		unset( $robots['index'] );
+	}
+
+	return $robots;
+}
+add_filter( 'wp_robots', 'v5imraan_noindex_thin_archives', 20 );
 
 /**
  * Allow SVG uploads.

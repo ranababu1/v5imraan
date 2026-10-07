@@ -17,8 +17,8 @@
 	<meta name="viewport" content="width=device-width, initial-scale=1">
 	<meta name="theme-color" content="#0f172a">
 	<link rel="profile" href="https://gmpg.org/xfn/11">
-	<link rel="icon" href="https://imraan.in/wp-content/uploads/2020/12/cropped-fav-32x32.png" sizes="32x32">
-	<link rel="icon" href="https://imraan.in/wp-content/uploads/2020/12/cropped-fav-192x192.png" sizes="192x192">
+	<link rel="icon" href="<?php echo esc_url( home_url( '/wp-content/uploads/2020/12/cropped-fav-32x32.png' ) ); ?>" sizes="32x32">
+	<link rel="icon" href="<?php echo esc_url( home_url( '/wp-content/uploads/2020/12/cropped-fav-192x192.png' ) ); ?>" sizes="192x192">
 	<?php wp_head(); ?>
 </head>
 
