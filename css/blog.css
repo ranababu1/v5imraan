@@ -393,8 +393,19 @@
 .post-card__media {
   position: relative;
   display: block;
-  aspect-ratio: 3 / 2;
+  aspect-ratio: 16 / 9;
   overflow: hidden;
+  background: #0f172a;
+}
+
+/* Blurred copy of the thumbnail fills any letterbox space around the
+ * uncropped image (set via --card-bg in template-parts/post-card.php). */
+.post-card__media::before {
+  content: "";
+  position: absolute;
+  inset: -24px;
+  background: var(--card-bg, none) center / cover no-repeat;
+  filter: blur(22px) brightness(0.7);
 }
 
 .post-card__media--ph {
@@ -402,9 +413,10 @@
 }
 
 .post-card__img {
+  position: relative;
   width: 100%;
   height: 100%;
-  object-fit: cover;
+  object-fit: contain;
   display: block;
   transition: transform 0.35s ease;
 }
@@ -495,12 +507,12 @@
 }
 
 .post-card--featured .post-card__media {
-  width: 52%;
+  width: 58%;
   aspect-ratio: auto;
 }
 
 .post-card--featured .post-card__body {
-  width: 48%;
+  width: 42%;
   justify-content: center;
   padding: 30px 32px;
 }
@@ -1431,7 +1443,7 @@ figure.sp-featured {
 
   .post-card--featured .post-card__media {
     width: 100%;
-    aspect-ratio: 3 / 2;
+    aspect-ratio: 16 / 9;
   }
 
   .post-card--featured .post-card__body {
