@@ -8,6 +8,8 @@
  * @package v5imraan
  */
 
+$v5_nav_current = is_front_page() ? 'home' : ( ( is_home() || is_singular( 'post' ) || is_archive() || is_search() ) ? 'blog' : '' );
+$v5_chat_icon   = '<svg class="nav-chat__icon" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M7 18.5H6a3 3 0 0 1-3-3V7a3 3 0 0 1 3-3h12a3 3 0 0 1 3 3v8.5a3 3 0 0 1-3 3h-5.5L8 21.5v-3z"/></svg>';
 ?>
 <!doctype html>
 <html <?php language_attributes(); ?>>
@@ -36,7 +38,7 @@
 				<input type="radio" name="slider" id="close-btn">
 				<ul class="nav-links">
 					<label for="close-btn" class="btn close-btn" aria-label="<?php esc_attr_e( 'Close menu', 'v5imraan' ); ?>"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" aria-hidden="true" focusable="false"><path d="M6 6l12 12M18 6L6 18"/></svg></label>
-					<li><a href="<?php echo esc_url( home_url( '/' ) ); ?>" class="nav-home">Home</a></li>
+					<li<?php echo 'home' === $v5_nav_current ? ' class="is-current"' : ''; ?>><a href="<?php echo esc_url( home_url( '/' ) ); ?>" class="nav-home"<?php echo 'home' === $v5_nav_current ? ' aria-current="page"' : ''; ?>>Home</a></li>
 					<li>
 						<a href="#" class="desktop-item">My Apps</a>
 						<input type="checkbox" id="showDropApps">
@@ -54,7 +56,7 @@
 							<li><a href="#com.advancedjavascript18">Programming Quiz</a></li>
 						</ul>
 					</li>
-					<li>
+					<li<?php echo 'blog' === $v5_nav_current ? ' class="is-current"' : ''; ?>>
 						<a href="/blog" class="desktop-item">My Blog</a>
 						<input type="checkbox" id="showMega">
 						<label for="showMega" class="mobile-item">My Blog</label>
@@ -125,8 +127,8 @@
 							</div>
 						</div>
 					</li>
-					<li>
-						<a href="#" class="desktop-item">Chat With Me</a>
+					<li class="nav-chat">
+						<a href="#" class="desktop-item nav-chat__pill"><?php echo $v5_chat_icon; // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped -- static SVG. ?><span>Chat With Me</span></a>
 						<input type="checkbox" id="showDropChat">
 						<label for="showDropChat" class="mobile-item">Chat With Me</label>
 						<ul class="drop-menu">
@@ -135,6 +137,13 @@
 						</ul>
 					</li>
 				</ul>
+				<details class="nav-chat-mobile">
+					<summary class="nav-chat__pill"><?php echo $v5_chat_icon; // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped -- static SVG. ?><span>Chat With Me</span></summary>
+					<ul class="nav-chat-mobile__menu">
+						<li><a href="https://wa.me/9854082826">via Whatsapp</a></li>
+						<li><a href="https://t.me/i18587">via Telegram</a></li>
+					</ul>
+				</details>
 				<label for="menu-btn" class="btn menu-btn" aria-label="<?php esc_attr_e( 'Open menu', 'v5imraan' ); ?>"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" aria-hidden="true" focusable="false"><path d="M4 7h16M4 12h16M4 17h16"/></svg></label>
 			</div>
 		</nav>
