@@ -23,10 +23,13 @@ while ( have_posts() ) :
 						<?php v5imraan_the_breadcrumbs(); ?>
 						<?php
 						// Chips: primary category (same one the breadcrumb uses), other categories, then tags.
-						$categories = get_the_category();
-						$hero_tags  = get_the_tags();
-						$hero_tags  = $hero_tags ? array_slice( $hero_tags, 0, 6 ) : array();
-						if ( $categories || $hero_tags ) :
+						// A lone category with no tags renders as a pill at the end of the author row instead.
+						$categories  = get_the_category();
+						$hero_tags   = get_the_tags();
+						$hero_tags   = $hero_tags ? array_slice( $hero_tags, 0, 6 ) : array();
+						$chip_count  = count( (array) $categories ) + count( $hero_tags );
+						$inline_cat  = ( 1 === $chip_count && $categories ) ? $categories[0] : null;
+						if ( $chip_count > 1 ) :
 							?>
 							<ul class="sp-hero__chips">
 								<?php foreach ( (array) $categories as $index => $category ) : ?>
@@ -54,6 +57,10 @@ while ( have_posts() ) :
 								<span aria-hidden="true">&middot;</span>
 								<?php echo esc_html( v5imraan_reading_time() ); ?> <?php esc_html_e( 'min read', 'v5imraan' ); ?>
 							</p>
+							<?php if ( $inline_cat ) : ?>
+								<span class="sp-hero__divider sp-hero__divider--cat" aria-hidden="true"></span>
+								<a class="sp-hero__chip sp-hero__chip--primary sp-hero__chip--inline" href="<?php echo esc_url( get_category_link( $inline_cat ) ); ?>"><?php echo esc_html( $inline_cat->name ); ?></a>
+							<?php endif; ?>
 						</div>
 					</div>
 					<?php if ( has_post_thumbnail() ) : ?>

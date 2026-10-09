@@ -35,10 +35,10 @@
 				<input type="radio" name="slider" id="menu-btn">
 				<input type="radio" name="slider" id="close-btn">
 				<ul class="nav-links">
-					<label for="close-btn" class="btn close-btn"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" aria-hidden="true" focusable="false"><path d="M6 6l12 12M18 6L6 18"/></svg></label>
-					<li><a href="<?php echo esc_url( home_url( '/' ) ); ?>">Home</a></li>
+					<label for="close-btn" class="btn close-btn" aria-label="<?php esc_attr_e( 'Close menu', 'v5imraan' ); ?>"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" aria-hidden="true" focusable="false"><path d="M6 6l12 12M18 6L6 18"/></svg></label>
+					<li><a href="<?php echo esc_url( home_url( '/' ) ); ?>" class="nav-home">Home</a></li>
 					<li>
-						<a href="#">My Apps</a>
+						<a href="#" class="desktop-item">My Apps</a>
 						<input type="checkbox" id="showDropApps">
 						<label for="showDropApps" class="mobile-item">My Apps</label>
 						<ul class="drop-menu">
@@ -135,7 +135,7 @@
 						</ul>
 					</li>
 				</ul>
-				<label for="menu-btn" class="btn menu-btn"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" aria-hidden="true" focusable="false"><path d="M4 7h16M4 12h16M4 17h16"/></svg></label>
+				<label for="menu-btn" class="btn menu-btn" aria-label="<?php esc_attr_e( 'Open menu', 'v5imraan' ); ?>"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" aria-hidden="true" focusable="false"><path d="M4 7h16M4 12h16M4 17h16"/></svg></label>
 			</div>
 		</nav>
 	</header>
