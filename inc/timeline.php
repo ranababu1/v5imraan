@@ -160,7 +160,7 @@ if ( ! function_exists( 'v5imraan_timeline_html' ) ) :
 					<ol class="tl-days">
 						<?php foreach ( $days as $day => $items ) : ?>
 							<li class="tl-day">
-								<time class="tl-day__date" datetime="<?php echo esc_attr( $day ); ?>"><?php echo esc_html( date_i18n( 'M d', strtotime( $day ) ) ); ?></time>
+								<time class="tl-day__date" datetime="<?php echo esc_attr( $day ); ?>"><?php echo esc_html( date_i18n( 'l, M j', strtotime( $day ) ) ); ?></time>
 								<ul class="tl-day__posts">
 									<?php foreach ( $items as $it ) : ?>
 										<li class="tl-post">
