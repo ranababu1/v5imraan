@@ -1,0 +1,299 @@
+/* Writing Timeline (/timeline/): footer navy, slate accent. */
+.tl-page {
+  position: relative;
+  overflow: hidden;
+  isolation: isolate;
+  background: linear-gradient(180deg, #0d1324 0, #0b1020 520px);
+  color: rgba(226, 232, 240, 0.85);
+  padding: 140px 0 120px;
+}
+
+/* Quiet CSS-only decoration: a faint slate arc top-right. */
+.tl-page::before {
+  content: "";
+  position: absolute;
+  z-index: -1;
+  top: -360px;
+  right: -280px;
+  width: 760px;
+  height: 760px;
+  border-radius: 50%;
+  border: 1px solid rgba(148, 163, 184, 0.14);
+  box-shadow: 0 0 0 60px rgba(148, 163, 184, 0.025), 0 0 0 140px rgba(148, 163, 184, 0.018);
+  pointer-events: none;
+}
+
+.tl-wrap {
+  max-width: 1040px;
+  margin: 0 auto;
+  padding: 0 24px;
+}
+
+.tl-hero {
+  max-width: 640px;
+  margin-bottom: 44px;
+}
+
+.tl-hero__eyebrow {
+  font-size: 12px;
+  font-weight: 700;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  color: #94a3b8;
+  margin: 0 0 18px;
+}
+
+.tl-hero__title {
+  font-size: clamp(2.25rem, 1.4rem + 3.2vw, 3.75rem);
+  line-height: 1.08;
+  font-weight: 700;
+  letter-spacing: -0.02em;
+  color: #f8fafc;
+  margin: 0 0 18px;
+}
+
+.tl-hero__intro {
+  font-size: clamp(1.05rem, 0.95rem + 0.4vw, 1.25rem);
+  line-height: 1.6;
+  color: rgba(203, 213, 225, 0.8);
+  margin: 0;
+}
+
+/* Year chips. */
+.tl-filter {
+  position: sticky;
+  top: 70px;
+  z-index: 5;
+  margin: 0 -24px 28px;
+  padding: 12px 24px;
+  background: rgba(11, 16, 32, 0.92);
+  border-bottom: 1px solid rgba(148, 163, 184, 0.14);
+}
+
+.tl-filter__list {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 6px;
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+.tl-chip {
+  display: inline-block;
+  padding: 6px 12px;
+  border-radius: 8px;
+  font-size: 14px;
+  font-weight: 600;
+  font-variant-numeric: tabular-nums;
+  color: rgba(203, 213, 225, 0.8);
+  text-decoration: none;
+  border: 1px solid transparent;
+  transition: color 0.2s ease, background-color 0.2s ease, border-color 0.2s ease;
+}
+
+.tl-chip:hover,
+.tl-chip:focus-visible {
+  color: #ffffff;
+  border-color: rgba(148, 163, 184, 0.35);
+}
+
+.tl-chip.is-active {
+  color: #0b1020;
+  background: #cbd5e1;
+}
+
+/* Year sections. */
+.tl-year {
+  padding: 36px 0 8px;
+  border-top: 1px solid rgba(148, 163, 184, 0.12);
+  scroll-margin-top: 140px;
+}
+
+.tl-year:first-child {
+  border-top: 0;
+}
+
+.tl-year__head {
+  display: flex;
+  align-items: baseline;
+  justify-content: space-between;
+  gap: 16px;
+  margin-bottom: 18px;
+}
+
+.tl-year__title {
+  font-size: clamp(2rem, 1.5rem + 2vw, 2.75rem);
+  line-height: 1;
+  font-weight: 700;
+  letter-spacing: -0.02em;
+  color: #f8fafc;
+  margin: 0;
+}
+
+.tl-year__count {
+  font-size: 12px;
+  font-weight: 600;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+  color: #94a3b8;
+  margin: 0;
+}
+
+.tl-days {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+.tl-day {
+  position: relative;
+  display: grid;
+  grid-template-columns: 96px 1fr;
+  gap: 0 44px;
+  padding: 18px 0;
+  border-bottom: 1px solid rgba(148, 163, 184, 0.08);
+}
+
+.tl-day:last-child {
+  border-bottom: 0;
+}
+
+/* Vertical line + dot. */
+.tl-day::before {
+  content: "";
+  position: absolute;
+  left: 117px;
+  top: 0;
+  bottom: 0;
+  width: 1px;
+  background: rgba(148, 163, 184, 0.22);
+}
+
+.tl-day::after {
+  content: "";
+  position: absolute;
+  left: 113px;
+  top: 26px;
+  width: 9px;
+  height: 9px;
+  border-radius: 50%;
+  background: #94a3b8;
+  box-shadow: 0 0 0 4px #0b1020;
+}
+
+.tl-day__date {
+  padding-top: 3px;
+  font-size: 13px;
+  font-weight: 600;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  text-align: right;
+  font-variant-numeric: tabular-nums;
+  color: #94a3b8;
+}
+
+.tl-day__posts {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: grid;
+  gap: 16px;
+}
+
+.tl-post__link {
+  font-size: 18px;
+  line-height: 1.4;
+  font-weight: 600;
+  color: #f1f5f9;
+  text-decoration: none;
+}
+
+.tl-post__link:hover,
+.tl-post__link:focus-visible {
+  color: #ffffff;
+  text-decoration: underline;
+  text-decoration-color: rgba(148, 163, 184, 0.6);
+  text-underline-offset: 4px;
+}
+
+.tl-post__arrow {
+  display: inline-block;
+  margin-left: 8px;
+  color: #94a3b8;
+  transition: transform 0.2s ease;
+}
+
+.tl-post__link:hover .tl-post__arrow {
+  transform: translateX(3px);
+}
+
+.tl-post__meta {
+  margin: 6px 0 0;
+  font-size: 11.5px;
+  font-weight: 600;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: #8b97aa;
+}
+
+.tl-post__sep {
+  margin: 0 8px;
+  opacity: 0.7;
+}
+
+@media (max-width: 767px) {
+  .tl-page {
+    padding: 112px 0 80px;
+  }
+
+  .tl-filter {
+    top: 70px;
+  }
+
+  .tl-filter__list {
+    flex-wrap: nowrap;
+    overflow-x: auto;
+    -webkit-overflow-scrolling: touch;
+    scrollbar-width: none;
+  }
+
+  .tl-filter__list::-webkit-scrollbar {
+    display: none;
+  }
+
+  .tl-chip {
+    white-space: nowrap;
+  }
+
+  .tl-day {
+    grid-template-columns: 1fr;
+    gap: 8px;
+    padding: 16px 0 16px 24px;
+  }
+
+  .tl-day::before {
+    left: 4px;
+  }
+
+  .tl-day::after {
+    left: 0;
+    top: 21px;
+  }
+
+  .tl-day__date {
+    text-align: left;
+    padding-top: 0;
+  }
+
+  .tl-post__link {
+    font-size: 16.5px;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .tl-post__arrow,
+  .tl-chip {
+    transition: none;
+  }
+}
