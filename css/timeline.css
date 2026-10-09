@@ -1,7 +1,8 @@
 /* Writing Timeline (/timeline/): footer navy, slate accent. */
 .tl-page {
+  --tl-head: 70px; /* fixed site header height */
   position: relative;
-  overflow: hidden;
+  overflow: visible; /* overflow:hidden would break the sticky year row */
   isolation: isolate;
   background: linear-gradient(180deg, #0d1324 0, #0b1020 520px);
   color: rgba(226, 232, 240, 0.85);
@@ -21,6 +22,18 @@
   border: 1px solid rgba(148, 163, 184, 0.14);
   box-shadow: 0 0 0 60px rgba(148, 163, 184, 0.025), 0 0 0 140px rgba(148, 163, 184, 0.018);
   pointer-events: none;
+  display: none;
+}
+
+/* Clip the decoration without creating a scroll container (keeps sticky working). */
+@supports (overflow: clip) {
+  .tl-page {
+    overflow: clip;
+  }
+
+  .tl-page::before {
+    display: block;
+  }
 }
 
 .tl-wrap {
@@ -61,13 +74,22 @@
 
 /* Year chips. */
 .tl-filter {
+  position: -webkit-sticky;
   position: sticky;
-  top: 70px;
-  z-index: 5;
+  top: var(--tl-head);
+  z-index: 50;
   margin: 0 -24px 28px;
   padding: 12px 24px;
-  background: rgba(11, 16, 32, 0.92);
+  background: rgba(11, 16, 32, 0.97);
   border-bottom: 1px solid rgba(148, 163, 184, 0.14);
+}
+
+@supports ((-webkit-backdrop-filter: blur(1px)) or (backdrop-filter: blur(1px))) {
+  .tl-filter {
+    background: rgba(11, 16, 32, 0.82);
+    -webkit-backdrop-filter: blur(14px) saturate(140%);
+    backdrop-filter: blur(14px) saturate(140%);
+  }
 }
 
 .tl-filter__list {
@@ -98,6 +120,11 @@
   border-color: rgba(148, 163, 184, 0.35);
 }
 
+.tl-chip.is-inview {
+  color: #ffffff;
+  border-color: rgba(148, 163, 184, 0.55);
+}
+
 .tl-chip.is-active {
   color: #0b1020;
   background: #cbd5e1;
@@ -107,7 +134,8 @@
 .tl-year {
   padding: 36px 0 8px;
   border-top: 1px solid rgba(148, 163, 184, 0.12);
-  scroll-margin-top: 140px;
+  /* header + sticky year row + breathing room */
+  scroll-margin-top: calc(var(--tl-head) + 76px);
 }
 
 .tl-year:first-child {
@@ -247,9 +275,6 @@
     padding: 112px 0 80px;
   }
 
-  .tl-filter {
-    top: 70px;
-  }
 
   .tl-filter__list {
     flex-wrap: nowrap;
@@ -296,4 +321,58 @@
   .tl-chip {
     transition: none;
   }
+}
+
+/* Load more. */
+.tl-more {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 12px;
+  margin-top: 40px;
+}
+
+.tl-more__btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-width: 180px;
+  padding: 13px 28px;
+  border-radius: 999px;
+  font: inherit;
+  font-size: 15px;
+  font-weight: 600;
+  color: #f1f5f9;
+  background: transparent;
+  border: 1px solid rgba(148, 163, 184, 0.45);
+  text-decoration: none;
+  cursor: pointer;
+  transition: border-color 0.2s ease, background-color 0.2s ease;
+}
+
+.tl-more__btn:hover,
+.tl-more__btn:focus-visible {
+  border-color: #94a3b8;
+  background: rgba(148, 163, 184, 0.1);
+  color: #ffffff;
+}
+
+.tl-more__btn[disabled] {
+  cursor: progress;
+  opacity: 0.7;
+}
+
+.tl-more__btn[hidden] {
+  display: none;
+}
+
+.tl-more__status {
+  min-height: 1.4em;
+  margin: 0;
+  font-size: 13px;
+  color: #94a3b8;
+}
+
+.tl-year[hidden] {
+  display: none;
 }
