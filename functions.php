@@ -200,6 +200,11 @@ require get_stylesheet_directory() . '/inc/seo.php';
 require get_stylesheet_directory() . '/inc/llms.php';
 
 /**
+ * Writing Timeline page data, cache and assets.
+ */
+require get_stylesheet_directory() . '/inc/timeline.php';
+
+/**
  * Load Jetpack compatibility file.
  */
 if ( defined( 'JETPACK__VERSION' ) ) {
