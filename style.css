@@ -2210,3 +2210,79 @@ nav .wrapper ul li {
     transform: none;
   }
 }
+
+/* ---------------------------------------------------------------
+ * Hero cards: faint drifting "smoke" while the pointer is inside.
+ * Layer sits under the content (isolated stacking, z-index -1),
+ * hidden and paused when idle, mouse/trackpad devices only.
+ * ------------------------------------------------------------- */
+.hp-hero .ourfeatures-box,
+.hp-hero .stat-card {
+  position: relative;
+  overflow: hidden;
+  isolation: isolate;
+}
+
+.hp-hero .ourfeatures-box::after,
+.hp-hero .stat-card::after {
+  content: none;
+}
+
+@media (hover: hover) and (pointer: fine) and (prefers-reduced-motion: no-preference) {
+  .hp-hero .ourfeatures-box::after,
+  .hp-hero .stat-card::after {
+    content: "";
+    position: absolute;
+    z-index: -1;
+    inset: -35%;
+    pointer-events: none;
+    background:
+      radial-gradient(38% 30% at 30% 40%, rgba(255, 255, 255, 0.55), transparent 70%),
+      radial-gradient(34% 28% at 70% 60%, rgba(139, 92, 246, 0.28), transparent 70%),
+      radial-gradient(30% 34% at 50% 25%, rgba(99, 102, 241, 0.22), transparent 70%),
+      radial-gradient(28% 22% at 25% 75%, rgba(255, 255, 255, 0.4), transparent 70%);
+    filter: blur(28px);
+    opacity: 0;
+    transition: opacity 0.4s ease;
+    animation: hp-smoke 11s ease-in-out infinite alternate;
+    animation-play-state: paused;
+    will-change: transform, opacity;
+  }
+
+  .hp-hero .ourfeatures-sm__dflexright .stat-card::after {
+    animation-duration: 13s;
+    animation-direction: alternate-reverse;
+  }
+
+  .hp-hero .ourfeatures-dflex__right > .stat-card::after {
+    animation-duration: 9s;
+  }
+
+  .hp-hero .ourfeatures-box:hover::after,
+  .hp-hero .ourfeatures-box:focus-within::after,
+  .hp-hero .stat-card:hover::after,
+  .hp-hero .stat-card:focus-within::after {
+    opacity: 0.75;
+    animation-play-state: running;
+  }
+
+  /* The portrait card holds the photo: keep the smoke behind it. */
+  .hp-hero .ourfeatures-img {
+    position: relative;
+    z-index: 1;
+  }
+}
+
+@keyframes hp-smoke {
+  0% {
+    transform: translate3d(-6%, 4%, 0) rotate(0deg) scale(1);
+  }
+
+  50% {
+    transform: translate3d(5%, -3%, 0) rotate(14deg) scale(1.12);
+  }
+
+  100% {
+    transform: translate3d(-2%, -6%, 0) rotate(-10deg) scale(0.95);
+  }
+}
