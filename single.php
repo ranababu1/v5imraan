@@ -18,37 +18,43 @@ while ( have_posts() ) :
 
 		<header class="blog-hero sp-hero">
 			<div class="container">
-				<?php v5imraan_the_breadcrumbs(); ?>
 				<div class="sp-hero__inner">
 					<div class="sp-hero__content">
-						<div class="sp-hero__meta">
-							<?php
-							$categories = get_the_category();
-							if ( $categories ) :
-								?>
-								<p class="sp-hero__cats">
-									<?php foreach ( $categories as $category ) : ?>
-										<a class="sp-hero__cat" href="<?php echo esc_url( get_category_link( $category ) ); ?>"><?php echo esc_html( $category->name ); ?></a>
-									<?php endforeach; ?>
-								</p>
-							<?php endif; ?>
-							<p class="sp-hero__byline">
-								<?php echo get_avatar( get_the_author_meta( 'ID' ), 40, get_stylesheet_directory_uri() . '/img/imrn.png', get_the_author() ); ?>
-								<span>
-									<?php
-									/* translators: %s: author name. */
-									printf( esc_html__( 'By %s', 'v5imraan' ), esc_html( get_the_author() ) );
-									?>
-									&middot;
-									<time datetime="<?php echo esc_attr( get_the_date( DATE_W3C ) ); ?>"><?php echo esc_html( get_the_date() ); ?></time>
-									&middot; <?php echo esc_html( v5imraan_reading_time() ); ?> <?php esc_html_e( 'min read', 'v5imraan' ); ?>
-								</span>
-							</p>
-						</div>
+						<?php v5imraan_the_breadcrumbs(); ?>
+						<?php
+						// Chips: primary category (same one the breadcrumb uses), other categories, then tags.
+						$categories = get_the_category();
+						$hero_tags  = get_the_tags();
+						$hero_tags  = $hero_tags ? array_slice( $hero_tags, 0, 6 ) : array();
+						if ( $categories || $hero_tags ) :
+							?>
+							<ul class="sp-hero__chips">
+								<?php foreach ( (array) $categories as $index => $category ) : ?>
+									<li><a class="sp-hero__chip<?php echo 0 === $index ? ' sp-hero__chip--primary' : ''; ?>" href="<?php echo esc_url( get_category_link( $category ) ); ?>"><?php echo esc_html( $category->name ); ?></a></li>
+								<?php endforeach; ?>
+								<?php foreach ( $hero_tags as $hero_tag ) : ?>
+									<li><a class="sp-hero__chip" href="<?php echo esc_url( get_tag_link( $hero_tag ) ); ?>" rel="tag"><?php echo esc_html( $hero_tag->name ); ?></a></li>
+								<?php endforeach; ?>
+							</ul>
+						<?php endif; ?>
 						<h1 class="sp-hero__title"><?php the_title(); ?></h1>
 						<?php if ( has_excerpt() ) : ?>
 							<p class="sp-hero__excerpt"><?php echo esc_html( get_the_excerpt() ); ?></p>
 						<?php endif; ?>
+						<div class="sp-hero__byline">
+							<?php echo get_avatar( get_the_author_meta( 'ID' ), 48, get_stylesheet_directory_uri() . '/img/imrn.png', get_the_author(), array( 'class' => 'sp-hero__avatar' ) ); ?>
+							<span class="sp-hero__divider" aria-hidden="true"></span>
+							<p class="sp-hero__meta">
+								<?php
+								/* translators: %s: author name. */
+								printf( esc_html__( 'By %s', 'v5imraan' ), esc_html( get_the_author() ) );
+								?>
+								<span aria-hidden="true">&middot;</span>
+								<time datetime="<?php echo esc_attr( get_the_date( DATE_W3C ) ); ?>"><?php echo esc_html( get_the_date( 'd/m/Y' ) ); ?></time>
+								<span aria-hidden="true">&middot;</span>
+								<?php echo esc_html( v5imraan_reading_time() ); ?> <?php esc_html_e( 'min read', 'v5imraan' ); ?>
+							</p>
+						</div>
 					</div>
 					<?php if ( has_post_thumbnail() ) : ?>
 						<div class="sp-hero__media">
@@ -59,7 +65,9 @@ while ( have_posts() ) :
 									array(
 										'class'         => 'sp-featured__img',
 										'fetchpriority' => 'high',
+										'loading'       => 'eager',
 										'decoding'      => 'async',
+										'sizes'         => '(max-width: 1023px) calc(100vw - 40px), 560px',
 									)
 								);
 								?>
