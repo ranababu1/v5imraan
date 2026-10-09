@@ -724,6 +724,24 @@
   margin: 0 4px;
 }
 
+.sp-hero__byline {
+  flex-wrap: wrap;
+}
+
+.sp-hero__chip--inline {
+  flex: 0 0 auto;
+}
+
+/* Mobile: title, excerpt, author row and image only. */
+@media (max-width: 767px) {
+  .sp-hero .breadcrumbs,
+  .sp-hero__chips,
+  .sp-hero__chip--inline,
+  .sp-hero__divider--cat {
+    display: none;
+  }
+}
+
 .sp-hero__media {
   min-width: 0;
 }
