@@ -287,6 +287,7 @@ add_action(
 						)
 					);
 					$res->header( 'Cache-Control', 'public, max-age=600' );
+					$res->header( 'X-LiteSpeed-Cache-Control', 'public,max-age=600' );
 					return $res;
 				},
 			)
