@@ -668,13 +668,13 @@
 .sp-hero__chip:hover,
 .sp-hero__chip:focus-visible {
   color: #ffffff;
-  border-color: rgba(167, 139, 250, 0.8);
+  border-color: rgba(148, 163, 184, 0.7);
 }
 
 .sp-hero__chip--primary {
-  color: #c4b5fd;
-  border-color: rgba(139, 92, 246, 0.85);
-  background-color: rgba(139, 92, 246, 0.14);
+  color: #e2e8f0;
+  border-color: rgba(148, 163, 184, 0.6);
+  background-color: rgba(148, 163, 184, 0.14);
 }
 
 .sp-hero__title {
