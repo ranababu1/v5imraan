@@ -28,7 +28,7 @@ $v5_privacy_url = function_exists( 'get_privacy_policy_url' ) ? get_privacy_poli
 		<div class="sf__main">
 			<div class="sf__brand">
 				<p class="sf__wordmark" aria-hidden="true">Imraan</p>
-				<p class="sf__tagline">Engineering leader, builder, and writer, exploring AI systems, platform architecture, and what&rsquo;s next.</p>
+				<p class="sf__tagline">Engineering leader, builder, writer and a father. Curious by default. Always building, breaking, building better. Could use a 48-hour day.</p>
 			</div>
 			<div class="sf__cols">
 				<nav class="sf__col" aria-label="<?php esc_attr_e( 'Expertise', 'v5imraan' ); ?>">
