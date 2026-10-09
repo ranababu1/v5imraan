@@ -2,7 +2,7 @@
 /**
  * Writing Timeline (/timeline/). Auto-applies by page slug.
  *
- * Renders one chunk (?page=N, default 1) or one whole year (?y=YYYY);
+ * Renders one chunk (?tlp=N, default 1) or one whole year (?y=YYYY);
  * js/timeline.js loads further chunks / years from the REST route.
  *
  * @package v5imraan
@@ -16,7 +16,7 @@ $v5_tl_year = isset( $_GET['y'] ) ? absint( $_GET['y'] ) : 0; // phpcs:ignore Wo
 if ( $v5_tl_year && ! isset( $v5_tl['year_totals'][ $v5_tl_year ] ) ) {
 	$v5_tl_year = 0;
 }
-$v5_tl_page  = max( 1, (int) get_query_var( 'page' ) );
+$v5_tl_page  = isset( $_GET['tlp'] ) ? max( 1, absint( $_GET['tlp'] ) ) : 1; // phpcs:ignore WordPress.Security.NonceVerification.Recommended -- ?page= is canonical-redirected by core.
 $v5_tl_slice = v5imraan_timeline_slice( $v5_tl, $v5_tl_page, $v5_tl_year );
 ?>
 
@@ -43,7 +43,7 @@ $v5_tl_slice = v5imraan_timeline_slice( $v5_tl, $v5_tl_page, $v5_tl_year );
 
 		<div class="tl-more">
 			<?php if ( $v5_tl_slice['next'] ) : ?>
-				<a class="tl-more__btn tl-more__link" href="<?php echo esc_url( add_query_arg( 'page', (int) $v5_tl_slice['next'], $v5_tl_url ) ); ?>"><?php esc_html_e( 'Load more', 'v5imraan' ); ?></a>
+				<a class="tl-more__btn tl-more__link" href="<?php echo esc_url( add_query_arg( 'tlp', (int) $v5_tl_slice['next'], $v5_tl_url ) ); ?>"><?php esc_html_e( 'Load more', 'v5imraan' ); ?></a>
 				<button type="button" class="tl-more__btn tl-more__button" hidden><?php esc_html_e( 'Load more', 'v5imraan' ); ?></button>
 			<?php elseif ( $v5_tl_year ) : ?>
 				<a class="tl-more__btn" href="<?php echo esc_url( $v5_tl_url ); ?>"><?php esc_html_e( 'Show all years', 'v5imraan' ); ?></a>
