@@ -61,19 +61,49 @@ $v5_chat_icon   = '<svg class="nav-chat__icon" width="18" height="18" viewBox="0
 						<input type="checkbox" id="showMega">
 						<label for="showMega" class="mobile-item">My Blog</label>
 						<div class="mega-box">
-							<div class="content">
+							<div class="content mega-grid">
 								<div class="row">
-									<header>Frontend</header>
+									<header><a href="https://imraan.in/system-design/">System Design</a></header>
 									<ul class="mega-links">
-										<li><a href="https://imraan.in/frontend-development/html5/">HTML5</a></li>
-										<li><a href="https://imraan.in/frontend-development/css/">CSS</a></li>
-										<li><a href="https://imraan.in/frontend-development/javascript/">Javascript</a></li>
-										<li><a href="https://imraan.in/frontend-development/jquery/">jQuery</a></li>
-										<li><a href="https://imraan.in/frontend-development/reactjs/">ReactJS</a></li>
+										<li><a href="https://imraan.in/system-design/distributed-systems/">Distributed Systems</a></li>
+										<li><a href="https://imraan.in/system-design/caching/">Caching</a></li>
+										<li><a href="https://imraan.in/system-design/networking/">Networking</a></li>
+										<li><a href="https://imraan.in/system-design/observability/">Observability</a></li>
+										<li><a href="https://imraan.in/system-design/reliability/">Reliability</a></li>
 									</ul>
 								</div>
 								<div class="row">
-									<header>Backend + Db</header>
+									<header><a href="https://imraan.in/ai/">AI &amp; Automation</a></header>
+									<ul class="mega-links">
+										<li><a href="https://imraan.in/ai/claude/">Claude</a></li>
+										<li><a href="https://imraan.in/ai/ai-agents/">AI Agents</a></li>
+										<li><a href="https://imraan.in/ai/mcp/">MCP</a></li>
+										<li><a href="https://imraan.in/ai/n8n/">n8n</a></li>
+										<li><a href="https://imraan.in/ai/langchain/">LangChain</a></li>
+									</ul>
+								</div>
+								<div class="row">
+									<header><a href="https://imraan.in/security/">Security &amp; Compliance</a></header>
+									<ul class="mega-links">
+										<li><a href="https://imraan.in/security/ai-security/">AI Security</a></li>
+										<li><a href="https://imraan.in/security/application-security/">Application Security</a></li>
+										<li><a href="https://imraan.in/security/cloud-security/">Cloud Security</a></li>
+										<li><a href="https://imraan.in/compliance/cookie-compliance/">Cookie Compliance</a></li>
+										<li><a href="https://imraan.in/compliance/data-privacy-user-rights/">Data Privacy &amp; User Rights</a></li>
+										<li><a href="https://imraan.in/compliance/sensitive-data-protection/">Sensitive Data Protection</a></li>
+									</ul>
+								</div>
+								<div class="row">
+									<header><a href="https://imraan.in/engineering-leadership/">Engineering Leadership</a></header>
+									<ul class="mega-links">
+										<li><a href="https://imraan.in/engineering-leadership/leading-teams/">Leading Teams</a></li>
+										<li><a href="https://imraan.in/engineering-leadership/stakeholder-management/">Stakeholder Management</a></li>
+										<li><a href="https://imraan.in/engineering-leadership/delivery-process/">Delivery &amp; Process</a></li>
+										<li><a href="https://imraan.in/engineering-leadership/communication/">Communication</a></li>
+									</ul>
+								</div>
+								<div class="row">
+									<header><a href="https://imraan.in/backend-development/">Backend + Db</a></header>
 									<ul class="mega-links">
 										<li><a href="https://imraan.in/backend-development/java/">Java</a></li>
 										<li><a href="https://imraan.in/backend-development/springboot/">Springboot</a></li>
@@ -84,44 +114,23 @@ $v5_chat_icon   = '<svg class="nav-chat__icon" width="18" height="18" viewBox="0
 									</ul>
 								</div>
 								<div class="row">
-									<header>DevOps</header>
+									<header><a href="https://imraan.in/frontend-development/">Frontend</a></header>
+									<ul class="mega-links">
+										<li><a href="https://imraan.in/frontend-development/html5/">HTML5</a></li>
+										<li><a href="https://imraan.in/frontend-development/css/">CSS</a></li>
+										<li><a href="https://imraan.in/frontend-development/javascript/">Javascript</a></li>
+										<li><a href="https://imraan.in/frontend-development/jquery/">jQuery</a></li>
+										<li><a href="https://imraan.in/frontend-development/reactjs/">ReactJS</a></li>
+									</ul>
+								</div>
+								<div class="row">
+									<header><a href="https://imraan.in/devops/">DevOps</a></header>
 									<ul class="mega-links">
 										<li><a href="https://imraan.in/devops/aws/">AWS</a></li>
 										<li><a href="https://imraan.in/devops/azure/">Azure</a></li>
 										<li><a href="https://imraan.in/devops/cicd/">CI/CD</a></li>
 										<li><a href="https://imraan.in/devops/docker/">Docker</a></li>
 										<li><a href="https://imraan.in/devops/kubernetes/">Kubernetes</a></li>
-									</ul>
-								</div>
-								<div class="row">
-									<header>AI &amp; Automation</header>
-									<ul class="mega-links">
-										<li><a href="https://imraan.in/ai/">AI</a></li>
-										<li><a href="https://imraan.in/ai/claude/">Claude</a></li>
-										<li><a href="https://imraan.in/ai/agentic/">AI Agents</a></li>
-										<li><a href="https://imraan.in/ai/n8n/">n8n</a></li>
-										<li><a href="https://imraan.in/ai/langchain/">LangChain</a></li>
-									</ul>
-								</div>
-								<div class="row">
-									<header>System Design</header>
-									<ul class="mega-links">
-										<li><a href="https://imraan.in/system-design/distributed-systems/">Distributed Systems</a></li>
-										<li><a href="https://imraan.in/system-design/caching/">Caching</a></li>
-										<li><a href="https://imraan.in/system-design/networking/">Networking</a></li>
-										<li><a href="https://imraan.in/system-design/observability/">Observability</a></li>
-										<li><a href="https://imraan.in/system-design/reliability/">Reliability</a></li>
-									</ul>
-								</div>
-								<div class="row">
-									<header>Security &amp; Compliance</header>
-									<ul class="mega-links">
-										<li><a href="https://imraan.in/security/ai-security/">AI Security</a></li>
-										<li><a href="https://imraan.in/security/application-security/">Application Security</a></li>
-										<li><a href="https://imraan.in/security/cloud-security/">Cloud Security</a></li>
-										<li><a href="https://imraan.in/compliance/cookie-compliance/">Cookie Compliance</a></li>
-										<li><a href="https://imraan.in/compliance/data-privacy-user-rights/">Data Privacy &amp; User Rights</a></li>
-										<li><a href="https://imraan.in/compliance/sensitive-data-protection/">Sensitive Data Protection</a></li>
 									</ul>
 								</div>
 							</div>
