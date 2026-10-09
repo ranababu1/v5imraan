@@ -12,7 +12,7 @@
 $v5_expertise = array(
 	'AI Systems'             => '/ai/',
 	'Platform Architecture'  => '/system-design/platform-engineering/',
-	'Engineering Leadership' => '',
+	'Engineering Leadership' => '/engineering-leadership/',
 	'System Design'          => '/system-design/',
 );
 $v5_social_icons = array(
