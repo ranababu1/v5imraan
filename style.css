@@ -870,30 +870,6 @@ nav .wrapper ul li {
   background: linear-gradient(127deg, #dbeafe 0%, #c7d2fe 86%, #a5b4fc 100%);
 }
 
-@keyframes heartbeat {
-  0% {
-    transform: scale(1);
-  }
-
-  14% {
-    transform: scale(1.3);
-    /* Sudden jump */
-  }
-
-  28% {
-    transform: scale(1);
-  }
-
-  42% {
-    transform: scale(1.2);
-    /* Second, smaller beat */
-  }
-
-  70% {
-    transform: scale(1);
-  }
-}
-
 .ourfeatures-gradient small {
   display: inline-block;
   width: 20px;
@@ -904,7 +880,7 @@ nav .wrapper ul li {
   line-height: 42px;
   text-align: center;
   vertical-align: middle;
-  animation: heartbeat 1.3s infinite;
+  position: relative;
 }
 
 .ourfeatures-box .stat-number {
@@ -1021,225 +997,6 @@ nav .wrapper ul li {
   .ourfeatures-img {
     width: 100%;
     margin-top: 32px;
-  }
-}
-
-/* Stat card micro-animations (homepage hero). Decorative only: every
- * .stat-fx layer is aria-hidden, clipped to its card and sits behind
- * the text. Reduced-motion users get the static end state. */
-.stat-card {
-  position: relative;
-  overflow: hidden;
-  isolation: isolate;
-}
-
-.stat-card > :not(.stat-fx) {
-  position: relative;
-  z-index: 1;
-}
-
-.stat-card .stat-number {
-  font-variant-numeric: tabular-nums;
-}
-
-.stat-fx {
-  position: absolute;
-  z-index: 0;
-  pointer-events: none;
-}
-
-.stat-fx i {
-  display: block;
-}
-
-/* 13+ yrs: clock face with a slow sweeping hand. */
-.stat-fx--clock {
-  top: 26px;
-  right: 26px;
-  width: 64px;
-  height: 64px;
-  border-radius: 50%;
-  border: 2px dashed rgba(124, 58, 237, 0.28);
-  animation: statfx-spin 60s linear infinite reverse;
-}
-
-.stat-fx__hand {
-  position: absolute;
-  left: 50%;
-  bottom: 50%;
-  width: 2px;
-  height: 24px;
-  margin-left: -1px;
-  border-radius: 2px;
-  background: linear-gradient(to top, rgba(124, 58, 237, 0.55), rgba(37, 99, 235, 0));
-  transform-origin: 50% 100%;
-  animation: statfx-spin 6s linear infinite;
-}
-
-.stat-fx__hand::after {
-  content: "";
-  position: absolute;
-  left: -2px;
-  bottom: -3px;
-  width: 6px;
-  height: 6px;
-  border-radius: 50%;
-  background: rgba(124, 58, 237, 0.55);
-}
-
-/* 13+ yrs: one tick per year lighting up along a timeline. */
-.stat-fx--timeline {
-  left: 43px;
-  right: 43px;
-  bottom: 18px;
-  display: flex;
-  justify-content: space-between;
-  align-items: flex-end;
-  height: 12px;
-}
-
-.stat-fx--timeline::before {
-  content: "";
-  position: absolute;
-  left: 0;
-  right: 0;
-  bottom: 0;
-  height: 1px;
-  background: rgba(30, 41, 59, 0.12);
-}
-
-.stat-fx--timeline i {
-  width: 2px;
-  height: 6px;
-  border-radius: 2px;
-  background: rgba(124, 58, 237, 0.18);
-  animation: statfx-tick 6.5s ease-in-out infinite;
-  animation-delay: calc(var(--i) * 0.25s);
-}
-
-.stat-fx--timeline i:last-child {
-  height: 12px;
-}
-
-/* ~80%: cost bars shrinking step by step. */
-.stat-fx--bars {
-  top: 26px;
-  right: 30px;
-  width: 74px;
-  height: 64px;
-  display: flex;
-  align-items: flex-end;
-  gap: 6px;
-  border-bottom: 1px solid rgba(30, 41, 59, 0.14);
-}
-
-.stat-fx--bars i {
-  flex: 1;
-  height: var(--h);
-  border-radius: 3px 3px 0 0;
-  background: linear-gradient(to top, rgba(37, 99, 235, 0.32), rgba(124, 58, 237, 0.18));
-  transform-origin: bottom;
-  animation: statfx-bar 5s cubic-bezier(0.22, 1, 0.36, 1) infinite;
-  animation-delay: calc(var(--i) * 0.18s);
-}
-
-.stat-fx--bars i:last-child {
-  background: linear-gradient(to top, rgba(124, 58, 237, 0.6), rgba(124, 58, 237, 0.3));
-}
-
-/* 150+: project grid twinkling in a diagonal wave. */
-.stat-fx--dots {
-  top: 30px;
-  right: 30px;
-  display: grid;
-  grid-template-columns: repeat(8, 6px);
-  gap: 9px;
-}
-
-.stat-fx--dots i {
-  width: 6px;
-  height: 6px;
-  border-radius: 50%;
-  background: rgba(79, 70, 229, 0.22);
-  animation: statfx-dot 4.2s ease-in-out infinite;
-  animation-delay: calc(var(--d) * 0.14s);
-}
-
-@keyframes statfx-spin {
-  to {
-    transform: rotate(360deg);
-  }
-}
-
-@keyframes statfx-tick {
-  0%, 100% {
-    background: rgba(124, 58, 237, 0.18);
-    transform: scaleY(1);
-  }
-
-  12% {
-    background: rgba(124, 58, 237, 0.75);
-    transform: scaleY(1.6);
-  }
-
-  30% {
-    background: rgba(124, 58, 237, 0.4);
-    transform: scaleY(1);
-  }
-}
-
-@keyframes statfx-bar {
-  0% {
-    transform: scaleY(0);
-    opacity: 0;
-  }
-
-  25%, 80% {
-    transform: scaleY(1);
-    opacity: 1;
-  }
-
-  100% {
-    transform: scaleY(1);
-    opacity: 0;
-  }
-}
-
-@keyframes statfx-dot {
-  0%, 100% {
-    background: rgba(79, 70, 229, 0.18);
-    transform: scale(1);
-  }
-
-  18% {
-    background: rgba(124, 58, 237, 0.7);
-    transform: scale(1.35);
-  }
-
-  40% {
-    background: rgba(79, 70, 229, 0.18);
-    transform: scale(1);
-  }
-}
-
-@media (prefers-reduced-motion: reduce) {
-  .stat-fx,
-  .stat-fx * {
-    animation: none !important;
-  }
-}
-
-@media (max-width: 497px) {
-  .stat-fx--timeline {
-    left: 20px;
-    right: 20px;
-  }
-
-  .stat-fx--clock,
-  .stat-fx--bars,
-  .stat-fx--dots {
-    top: 20px;
-    right: 20px;
   }
 }
 
@@ -2199,5 +1956,257 @@ nav .wrapper ul li {
 @media screen and (max-width: 359px) {
   .nav-chat-mobile summary span {
     display: none;
+  }
+}
+
+
+/* ---------------------------------------------------------------
+ * Homepage motion. CSS-first, transform/opacity only, short and
+ * eased. Everything is static for prefers-reduced-motion.
+ * ------------------------------------------------------------- */
+.hp-hero {
+  position: relative;
+  isolation: isolate;
+  overflow: hidden;
+}
+
+/* Soft aurora drifting behind the headline. */
+.hp-aurora {
+  position: absolute;
+  inset: 0 0 auto;
+  height: 720px;
+  z-index: -1;
+  pointer-events: none;
+  overflow: hidden;
+  -webkit-mask-image: linear-gradient(to bottom, #000 55%, transparent);
+  mask-image: linear-gradient(to bottom, #000 55%, transparent);
+}
+
+.hp-aurora span {
+  position: absolute;
+  border-radius: 50%;
+  filter: blur(70px);
+  opacity: 0.55;
+  will-change: transform;
+}
+
+.hp-aurora span:nth-child(1) {
+  width: 520px;
+  height: 360px;
+  left: 6%;
+  top: 40px;
+  background: radial-gradient(closest-side, rgba(96, 165, 250, 0.55), transparent);
+  animation: hp-drift-a 22s ease-in-out infinite alternate;
+}
+
+.hp-aurora span:nth-child(2) {
+  width: 560px;
+  height: 380px;
+  right: 4%;
+  top: 0;
+  background: radial-gradient(closest-side, rgba(167, 139, 250, 0.5), transparent);
+  animation: hp-drift-b 26s ease-in-out infinite alternate;
+}
+
+.hp-aurora span:nth-child(3) {
+  width: 420px;
+  height: 300px;
+  left: 38%;
+  top: 220px;
+  background: radial-gradient(closest-side, rgba(244, 114, 182, 0.28), transparent);
+  animation: hp-drift-c 30s ease-in-out infinite alternate;
+}
+
+@keyframes hp-drift-a {
+  to { transform: translate3d(120px, 60px, 0) scale(1.15); }
+}
+
+@keyframes hp-drift-b {
+  to { transform: translate3d(-140px, 80px, 0) scale(0.9); }
+}
+
+@keyframes hp-drift-c {
+  to { transform: translate3d(-80px, -70px, 0) scale(1.2); }
+}
+
+/* Headline: animated gradient sheen sweeping once across the text. */
+.hp-hero .ourfeatures-heading {
+  background: linear-gradient(100deg, #1e293b 0%, #1e293b 40%, #6d28d9 50%, #1e293b 60%, #1e293b 100%);
+  background-size: 250% 100%;
+  background-position: 100% 0;
+  -webkit-background-clip: text;
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+  color: #1e293b;
+}
+
+/* Entrance: staggered fade + rise, ~600ms. Portrait card (LCP) only
+ * moves, it is never hidden. */
+@keyframes hp-rise {
+  from { opacity: 0; transform: translate3d(0, 16px, 0); }
+  to { opacity: 1; transform: none; }
+}
+
+@keyframes hp-lift {
+  from { transform: translate3d(0, 20px, 0); }
+  to { transform: none; }
+}
+
+@keyframes hp-sheen {
+  from { background-position: 100% 0; }
+  to { background-position: 0 0; }
+}
+
+.hp-hero .hp-eyebrow {
+  animation: hp-rise 0.6s cubic-bezier(0.22, 1, 0.36, 1) both;
+}
+
+.hp-hero .ourfeatures-heading {
+  animation: hp-rise 0.6s cubic-bezier(0.22, 1, 0.36, 1) 0.06s both,
+    hp-sheen 2.4s cubic-bezier(0.45, 0, 0.2, 1) 0.5s both;
+}
+
+.hp-hero .ourfeatures-dflex__left > .ourfeatures-box {
+  animation: hp-lift 0.7s cubic-bezier(0.22, 1, 0.36, 1) 0.12s both;
+}
+
+.hp-hero .ourfeatures-sm__dflexleft > .stat-card {
+  animation: hp-rise 0.6s cubic-bezier(0.22, 1, 0.36, 1) 0.18s both;
+}
+
+.hp-hero .ourfeatures-sm__dflexright > .stat-card {
+  animation: hp-rise 0.6s cubic-bezier(0.22, 1, 0.36, 1) 0.26s both;
+}
+
+.hp-hero .ourfeatures-dflex__right > .stat-card {
+  animation: hp-rise 0.6s cubic-bezier(0.22, 1, 0.36, 1) 0.34s both;
+}
+
+/* Name chip: calm "available" halo instead of the heartbeat. */
+.ourfeatures-gradient small::after {
+  content: "";
+  position: absolute;
+  inset: -5px;
+  border-radius: 50%;
+  border: 2px solid rgba(124, 58, 237, 0.45);
+  opacity: 0;
+  animation: hp-halo 3.2s cubic-bezier(0.22, 1, 0.36, 1) 1s infinite;
+}
+
+@keyframes hp-halo {
+  0% { opacity: 0.7; transform: scale(0.6); }
+  70%, 100% { opacity: 0; transform: scale(1.6); }
+}
+
+/* Stat cards: slow ambient glow + gentle lift on hover. */
+.stat-card {
+  position: relative;
+  overflow: hidden;
+  isolation: isolate;
+  transition: transform 0.45s cubic-bezier(0.22, 1, 0.36, 1), box-shadow 0.45s ease;
+}
+
+.stat-card::before {
+  content: "";
+  position: absolute;
+  z-index: -1;
+  width: 260px;
+  height: 260px;
+  top: -120px;
+  right: -90px;
+  border-radius: 50%;
+  background: radial-gradient(closest-side, rgba(139, 92, 246, 0.22), transparent);
+  pointer-events: none;
+  animation: hp-glow 14s ease-in-out infinite alternate;
+  transition: opacity 0.45s ease;
+}
+
+.ourfeatures-sm__dflexright .stat-card::before {
+  background: radial-gradient(closest-side, rgba(59, 130, 246, 0.22), transparent);
+  animation-duration: 17s;
+  animation-direction: alternate-reverse;
+}
+
+@keyframes hp-glow {
+  to { transform: translate3d(-60px, 50px, 0) scale(1.25); }
+}
+
+.stat-card:hover {
+  transform: translate3d(0, -4px, 0);
+  box-shadow: 0 24px 50px -28px rgba(79, 70, 229, 0.45);
+}
+
+.stat-card .stat-number {
+  font-variant-numeric: tabular-nums;
+  background: linear-gradient(120deg, #1e293b 30%, #4f46e5);
+  -webkit-background-clip: text;
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+/* Scroll reveal (js/main.js adds .rv-on only to elements still below
+ * the fold, so nothing visible on load is ever hidden). */
+.rv-on {
+  opacity: 0;
+  transform: translate3d(0, 24px, 0);
+  transition: opacity 0.7s cubic-bezier(0.22, 1, 0.36, 1), transform 0.7s cubic-bezier(0.22, 1, 0.36, 1);
+  transition-delay: calc(var(--rv, 0) * 90ms);
+}
+
+.rv-on.rv-in {
+  opacity: 1;
+  transform: none;
+}
+
+/* Flagship cards: soft glow follows the lift. */
+.flagship-card {
+  transition: transform 0.45s cubic-bezier(0.22, 1, 0.36, 1), border-color 0.3s ease, background 0.3s ease, box-shadow 0.45s ease;
+}
+
+.flagship-card:hover {
+  transform: translate3d(0, -6px, 0);
+  box-shadow: 0 28px 60px -30px rgba(96, 165, 250, 0.55);
+}
+
+@media (max-width: 767px) {
+  .hp-aurora {
+    height: 520px;
+  }
+
+  .hp-aurora span {
+    filter: blur(50px);
+    transform: scale(0.7);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .hp-aurora span,
+  .hp-hero .hp-eyebrow,
+  .hp-hero .ourfeatures-heading,
+  .hp-hero .ourfeatures-box,
+  .hp-hero .stat-card,
+  .stat-card::before,
+  .ourfeatures-gradient small::after {
+    animation: none !important;
+  }
+
+  .hp-hero .ourfeatures-heading {
+    background-position: 0 0;
+  }
+
+  .rv-on {
+    opacity: 1;
+    transform: none;
+    transition: none;
+  }
+
+  .stat-card,
+  .flagship-card {
+    transition: none;
+  }
+
+  .stat-card:hover,
+  .flagship-card:hover {
+    transform: none;
   }
 }
