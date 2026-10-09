@@ -53,22 +53,112 @@ $v5_tl_slice = v5imraan_timeline_slice( $v5_tl, $v5_tl_page, $v5_tl_year );
 	</div>
 </main>
 
-<script type="application/ld+json">
 <?php
-echo wp_json_encode(
-	array(
-		'@context'    => 'https://schema.org',
-		'@type'       => 'CollectionPage',
-		'@id'         => $v5_tl_url . '#webpage',
-		'url'         => $v5_tl_url,
-		'name'        => 'Writing Timeline',
-		'description' => 'Every article on imraan.in in date order, grouped by year.',
-		'isPartOf'    => array( '@id' => home_url( '/#website' ) ),
+/*
+ * Structured data in the house pattern used by articles: one @graph with
+ * the shared Person (author/imran/#person) and WebSite (#website) nodes,
+ * the page node, its BreadcrumbList and an ItemList of the first chunk.
+ */
+$v5_tl_person  = home_url( '/author/imran/#person' );
+$v5_tl_website = home_url( '/#website' );
+$v5_tl_lang    = get_bloginfo( 'language' );
+$v5_tl_first   = v5imraan_timeline_slice( $v5_tl, 1, 0 );
+$v5_tl_items   = array();
+foreach ( $v5_tl_first['days'] as $v5_tl_d ) {
+	foreach ( $v5_tl_d['items'] as $v5_tl_i ) {
+		$v5_tl_items[] = array(
+			'@type'    => 'ListItem',
+			'position' => count( $v5_tl_items ) + 1,
+			'url'      => $v5_tl_i['url'],
+			'name'     => wp_strip_all_tags( html_entity_decode( $v5_tl_i['title'], ENT_QUOTES, 'UTF-8' ) ),
+		);
+	}
+}
+$v5_tl_lastpost = get_lastpostdate( 'blog' );
+$v5_tl_graph    = array(
+	'@context' => 'https://schema.org',
+	'@graph'   => array(
+		array(
+			'@type'         => 'Person',
+			'@id'           => $v5_tl_person,
+			'name'          => 'Imranul Haque Mazumder',
+			'alternateName' => array( 'Imran', 'Imraan', 'Imran M' ),
+			'url'           => home_url( '/author/imran/' ),
+			'description'   => 'Imranul Haque Mazumder is an Associate Director of Technology at CleverTap and a PMP-certified engineering leader with 13+ years of experience in software engineering, AI, system architecture, cloud platforms, and engineering leadership.',
+			'jobTitle'      => 'Associate Director, Tech',
+			'image'         => array(
+				'@type' => 'ImageObject',
+				'url'   => home_url( '/wp-content/uploads/2026/10/imraans_portrait_photo.webp' ),
+			),
+			'sameAs'        => array(
+				'https://www.linkedin.com/in/imazumder/',
+				'https://github.com/ranababu1',
+				'https://medium.com/@imrn.dev/about',
+				'https://about.me/imraan',
+				'https://topmate.io/mazumder',
+			),
+			'worksFor'      => array(
+				'@type' => 'Organization',
+				'name'  => 'CleverTap',
+				'url'   => 'https://clevertap.com/',
+			),
+		),
+		array(
+			'@type'       => 'WebSite',
+			'@id'         => $v5_tl_website,
+			'url'         => home_url( '/' ),
+			'name'        => 'Imraan',
+			'description' => 'Personal website and technical blog of Imranul Haque Mazumder, covering software engineering, AI, system design, cloud, architecture, and technology.',
+			'publisher'   => array( '@id' => $v5_tl_person ),
+			'inLanguage'  => $v5_tl_lang,
+		),
+		array_filter(
+			array(
+				'@type'        => 'CollectionPage',
+				'@id'          => $v5_tl_url . '#webpage',
+				'url'          => $v5_tl_url,
+				'name'         => 'Writing Timeline',
+				'description'  => 'Every article on imraan.in in date order, newest first, grouped by year.',
+				'isPartOf'     => array( '@id' => $v5_tl_website ),
+				'about'        => array( '@id' => $v5_tl_person ),
+				'author'       => array( '@id' => $v5_tl_person ),
+				'publisher'    => array( '@id' => $v5_tl_person ),
+				'mainEntity'   => array( '@id' => $v5_tl_url . '#itemlist' ),
+				'breadcrumb'   => array( '@id' => $v5_tl_url . '#breadcrumb' ),
+				'inLanguage'   => $v5_tl_lang,
+				'dateModified' => $v5_tl_lastpost ? mysql2date( DATE_W3C, $v5_tl_lastpost, false ) : null,
+			)
+		),
+		array(
+			'@type'           => 'BreadcrumbList',
+			'@id'             => $v5_tl_url . '#breadcrumb',
+			'itemListElement' => array(
+				array(
+					'@type'    => 'ListItem',
+					'position' => 1,
+					'name'     => 'Home',
+					'item'     => home_url( '/' ),
+				),
+				array(
+					'@type'    => 'ListItem',
+					'position' => 2,
+					'name'     => 'Writing Timeline',
+					'item'     => $v5_tl_url,
+				),
+			),
+		),
+		array(
+			'@type'           => 'ItemList',
+			'@id'             => $v5_tl_url . '#itemlist',
+			'name'            => 'Latest articles',
+			'numberOfItems'   => count( $v5_tl_items ),
+			'itemListOrder'   => 'https://schema.org/ItemListOrderDescending',
+			'itemListElement' => $v5_tl_items,
+		),
 	),
-	JSON_UNESCAPED_SLASHES | JSON_UNESCAPED_UNICODE
 );
 ?>
-</script>
+<script type="application/ld+json"><?php echo wp_json_encode( $v5_tl_graph, JSON_UNESCAPED_SLASHES | JSON_UNESCAPED_UNICODE ); ?></script>
 
 <?php
 get_footer();
