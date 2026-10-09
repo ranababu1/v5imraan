@@ -1940,3 +1940,264 @@ nav .wrapper ul li {
     gap: 16px;
   }
 }
+
+
+/* ---------------------------------------------------------------
+ * Glass header (site-wide). The blur lives on a pseudo-element so the
+ * nav itself never becomes a containing block for the fixed mobile
+ * drawer. Solid fallback where backdrop-filter is unsupported.
+ * ------------------------------------------------------------- */
+.site-header nav {
+  background-color: transparent;
+  border-bottom: 1px solid rgba(148, 163, 184, 0.12);
+}
+
+.site-header nav::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  z-index: -1;
+  background: #0f172a;
+  pointer-events: none;
+}
+
+@supports ((backdrop-filter: blur(1px)) or (-webkit-backdrop-filter: blur(1px))) {
+  .site-header nav::before {
+    background: rgba(11, 16, 34, 0.86);
+    -webkit-backdrop-filter: blur(14px) saturate(140%);
+    backdrop-filter: blur(14px) saturate(140%);
+  }
+}
+
+.wrapper .logo a {
+  font-size: 26px;
+  font-weight: 700;
+  letter-spacing: -0.01em;
+}
+
+/* No arrows on top-level links. */
+.nav-links>li>a::after,
+.nav-links>li>a:hover::after,
+.nav-links>li:last-child>a::after,
+.nav-links>li:last-child>a:hover::after {
+  content: none;
+  display: none;
+  background: none;
+}
+
+.nav-chat__icon {
+  flex: 0 0 auto;
+  color: #a78bfa;
+}
+
+.nav-chat__pill {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  height: 40px;
+  padding: 0 18px;
+  border-radius: 999px;
+  font-size: 15px;
+  font-weight: 600;
+  line-height: 1;
+  color: #f1f5f9;
+  background: rgba(30, 41, 59, 0.55);
+  border: 1px solid rgba(148, 163, 184, 0.22);
+  box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.04);
+  cursor: pointer;
+  transition: border-color 0.2s ease, background-color 0.2s ease;
+}
+
+.nav-chat__pill:hover,
+.nav-chat__pill:focus-visible {
+  border-color: rgba(167, 139, 250, 0.6);
+  background: rgba(51, 65, 85, 0.6);
+  color: #ffffff;
+}
+
+.nav-chat-mobile {
+  display: none;
+}
+
+@media screen and (min-width: 971px) {
+  .nav-links {
+    align-items: center;
+  }
+
+  .nav-links>li {
+    padding: 0 6px;
+  }
+
+  .nav-links>li>a {
+    font-size: 15px;
+    font-weight: 500;
+    padding: 8px 12px;
+    color: rgba(226, 232, 240, 0.72);
+  }
+
+  .nav-links>li>a:hover,
+  .nav-links>li:focus-within>a {
+    color: #ffffff;
+  }
+
+  .nav-links>li.is-current>a {
+    color: #ffffff;
+    font-weight: 700;
+  }
+
+  .nav-links>li.is-current>a::after {
+    content: "";
+    display: block;
+    position: absolute;
+    left: 50%;
+    right: auto;
+    top: auto;
+    bottom: -8px;
+    width: 32px;
+    height: 2px;
+    margin-left: -16px;
+    border-radius: 2px;
+    background: #a78bfa;
+    opacity: 1;
+  }
+
+  .nav-links>li.nav-chat {
+    position: relative;
+    margin-left: 18px;
+    padding-left: 30px;
+    padding-right: 0;
+  }
+
+  .nav-links>li.nav-chat::before {
+    content: "";
+    position: absolute;
+    left: 0;
+    top: 50%;
+    width: 1px;
+    height: 30px;
+    margin-top: -15px;
+    background: rgba(148, 163, 184, 0.22);
+  }
+
+  .nav-links>li.nav-chat>a.nav-chat__pill {
+    padding: 0 18px;
+    color: #f1f5f9;
+    border-radius: 999px;
+  }
+
+  /* Glass dropdowns (open on hover and keyboard focus). */
+  .nav-links .drop-menu,
+  .mega-box .content {
+    background: rgba(15, 23, 42, 0.92);
+    border: 1px solid rgba(148, 163, 184, 0.14);
+    border-radius: 14px;
+    box-shadow: 0 20px 50px rgba(2, 6, 23, 0.5);
+  }
+
+  .nav-links .drop-menu {
+    padding: 8px 0;
+    overflow: hidden;
+  }
+
+  .nav-links li:focus-within .drop-menu,
+  .nav-links li:focus-within .mega-box {
+    top: 70px;
+    opacity: 1;
+    visibility: visible;
+  }
+
+  .nav-links li.nav-chat .drop-menu {
+    right: 0;
+    width: 200px;
+  }
+
+  .drop-menu li a {
+    font-size: 15px;
+    padding: 0 18px;
+    color: rgba(226, 232, 240, 0.85);
+  }
+
+  .drop-menu li a:hover {
+    background: rgba(51, 65, 85, 0.5);
+    color: #ffffff;
+  }
+}
+
+@media screen and (max-width: 970px) {
+  .site-header nav .wrapper {
+    padding: 0 20px;
+    gap: 12px;
+  }
+
+  .wrapper .logo {
+    margin-right: auto;
+  }
+
+  .wrapper .nav-links {
+    z-index: 5;
+  }
+
+  .nav-chat-mobile {
+    display: block;
+    position: relative;
+    line-height: normal;
+  }
+
+  .nav-chat-mobile summary {
+    list-style: none;
+    height: 38px;
+    padding: 0 14px;
+    font-size: 14px;
+  }
+
+  .nav-chat-mobile summary::-webkit-details-marker {
+    display: none;
+  }
+
+  .nav-chat-mobile__menu {
+    position: absolute;
+    right: 0;
+    top: calc(100% + 10px);
+    min-width: 180px;
+    margin: 0;
+    padding: 6px 0;
+    list-style: none;
+    background: #0f172a;
+    border: 1px solid rgba(148, 163, 184, 0.18);
+    border-radius: 12px;
+    box-shadow: 0 16px 40px rgba(2, 6, 23, 0.55);
+  }
+
+  .nav-chat-mobile__menu a {
+    display: block;
+    padding: 11px 16px;
+    font-size: 15px;
+    color: #e2e8f0;
+    text-decoration: none;
+  }
+
+  .wrapper .btn.menu-btn {
+    width: 40px;
+    height: 40px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    line-height: 1;
+    margin-right: -8px;
+  }
+
+  #menu-btn:checked~.btn.menu-btn {
+    display: none;
+  }
+
+  /* Drawer item keeps its plain row style. */
+  .nav-links .nav-chat__pill {
+    display: none;
+  }
+}
+
+@media screen and (max-width: 359px) {
+  .nav-chat-mobile summary span {
+    display: none;
+  }
+}
