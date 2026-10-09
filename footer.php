@@ -27,7 +27,6 @@ $v5_privacy_url = function_exists( 'get_privacy_policy_url' ) ? get_privacy_poli
 	<div class="container sf__inner">
 		<div class="sf__main">
 			<div class="sf__brand">
-				<p class="sf__eyebrow">Engineering for a more useful tomorrow</p>
 				<p class="sf__wordmark" aria-hidden="true">Imraan</p>
 				<p class="sf__tagline">Engineering leader, builder, and writer, exploring AI systems, platform architecture, and what&rsquo;s next.</p>
 			</div>
