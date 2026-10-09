@@ -37,7 +37,7 @@ $v5_tl_slice = v5imraan_timeline_slice( $v5_tl, $v5_tl_page, $v5_tl_year );
 			</ul>
 		</nav>
 
-		<div id="timeline" class="tl-years" data-total="<?php echo (int) $v5_tl['total']; ?>" data-endpoint="<?php echo esc_url( rest_url( 'v5imraan/v1/timeline' ) ); ?>" data-next="<?php echo (int) $v5_tl_slice['next']; ?>" data-mode="<?php echo $v5_tl_year ? 'year' : 'all'; ?>">
+		<div id="timeline" class="tl-years" data-total="<?php echo (int) $v5_tl['total']; ?>" data-endpoint="<?php echo esc_url( add_query_arg( 'v', rawurlencode( (string) get_option( 'v5_timeline_ver', '1' ) ), rest_url( 'v5imraan/v1/timeline' ) ) ); ?>" data-next="<?php echo (int) $v5_tl_slice['next']; ?>" data-mode="<?php echo $v5_tl_year ? 'year' : 'all'; ?>">
 			<?php echo v5imraan_timeline_render_days( $v5_tl_slice['days'], $v5_tl['year_totals'] ); // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped -- escaped at render time. ?>
 		</div>
 
