@@ -2286,3 +2286,231 @@ nav .wrapper ul li {
     transform: translate3d(-2%, -6%, 0) rotate(-10deg) scale(0.95);
   }
 }
+
+
+/* ---------------------------------------------------------------
+ * Site footer: navy with a warm planet-edge glow, big wordmark,
+ * Expertise + Connect columns, legal bar.
+ * ------------------------------------------------------------- */
+.sf {
+  position: relative;
+  overflow: hidden;
+  isolation: isolate;
+  background: #0b1020;
+  color: rgba(226, 232, 240, 0.78);
+  padding: 96px 0 0;
+}
+
+.sf__glow {
+  position: absolute;
+  z-index: -1;
+  top: 70px;
+  right: -260px;
+  width: 900px;
+  height: 900px;
+  border-radius: 50%;
+  pointer-events: none;
+  background:
+    radial-gradient(circle, rgba(15, 23, 42, 0.9) 0, #0d1324 64%, transparent 64.3%),
+    radial-gradient(circle, transparent 63.6%, rgba(255, 226, 190, 0.9) 64.1%, rgba(251, 191, 140, 0.35) 65.2%, rgba(251, 191, 140, 0.08) 68%, transparent 74%);
+  -webkit-mask-image: conic-gradient(from 270deg, transparent 0deg, rgba(0, 0, 0, 0.25) 35deg, #000 80deg, #000 100deg, transparent 135deg);
+  mask-image: conic-gradient(from 270deg, transparent 0deg, rgba(0, 0, 0, 0.25) 35deg, #000 80deg, #000 100deg, transparent 135deg);
+}
+
+.sf__main {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 48px;
+  padding-bottom: 72px;
+}
+
+.sf__brand {
+  min-width: 0;
+  flex: 1 1 auto;
+}
+
+.sf__eyebrow {
+  font-size: 12px;
+  font-weight: 500;
+  letter-spacing: 0.32em;
+  text-transform: uppercase;
+  color: rgba(203, 213, 225, 0.6);
+  margin: 0 0 18px;
+}
+
+.sf__wordmark {
+  margin: 0;
+  font-size: clamp(76px, 15vw, 196px);
+  font-weight: 800;
+  line-height: 0.95;
+  letter-spacing: -0.045em;
+  background: linear-gradient(105deg, #ffffff 0%, #e2e8f0 45%, #8b93a7 100%);
+  -webkit-background-clip: text;
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+  color: #e2e8f0;
+}
+
+.sf__tagline {
+  max-width: 470px;
+  margin: 28px 0 0;
+  font-size: 19px;
+  line-height: 1.5;
+  color: rgba(226, 232, 240, 0.85);
+}
+
+.sf__cols {
+  display: flex;
+  flex: 0 0 auto;
+  align-self: center;
+}
+
+.sf__col {
+  padding: 8px 40px;
+  border-left: 1px solid rgba(148, 163, 184, 0.16);
+}
+
+.sf__heading {
+  margin: 0 0 22px;
+  font-size: 12px;
+  font-weight: 500;
+  letter-spacing: 0.28em;
+  text-transform: uppercase;
+  color: rgba(203, 213, 225, 0.6);
+}
+
+.sf__col ul {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+.sf__col li {
+  margin: 0 0 16px;
+  font-size: 15.5px;
+}
+
+.sf__col li:last-child {
+  margin-bottom: 0;
+}
+
+.sf__col a,
+.sf__col span {
+  color: rgba(226, 232, 240, 0.85);
+  text-decoration: none;
+  transition: color 0.2s ease;
+}
+
+.sf__col a:hover,
+.sf__col a:focus-visible {
+  color: #ffffff;
+}
+
+.sf__social {
+  display: inline-flex;
+  align-items: center;
+  gap: 16px;
+}
+
+.sf__social svg {
+  flex: 0 0 auto;
+  color: #e2e8f0;
+}
+
+.sf__bar {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 16px;
+  padding: 28px 0 32px;
+  border-top: 1px solid rgba(148, 163, 184, 0.16);
+  font-size: 14.5px;
+}
+
+.sf__copy {
+  margin: 0;
+  color: rgba(203, 213, 225, 0.7);
+}
+
+.sf__copy span {
+  margin-left: 14px;
+  color: rgba(226, 232, 240, 0.85);
+}
+
+.sf__legal {
+  display: flex;
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+.sf__legal li + li {
+  margin-left: 22px;
+  padding-left: 22px;
+  border-left: 1px solid rgba(148, 163, 184, 0.25);
+}
+
+.sf__legal a {
+  color: rgba(203, 213, 225, 0.75);
+  text-decoration: none;
+}
+
+.sf__legal a:hover {
+  color: #ffffff;
+}
+
+@media (max-width: 1023px) {
+  .sf__main {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 40px;
+  }
+
+  .sf__col:first-child {
+    padding-left: 0;
+    border-left: 0;
+  }
+}
+
+@media (max-width: 639px) {
+  .sf {
+    padding-top: 64px;
+  }
+
+  .sf__glow {
+    top: 30px;
+    right: -380px;
+    width: 600px;
+    height: 600px;
+  }
+
+  .sf__eyebrow {
+    font-size: 11px;
+    letter-spacing: 0.22em;
+  }
+
+  .sf__tagline {
+    font-size: 17px;
+  }
+
+  .sf__cols {
+    width: 100%;
+    gap: 0;
+  }
+
+  .sf__col {
+    flex: 1 1 50%;
+    padding: 0 0 0 24px;
+  }
+
+  .sf__main {
+    padding-bottom: 48px;
+  }
+
+  .sf__bar {
+    flex-direction: column-reverse;
+    align-items: flex-start;
+    gap: 14px;
+  }
+}
