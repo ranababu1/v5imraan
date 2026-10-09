@@ -1,13 +1,19 @@
 <?php
 /**
- * Writing Timeline (/timeline/): data + cached markup.
+ * Writing Timeline (/timeline/): data, chunked rendering, REST endpoint.
  *
- * One WP_Query pulls every published, indexable post; the rendered
- * timeline is cached in a transient and flushed whenever a post is
- * saved, deleted or changes status.
+ * One WP_Query pulls every published, indexable post; the grouped data
+ * is cached in a transient (flushed on save_post / deleted_post /
+ * transition_post_status). The page renders the first chunk (~40 posts,
+ * whole date groups only); further chunks or whole years come from
+ * GET /wp-json/v5imraan/v1/timeline?page=N or ?y=YYYY.
  *
  * @package v5imraan
  */
+
+if ( ! defined( 'V5_TIMELINE_CHUNK' ) ) {
+	define( 'V5_TIMELINE_CHUNK', 40 );
+}
 
 if ( ! function_exists( 'v5imraan_timeline_cache_key' ) ) :
 	/**
@@ -16,15 +22,15 @@ if ( ! function_exists( 'v5imraan_timeline_cache_key' ) ) :
 	 * @return string
 	 */
 	function v5imraan_timeline_cache_key() {
-		return 'v5_timeline_' . substr( md5( (string) filemtime( __FILE__ ) . '|' . (string) filemtime( get_stylesheet_directory() . '/page-timeline.php' ) ), 0, 10 );
+		return 'v5_timeline_data_' . substr( md5( (string) filemtime( __FILE__ ) ), 0, 10 );
 	}
 endif;
 
 if ( ! function_exists( 'v5imraan_timeline_flush' ) ) :
 	/**
-	 * Drop the cached timeline.
+	 * Drop the cached timeline data.
 	 *
-	 * @param int $post_id Post ID (unused beyond type check).
+	 * @param int $post_id Post ID.
 	 */
 	function v5imraan_timeline_flush( $post_id = 0 ) {
 		if ( $post_id && 'post' !== get_post_type( $post_id ) ) {
@@ -48,11 +54,17 @@ add_action(
 
 if ( ! function_exists( 'v5imraan_timeline_data' ) ) :
 	/**
-	 * Posts grouped as [ year => [ 'Y-m-d' => [ items ] ] ], newest first.
+	 * Cached timeline data.
 	 *
-	 * @return array{years: array, total: int}
+	 * @return array{days: array, year_totals: array, total: int, pages: array}
 	 */
 	function v5imraan_timeline_data() {
+		$key  = v5imraan_timeline_cache_key();
+		$data = get_transient( $key );
+		if ( is_array( $data ) && isset( $data['days'], $data['pages'] ) ) {
+			return $data;
+		}
+
 		$q = new WP_Query(
 			array(
 				'post_type'              => 'post',
@@ -79,8 +91,9 @@ if ( ! function_exists( 'v5imraan_timeline_data' ) ) :
 			)
 		);
 
-		$years = array();
-		$total = 0;
+		$days        = array();
+		$year_totals = array();
+		$total       = 0;
 		foreach ( $q->posts as $p ) {
 			$ts    = strtotime( $p->post_date );
 			$year  = (int) gmdate( 'Y', $ts );
@@ -97,108 +110,199 @@ if ( ! function_exists( 'v5imraan_timeline_data' ) ) :
 					$terms[] = $t->name;
 				}
 			}
-			$years[ $year ][ $day ][] = array(
+			if ( ! isset( $days[ $day ] ) ) {
+				$days[ $day ] = array(
+					'day'   => $day,
+					'year'  => $year,
+					'items' => array(),
+				);
+			}
+			$days[ $day ]['items'][] = array(
 				'title' => get_the_title( $p ),
 				'url'   => get_permalink( $p ),
 				'meta'  => array_slice( array_values( array_unique( $terms ) ), 0, 4 ),
 			);
+			$year_totals[ $year ] = ( $year_totals[ $year ] ?? 0 ) + 1;
 			$total++;
 		}
-		krsort( $years );
+		$days = array_values( $days );
+		krsort( $year_totals );
+
+		// Chunk boundaries: whole date groups, ~V5_TIMELINE_CHUNK posts each.
+		$pages = array();
+		$start = 0;
+		$count = 0;
+		foreach ( $days as $i => $d ) {
+			$count += count( $d['items'] );
+			if ( $count >= V5_TIMELINE_CHUNK ) {
+				$pages[] = array( $start, $i );
+				$start   = $i + 1;
+				$count   = 0;
+			}
+		}
+		if ( $start < count( $days ) ) {
+			$pages[] = array( $start, count( $days ) - 1 );
+		}
+
+		$data = array(
+			'days'        => $days,
+			'year_totals' => $year_totals,
+			'total'       => $total,
+			'pages'       => $pages,
+		);
+		set_transient( $key, $data, DAY_IN_SECONDS );
+		return $data;
+	}
+endif;
+
+if ( ! function_exists( 'v5imraan_timeline_slice' ) ) :
+	/**
+	 * Days for a page (1-based) or a whole year.
+	 *
+	 * @param array $data Timeline data.
+	 * @param int   $page Page number (ignored when $year is set).
+	 * @param int   $year Year, or 0.
+	 * @return array{days: array, next: int}
+	 */
+	function v5imraan_timeline_slice( $data, $page = 1, $year = 0 ) {
+		if ( $year ) {
+			return array(
+				'days' => array_values(
+					array_filter(
+						$data['days'],
+						function ( $d ) use ( $year ) {
+							return (int) $d['year'] === (int) $year;
+						}
+					)
+				),
+				'next' => 0,
+			);
+		}
+		$n = count( $data['pages'] );
+		if ( $page < 1 || $page > $n ) {
+			return array(
+				'days' => array(),
+				'next' => 0,
+			);
+		}
+		list( $a, $b ) = $data['pages'][ $page - 1 ];
 		return array(
-			'years' => $years,
-			'total' => $total,
+			'days' => array_slice( $data['days'], $a, $b - $a + 1 ),
+			'next' => $page < $n ? $page + 1 : 0,
 		);
 	}
 endif;
 
-if ( ! function_exists( 'v5imraan_timeline_html' ) ) :
+if ( ! function_exists( 'v5imraan_timeline_render_days' ) ) :
 	/**
-	 * Rendered filter row + year sections (cached).
+	 * Year sections for a list of days (headers carry full-year totals).
 	 *
+	 * @param array $days        Day groups, newest first.
+	 * @param array $year_totals Year => total posts.
 	 * @return string
 	 */
-	function v5imraan_timeline_html() {
-		$key  = v5imraan_timeline_cache_key();
-		$html = get_transient( $key );
-		if ( is_string( $html ) && '' !== $html ) {
-			return $html;
+	function v5imraan_timeline_render_days( $days, $year_totals ) {
+		$by_year = array();
+		foreach ( $days as $d ) {
+			$by_year[ (int) $d['year'] ][] = $d;
 		}
-
-		$data  = v5imraan_timeline_data();
-		$years = $data['years'];
-
 		ob_start();
-		?>
-		<nav class="tl-filter" aria-label="<?php esc_attr_e( 'Filter by year', 'v5imraan' ); ?>">
-			<ul class="tl-filter__list">
-				<li><a class="tl-chip is-active" href="#timeline" data-year="all" aria-current="true"><?php esc_html_e( 'All', 'v5imraan' ); ?></a></li>
-				<?php foreach ( array_keys( $years ) as $y ) : ?>
-					<li><a class="tl-chip" href="#y<?php echo (int) $y; ?>" data-year="<?php echo (int) $y; ?>"><?php echo (int) $y; ?></a></li>
-				<?php endforeach; ?>
-			</ul>
-		</nav>
-
-		<div id="timeline" class="tl-years" data-total="<?php echo (int) $data['total']; ?>">
+		foreach ( $by_year as $y => $ydays ) :
+			$count = (int) ( $year_totals[ $y ] ?? 0 );
+			?>
+			<section class="tl-year" id="y<?php echo (int) $y; ?>" data-year="<?php echo (int) $y; ?>" data-count="<?php echo (int) $count; ?>" aria-labelledby="y<?php echo (int) $y; ?>-h">
+				<header class="tl-year__head">
+					<h2 class="tl-year__title" id="y<?php echo (int) $y; ?>-h"><?php echo (int) $y; ?></h2>
+					<p class="tl-year__count">
+						<?php
+						/* translators: %s: number of articles. */
+						echo esc_html( sprintf( _n( '%s article', '%s articles', $count, 'v5imraan' ), number_format_i18n( $count ) ) );
+						?>
+					</p>
+				</header>
+				<ol class="tl-days">
+					<?php foreach ( $ydays as $d ) : ?>
+						<li class="tl-day" data-day="<?php echo esc_attr( $d['day'] ); ?>">
+							<time class="tl-day__date" datetime="<?php echo esc_attr( $d['day'] ); ?>"><?php echo esc_html( date_i18n( 'l, M j', strtotime( $d['day'] ) ) ); ?></time>
+							<ul class="tl-day__posts">
+								<?php foreach ( $d['items'] as $it ) : ?>
+									<li class="tl-post">
+										<a class="tl-post__link" href="<?php echo esc_url( $it['url'] ); ?>"><?php echo esc_html( $it['title'] ); ?><span class="tl-post__arrow" aria-hidden="true">&rarr;</span></a>
+										<?php if ( $it['meta'] ) : ?>
+											<p class="tl-post__meta"><?php echo implode( '<span class="tl-post__sep" aria-hidden="true">&middot;</span>', array_map( 'esc_html', $it['meta'] ) ); ?></p>
+										<?php endif; ?>
+									</li>
+								<?php endforeach; ?>
+							</ul>
+						</li>
+					<?php endforeach; ?>
+				</ol>
+			</section>
 			<?php
-			foreach ( $years as $y => $days ) :
-				$count = 0;
-				foreach ( $days as $items ) {
-					$count += count( $items );
-				}
-				?>
-				<section class="tl-year" id="y<?php echo (int) $y; ?>" data-year="<?php echo (int) $y; ?>" aria-labelledby="y<?php echo (int) $y; ?>-h">
-					<header class="tl-year__head">
-						<h2 class="tl-year__title" id="y<?php echo (int) $y; ?>-h"><?php echo (int) $y; ?></h2>
-						<p class="tl-year__count">
-							<?php
-							/* translators: %s: number of articles. */
-							echo esc_html( sprintf( _n( '%s article', '%s articles', $count, 'v5imraan' ), number_format_i18n( $count ) ) );
-							?>
-						</p>
-					</header>
-					<ol class="tl-days">
-						<?php foreach ( $days as $day => $items ) : ?>
-							<li class="tl-day">
-								<time class="tl-day__date" datetime="<?php echo esc_attr( $day ); ?>"><?php echo esc_html( date_i18n( 'l, M j', strtotime( $day ) ) ); ?></time>
-								<ul class="tl-day__posts">
-									<?php foreach ( $items as $it ) : ?>
-										<li class="tl-post">
-											<a class="tl-post__link" href="<?php echo esc_url( $it['url'] ); ?>"><?php echo esc_html( $it['title'] ); ?><span class="tl-post__arrow" aria-hidden="true">&rarr;</span></a>
-											<?php if ( $it['meta'] ) : ?>
-												<p class="tl-post__meta">
-													<?php
-													echo implode(
-														'<span class="tl-post__sep" aria-hidden="true">&middot;</span>',
-														array_map( 'esc_html', $it['meta'] )
-													);
-													?>
-												</p>
-											<?php endif; ?>
-										</li>
-									<?php endforeach; ?>
-								</ul>
-							</li>
-						<?php endforeach; ?>
-					</ol>
-				</section>
-			<?php endforeach; ?>
-		</div>
-		<?php
-		$html = (string) ob_get_clean();
-		set_transient( $key, $html, DAY_IN_SECONDS );
-		return $html;
+		endforeach;
+		return (string) ob_get_clean();
 	}
 endif;
 
 /**
- * Timeline stylesheet only on the timeline page.
+ * REST: GET /wp-json/v5imraan/v1/timeline?page=N | ?y=YYYY
+ */
+add_action(
+	'rest_api_init',
+	function () {
+		register_rest_route(
+			'v5imraan/v1',
+			'/timeline',
+			array(
+				'methods'             => 'GET',
+				'permission_callback' => '__return_true',
+				'args'                => array(
+					'page' => array(
+						'type'    => 'integer',
+						'default' => 1,
+						'minimum' => 1,
+					),
+					'y'    => array(
+						'type'    => 'integer',
+						'default' => 0,
+					),
+				),
+				'callback'            => function ( WP_REST_Request $req ) {
+					$data  = v5imraan_timeline_data();
+					$year  = (int) $req->get_param( 'y' );
+					$page  = (int) $req->get_param( 'page' );
+					$slice = v5imraan_timeline_slice( $data, $page, $year );
+					$res   = new WP_REST_Response(
+						array(
+							'html'  => v5imraan_timeline_render_days( $slice['days'], $data['year_totals'] ),
+							'next'  => $slice['next'],
+							'posts' => array_sum(
+								array_map(
+									function ( $d ) {
+										return count( $d['items'] );
+									},
+									$slice['days']
+								)
+							),
+						)
+					);
+					$res->header( 'Cache-Control', 'public, max-age=600' );
+					return $res;
+				},
+			)
+		);
+	}
+);
+
+/**
+ * Timeline assets only on the timeline page.
  */
 add_action(
 	'wp_enqueue_scripts',
 	function () {
 		if ( is_page( 'timeline' ) ) {
 			wp_enqueue_style( 'v5-timeline', get_stylesheet_directory_uri() . '/css/timeline.css', array( 'main-style' ), v5imraan_asset_version( 'css/timeline.css' ) );
+			wp_enqueue_script( 'v5-timeline', get_stylesheet_directory_uri() . '/js/timeline.js', array(), v5imraan_asset_version( 'js/timeline.js' ), true );
 		}
 	},
 	20

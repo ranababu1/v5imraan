@@ -2,11 +2,22 @@
 /**
  * Writing Timeline (/timeline/). Auto-applies by page slug.
  *
+ * Renders one chunk (?page=N, default 1) or one whole year (?y=YYYY);
+ * js/timeline.js loads further chunks / years from the REST route.
+ *
  * @package v5imraan
  */
 
 get_header();
-$v5_tl_html = v5imraan_timeline_html();
+
+$v5_tl      = v5imraan_timeline_data();
+$v5_tl_url  = get_permalink();
+$v5_tl_year = isset( $_GET['y'] ) ? absint( $_GET['y'] ) : 0; // phpcs:ignore WordPress.Security.NonceVerification.Recommended
+if ( $v5_tl_year && ! isset( $v5_tl['year_totals'][ $v5_tl_year ] ) ) {
+	$v5_tl_year = 0;
+}
+$v5_tl_page  = max( 1, (int) get_query_var( 'page' ) );
+$v5_tl_slice = v5imraan_timeline_slice( $v5_tl, $v5_tl_page, $v5_tl_year );
 ?>
 
 <main id="primary" class="site-main tl-page">
@@ -17,7 +28,28 @@ $v5_tl_html = v5imraan_timeline_html();
 			<p class="tl-hero__intro"><?php esc_html_e( 'Every article in date order, newest first. Pick a year to jump to it, or scroll through the whole archive.', 'v5imraan' ); ?></p>
 		</header>
 
-		<?php echo $v5_tl_html; // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped -- escaped at render time. ?>
+		<nav class="tl-filter" aria-label="<?php esc_attr_e( 'Filter by year', 'v5imraan' ); ?>">
+			<ul class="tl-filter__list">
+				<li><a class="tl-chip<?php echo $v5_tl_year ? '' : ' is-active'; ?>" href="<?php echo esc_url( $v5_tl_url ); ?>" data-year="all"<?php echo $v5_tl_year ? '' : ' aria-current="true"'; ?>><?php esc_html_e( 'All', 'v5imraan' ); ?></a></li>
+				<?php foreach ( array_keys( $v5_tl['year_totals'] ) as $y ) : ?>
+					<li><a class="tl-chip<?php echo $v5_tl_year === (int) $y ? ' is-active' : ''; ?>" href="<?php echo esc_url( add_query_arg( 'y', (int) $y, $v5_tl_url ) . '#y' . (int) $y ); ?>" data-year="<?php echo (int) $y; ?>"<?php echo $v5_tl_year === (int) $y ? ' aria-current="true"' : ''; ?>><?php echo (int) $y; ?></a></li>
+				<?php endforeach; ?>
+			</ul>
+		</nav>
+
+		<div id="timeline" class="tl-years" data-total="<?php echo (int) $v5_tl['total']; ?>" data-endpoint="<?php echo esc_url( rest_url( 'v5imraan/v1/timeline' ) ); ?>" data-next="<?php echo (int) $v5_tl_slice['next']; ?>" data-mode="<?php echo $v5_tl_year ? 'year' : 'all'; ?>">
+			<?php echo v5imraan_timeline_render_days( $v5_tl_slice['days'], $v5_tl['year_totals'] ); // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped -- escaped at render time. ?>
+		</div>
+
+		<div class="tl-more">
+			<?php if ( $v5_tl_slice['next'] ) : ?>
+				<a class="tl-more__btn tl-more__link" href="<?php echo esc_url( add_query_arg( 'page', (int) $v5_tl_slice['next'], $v5_tl_url ) ); ?>"><?php esc_html_e( 'Load more', 'v5imraan' ); ?></a>
+				<button type="button" class="tl-more__btn tl-more__button" hidden><?php esc_html_e( 'Load more', 'v5imraan' ); ?></button>
+			<?php elseif ( $v5_tl_year ) : ?>
+				<a class="tl-more__btn" href="<?php echo esc_url( $v5_tl_url ); ?>"><?php esc_html_e( 'Show all years', 'v5imraan' ); ?></a>
+			<?php endif; ?>
+			<p class="tl-more__status" role="status" aria-live="polite"></p>
+		</div>
 	</div>
 </main>
 
@@ -27,8 +59,8 @@ echo wp_json_encode(
 	array(
 		'@context'    => 'https://schema.org',
 		'@type'       => 'CollectionPage',
-		'@id'         => get_permalink() . '#webpage',
-		'url'         => get_permalink(),
+		'@id'         => $v5_tl_url . '#webpage',
+		'url'         => $v5_tl_url,
 		'name'        => 'Writing Timeline',
 		'description' => 'Every article on imraan.in in date order, grouped by year.',
 		'isPartOf'    => array( '@id' => home_url( '/#website' ) ),
@@ -36,39 +68,6 @@ echo wp_json_encode(
 	JSON_UNESCAPED_SLASHES | JSON_UNESCAPED_UNICODE
 );
 ?>
-</script>
-<script>
-(function () {
-	var chips = document.querySelectorAll('.tl-chip');
-	var years = document.querySelectorAll('.tl-year');
-	if (!chips.length || !years.length) { return; }
-	function show(y) {
-		var found = false;
-		years.forEach(function (s) {
-			var on = y === 'all' || s.getAttribute('data-year') === y;
-			s.hidden = !on;
-			if (on) { found = true; }
-		});
-		if (!found) { return show('all'); }
-		chips.forEach(function (c) {
-			var on = c.getAttribute('data-year') === y;
-			c.classList.toggle('is-active', on);
-			if (on) { c.setAttribute('aria-current', 'true'); } else { c.removeAttribute('aria-current'); }
-		});
-	}
-	chips.forEach(function (c) {
-		c.addEventListener('click', function (e) {
-			e.preventDefault();
-			var y = c.getAttribute('data-year');
-			show(y);
-			history.replaceState(null, '', y === 'all' ? location.pathname : '#y' + y);
-			var top = document.getElementById('timeline').getBoundingClientRect().top + window.scrollY - 140;
-			if (window.scrollY > top) { window.scrollTo({ top: top }); }
-		});
-	});
-	var m = /^#y(\d{4})$/.exec(location.hash);
-	if (m) { show(m[1]); }
-})();
 </script>
 
 <?php
