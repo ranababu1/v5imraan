@@ -300,51 +300,33 @@
 	}
 
 	/* ---------------------------------------------------------------
-	 * Homepage stat cards: count the numbers up once they're in view.
-	 * The final value is in the markup; only the digits animate.
+	 * Homepage scroll reveal. Only elements still below the fold get
+	 * the hidden state, so above-the-fold content never flashes.
 	 * ------------------------------------------------------------- */
-	var counters = document.querySelectorAll( '[data-count]' );
+	var reveals = document.querySelectorAll( '[data-reveal]' );
 
 	if (
-		counters.length &&
+		reveals.length &&
 		'IntersectionObserver' in window &&
 		! ( window.matchMedia && window.matchMedia( '(prefers-reduced-motion: reduce)' ).matches )
 	) {
-		var runCounter = function ( el ) {
-			var target = parseInt( el.getAttribute( 'data-count' ), 10 );
-			var finalText = el.textContent;
-			var start = null;
-			var duration = 1400;
-
-			var step = function ( now ) {
-				if ( start === null ) {
-					start = now;
-				}
-				var t = Math.min( 1, ( now - start ) / duration );
-				var eased = 1 - Math.pow( 1 - t, 3 );
-				el.textContent = t < 1 ? finalText.replace( String( target ), String( Math.round( target * eased ) ) ) : finalText;
-				if ( t < 1 ) {
-					window.requestAnimationFrame( step );
-				}
-			};
-
-			window.requestAnimationFrame( step );
-		};
-
-		var counterObserver = new IntersectionObserver(
+		var revealObserver = new IntersectionObserver(
 			function ( entries ) {
 				entries.forEach( function ( entry ) {
 					if ( entry.isIntersecting ) {
-						counterObserver.unobserve( entry.target );
-						runCounter( entry.target );
+						entry.target.classList.add( 'rv-in' );
+						revealObserver.unobserve( entry.target );
 					}
 				} );
 			},
-			{ threshold: 0.6 }
+			{ rootMargin: '0px 0px -8% 0px' }
 		);
 
-		Array.prototype.forEach.call( counters, function ( el ) {
-			counterObserver.observe( el );
+		Array.prototype.forEach.call( reveals, function ( el ) {
+			if ( el.getBoundingClientRect().top > window.innerHeight ) {
+				el.classList.add( 'rv-on' );
+				revealObserver.observe( el );
+			}
 		} );
 	}
 } )();
