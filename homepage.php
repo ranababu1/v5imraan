@@ -7,7 +7,8 @@ get_header(); ?>
 
 <main>
 
-  <section>
+  <section class="hp-hero">
+    <div class="hp-aurora" aria-hidden="true"><span></span><span></span><span></span></div>
     <div class="container">
       <p class="hp-eyebrow">Engineering Leader. AI Systems. Platform Architecture.</p>
       <h1 class="ourfeatures-heading">
@@ -18,7 +19,7 @@ get_header(); ?>
       <div class="ourfeatures-dflex">
         <div class="ourfeatures-dflex__left">
           <div class="ourfeatures-box">
-            <span class="ourfeatures-gradient"><small></small> Imranul Haque Mazumder</span>
+            <span class="ourfeatures-gradient"><small aria-hidden="true"></small> Imranul Haque Mazumder</span>
             <h2>I build end-to-end AI systems</h2>
             <p>
               That transform business operations driving growth, efficiency, and innovation through AI-powered platforms, intelligent automation, and engineering excellence. Scalable systems that deliver measurable enterprise impact.
@@ -30,11 +31,7 @@ get_header(); ?>
           <div class="ourfeatures-sm__dflex">
             <div class="ourfeatures-sm__dflexleft">
               <div class="ourfeatures-sm__box stat-card">
-                <div class="stat-fx stat-fx--clock" aria-hidden="true"><span class="stat-fx__hand"></span></div>
-                <div class="stat-fx stat-fx--timeline" aria-hidden="true">
-                  <?php for ( $y = 0; $y < 13; $y++ ) : ?><i style="--i:<?php echo (int) $y; ?>"></i><?php endfor; ?>
-                </div>
-                <p class="stat-number pdt-0" data-count="13">13+ yrs</p>
+                <p class="stat-number pdt-0">13+ yrs</p>
                 <h3 class="pdt-0">of Experience</h3>
                 <p>
                   AI Systems, Full Stack, DevOps, Platform Architecture, Security, CRO, Analytics, SEO, Martech, CRM and CMS.
@@ -43,10 +40,7 @@ get_header(); ?>
             </div>
             <div class="ourfeatures-sm__dflexright">
               <div class="ourfeatures-sm__box stat-card">
-                <div class="stat-fx stat-fx--bars" aria-hidden="true">
-                  <?php foreach ( array( 100, 80, 58, 38, 20 ) as $b => $h ) : ?><i style="--h:<?php echo (int) $h; ?>%;--i:<?php echo (int) $b; ?>"></i><?php endforeach; ?>
-                </div>
-                <p class="stat-number pdt-0" data-count="80">~80%</p>
+                <p class="stat-number pdt-0">~80%</p>
                 <h3 class="pdt-0">Cloud Cost Reduction</h3>
                 <p>
                   through cloud architectural and operational optimizations.
@@ -55,10 +49,7 @@ get_header(); ?>
             </div>
           </div>
           <div class="ourfeatures-box green-gradient mg-25 stat-card">
-            <div class="stat-fx stat-fx--dots" aria-hidden="true">
-              <?php for ( $d = 0; $d < 32; $d++ ) : ?><i style="--d:<?php echo (int) ( ( $d % 8 ) + floor( $d / 8 ) ); ?>"></i><?php endfor; ?>
-            </div>
-            <p class="stat-number" data-count="150">150+</p>
+            <p class="stat-number">150+</p>
             <h3>Projects Delivered</h3>
             <p>
               Scalable solutions for 150+ projects across enterprise and Fortune 500 domains - finance, hospitality, technology, and e-commerce.
@@ -73,7 +64,7 @@ get_header(); ?>
   <!-- Trusted collaboration / logo marquee -->
   <section class="hp-trusted">
     <div class="container">
-      <p class="hp-trusted__kicker">Trusted collaboration</p>
+      <p class="hp-trusted__kicker" data-reveal>Trusted collaboration</p>
       <h3 class="hp-trusted__heading">I&rsquo;ve had the pleasure to work with</h3>
     </div>
     <div class="hp-marquee">
@@ -103,7 +94,7 @@ get_header(); ?>
   <!-- Flagship Systems -->
   <section id="projects" class="card-box hp-dark">
     <div class="container">
-      <div class="hp-section-head">
+      <div class="hp-section-head" data-reveal>
         <p class="hp-eyebrow">Selected work</p>
         <h2 class="hp-heading hp-heading--gradient">Flagship Systems</h2>
         <p class="hp-subtext">AI-driven systems and platforms built for enterprise scale and measurable outcomes.</p>
@@ -148,7 +139,7 @@ get_header(); ?>
           $stack      = isset( $parts[1] ) ? $parts[0] : '';
           $stack_tags = $stack ? array_map( 'trim', explode( '+', $stack ) ) : [];
         ?>
-          <li>
+          <li data-reveal style="--rv:<?php echo (int) ( $i % 3 ); ?>">
             <div class="flagship-card">
               <span class="flagship-card__index" aria-hidden="true"><?php echo esc_html( sprintf( '%02d', $i + 1 ) ); ?></span>
               <h3 class="flagship-card__title"><?php echo esc_html($proj['title']); ?></h3>
@@ -173,11 +164,11 @@ get_header(); ?>
   <!-- Awards & Recognition -->
   <section id="awards" class="hp-awards">
     <div class="container">
-      <div class="hp-section-head">
+      <div class="hp-section-head" data-reveal>
         <p class="hp-eyebrow">Recognition</p>
         <h2 class="hp-heading hp-heading--gradient">Awards &amp; Promotions</h2>
       </div>
-      <div class="awards-layout">
+      <div class="awards-layout" data-reveal>
         <ul class="awards-list">
           <li>
             <button type="button" class="award-row js-award" data-award="a1" aria-pressed="true">
@@ -282,7 +273,7 @@ get_header(); ?>
   <!-- Tech Insights From My Blog -->
   <section id="tech-insights" class="card-box hp-dark">
     <div class="container">
-      <div class="hp-section-head">
+      <div class="hp-section-head" data-reveal>
         <p class="hp-eyebrow">From the blog</p>
         <h2 class="hp-heading hp-heading--gradient">Tech Insights From My Blog</h2>
         <p class="hp-subtext">Stay ahead with the latest on AI systems, platform engineering, and scalable architecture.</p>
