@@ -37,6 +37,13 @@ if ( ! function_exists( 'v5imraan_timeline_flush' ) ) :
 			return;
 		}
 		delete_transient( v5imraan_timeline_cache_key() );
+		// New data version: REST URLs change, so page caches can't serve stale chunks.
+		update_option( 'v5_timeline_ver', (string) time(), false );
+		// LiteSpeed doesn't purge custom pages on publish; purge the timeline URL.
+		$page = get_page_by_path( 'timeline' );
+		if ( $page ) {
+			do_action( 'litespeed_purge_url', get_permalink( $page ) );
+		}
 	}
 endif;
 add_action( 'save_post', 'v5imraan_timeline_flush' );
