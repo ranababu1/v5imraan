@@ -857,6 +857,34 @@ figure.sp-featured {
   margin: 0;
 }
 
+/* Executive Summary box at the top of posts. Markup in post content:
+ * <div class="executive-summary"><strong>Executive Summary:</strong> ...</div> */
+.executive-summary {
+  background-color: #f8fafc;
+  border: 1px solid #e2e8f0;
+  border-left: 5px solid #1e3a8a;
+  border-radius: 0 10px 10px 0;
+  padding: 22px 25px;
+  margin: 0 0 30px;
+  color: #334155;
+  line-height: 1.7;
+}
+
+.executive-summary > strong:first-child {
+  color: #1e293b;
+  font-weight: 700;
+}
+
+.executive-summary p:last-child {
+  margin-bottom: 0;
+}
+
+@media (max-width: 600px) {
+  .executive-summary {
+    padding: 18px 18px;
+  }
+}
+
 .sp-content img {
   max-width: 100%;
   height: auto;
