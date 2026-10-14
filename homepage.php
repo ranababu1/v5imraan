@@ -24,7 +24,7 @@ get_header(); ?>
             <p>
               That transform business operations driving growth, efficiency, and innovation through AI-powered platforms, intelligent automation, and engineering excellence. Scalable systems that deliver measurable enterprise impact.
             </p>
-            <img class="img-responsive ourfeatures-img" src="<?php echo esc_url( home_url( '/wp-content/uploads/2026/10/imraan-portrait.webp' ) ); ?>" width="1145" height="1374" alt="Portrait of Imranul Haque Mazumder" loading="eager" fetchpriority="high" decoding="async">
+            <img class="img-responsive ourfeatures-img" src="<?php echo esc_url( home_url( '/wp-content/uploads/2026/10/imraan-portrait.webp' ) ); ?>" srcset="<?php echo esc_url( get_stylesheet_directory_uri() . '/img/imraan-portrait-480.webp' ); ?> 480w, <?php echo esc_url( get_stylesheet_directory_uri() . '/img/imraan-portrait-720.webp' ); ?> 720w, <?php echo esc_url( home_url( '/wp-content/uploads/2026/10/imraan-portrait.webp' ) ); ?> 1145w" sizes="(max-width: 767px) 92vw, 560px" width="1145" height="1374" alt="Portrait of Imranul Haque Mazumder" loading="eager" fetchpriority="high" decoding="async">
           </div>
         </div>
         <div class="ourfeatures-dflex__right">
@@ -71,18 +71,18 @@ get_header(); ?>
       <div class="hp-marquee__track">
         <?php
         $logos = array(
-          array( 'amex.png', 'Amex' ),
-          array( 'fox-sports.png', 'Fox Sports' ),
-          array( 'delta.png', 'Delta' ),
-          array( 'hilton.png', 'Hilton' ),
-          array( 'marriott.png', 'Marriott' ),
-          array( 'zeta.png', 'Zeta' ),
+          array( 'amex.webp', 'Amex', 182 ),
+          array( 'fox-sports.webp', 'Fox Sports', 108 ),
+          array( 'delta.webp', 'Delta', 114 ),
+          array( 'hilton.webp', 'Hilton', 216 ),
+          array( 'marriott.webp', 'Marriott', 282 ),
+          array( 'zeta.webp', 'Zeta', 167 ),
         );
         $logo_uri = get_stylesheet_directory_uri() . '/img/';
         foreach ( array( 1, 2 ) as $pass ) :
           foreach ( $logos as $logo ) :
         ?>
-            <img src="<?php echo esc_url( $logo_uri . $logo[0] ); ?>" alt="<?php echo esc_attr( $logo[1] ); ?>" loading="lazy" decoding="async">
+            <img src="<?php echo esc_url( $logo_uri . $logo[0] ); ?>" width="<?php echo (int) $logo[2]; ?>" height="64" alt="<?php echo 2 === $pass ? '' : esc_attr( $logo[1] ); ?>"<?php echo 2 === $pass ? ' aria-hidden="true"' : ''; ?> loading="lazy" decoding="async">
         <?php
           endforeach;
         endforeach;
