@@ -34,7 +34,11 @@ $archive = v5imraan_archive_heading();
 						<ul class="author-hero__meta">
 							<li class="author-hero__stat">
 								<span class="author-hero__stat-number"><?php echo esc_html( number_format_i18n( $author_count ) ); ?></span>
-								<?php echo esc_html( _n( 'Article', 'Articles', $author_count, 'v5imraan' ) ); ?>
+								<?php echo esc_html( _n( 'article', 'articles', $author_count, 'v5imraan' ) ); ?>
+								<?php $author_years = v5imraan_author_years_writing( get_queried_object_id() ); ?>
+								<?php esc_html_e( 'in', 'v5imraan' ); ?>
+								<span class="author-hero__stat-number"><?php echo esc_html( number_format_i18n( $author_years ) ); ?></span>
+								<?php echo esc_html( _n( 'year', 'years', $author_years, 'v5imraan' ) ); ?>
 							</li>
 							<?php foreach ( v5imraan_author_social_links() as $network_label => $network_url ) : ?>
 								<li>

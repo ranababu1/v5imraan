@@ -309,3 +309,43 @@ add_filter( 'upload_mimes', 'v5imraan_custom_upload_mimes' );
  * authentication via application passwords always works.
  */
 add_filter( 'wp_is_application_passwords_available', '__return_true' );
+/**
+ * Whole years since an author's oldest published post (minimum 1).
+ * The oldest post date is cached in a transient and cleared whenever a post changes status.
+ */
+function v5imraan_author_years_writing( $author_id ) {
+	$author_id = (int) $author_id;
+	$key       = 'v5i_author_first_post_' . $author_id;
+	$first     = get_transient( $key );
+	if ( false === $first ) {
+		$oldest = get_posts(
+			array(
+				'author'           => $author_id,
+				'post_type'        => 'post',
+				'post_status'      => 'publish',
+				'orderby'          => 'date',
+				'order'            => 'ASC',
+				'posts_per_page'   => 1,
+				'fields'           => 'ids',
+				'no_found_rows'    => true,
+				'suppress_filters' => true,
+			)
+		);
+		$first = $oldest ? get_post_time( 'U', true, $oldest[0] ) : time();
+		set_transient( $key, (int) $first, DAY_IN_SECONDS );
+	}
+	$from  = new DateTime( '@' . (int) $first );
+	$years = (int) $from->diff( new DateTime( 'now' ) )->y;
+	return max( 1, $years );
+}
+
+add_action(
+	'transition_post_status',
+	function ( $new_status, $old_status, $post ) {
+		if ( 'post' === $post->post_type && ( 'publish' === $new_status || 'publish' === $old_status ) ) {
+			delete_transient( 'v5i_author_first_post_' . (int) $post->post_author );
+		}
+	},
+	10,
+	3
+);
