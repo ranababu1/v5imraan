@@ -240,13 +240,12 @@ if ( ! function_exists( 'v5imraan_share_links' ) ) :
 	 */
 	function v5imraan_share_links() {
 		$url   = get_permalink();
-		$title = get_the_title() . ' — ' . get_bloginfo( 'name' );
+		$title = wp_strip_all_tags( get_the_title() ) . ' | ' . get_bloginfo( 'name' );
 		return array(
 			'x'        => 'https://twitter.com/intent/tweet?url=' . rawurlencode( $url ) . '&text=' . rawurlencode( $title ),
-			'facebook' => 'https://www.facebook.com/sharer/sharer.php?u=' . rawurlencode( $url ),
 			'linkedin' => 'https://www.linkedin.com/sharing/share-offsite/?url=' . rawurlencode( $url ),
 			'whatsapp' => 'https://wa.me/?text=' . rawurlencode( $title . ' ' . $url ),
-			'telegram' => 'https://t.me/share/url?url=' . rawurlencode( $url ) . '&text=' . rawurlencode( $title ),
+			'reddit'   => 'https://www.reddit.com/submit?url=' . rawurlencode( $url ) . '&title=' . rawurlencode( $title ),
 		);
 	}
 endif;
