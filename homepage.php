@@ -300,7 +300,7 @@ get_header(); ?>
         ?>
       </ul>
       <div class="hp-view-all">
-        <a href="/blog" class="hp-view-all__link">View all articles <span aria-hidden="true">&rarr;</span></a>
+        <a href="/blog/" class="hp-view-all__link">View all articles <span aria-hidden="true">&rarr;</span></a>
       </div>
     </div>
   </section>
