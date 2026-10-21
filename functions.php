@@ -349,3 +349,24 @@ add_action(
 	10,
 	3
 );
+
+/**
+ * Give the Jetpack Pinterest "Pin it" image alt text and a size.
+ *
+ * The share button prints a bare <img> inside its link, so the link has no
+ * accessible name and the image has no alt. Only the markup string changes.
+ *
+ * @param string $markup Sharing buttons markup.
+ * @return string
+ */
+function v5imraan_pinterest_button_alt( $markup ) {
+	if ( false === strpos( (string) $markup, 'pinit_fg_' ) ) {
+		return $markup;
+	}
+	return preg_replace(
+		'#<img\s+src="(//assets\.pinterest\.com/images/pidgets/pinit_fg_[^"]+)"\s*/?>#',
+		'<img src="$1" alt="Save to Pinterest" width="40" height="20" />',
+		$markup
+	);
+}
+add_filter( 'jetpack_sharing_display_markup', 'v5imraan_pinterest_button_alt', 20 );
