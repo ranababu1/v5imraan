@@ -163,6 +163,9 @@ function v5imraan_enqueue_adsense() {
 	if ( is_front_page() ) {
 		return; // Same behavior as before: no ads on the homepage.
 	}
+	if ( apply_filters( 'v5imraan_delay_third_party', true ) ) {
+		return; // Loaded after interaction or window load by inc/performance.php.
+	}
 	wp_enqueue_script( 'v5-adsense', 'https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js', array(), null, false );
 	add_filter( 'script_loader_tag', 'v5imraan_adsense_script_tag', 10, 2 );
 }
@@ -203,6 +206,11 @@ require get_stylesheet_directory() . '/inc/llms.php';
  * Writing Timeline page data, cache and assets.
  */
 require get_stylesheet_directory() . '/inc/timeline.php';
+
+/**
+ * Script loading and third-party delays.
+ */
+require get_stylesheet_directory() . '/inc/performance.php';
 
 /**
  * Load Jetpack compatibility file.
