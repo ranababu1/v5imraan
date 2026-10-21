@@ -58,7 +58,7 @@ $v5_chat_icon   = '<svg class="nav-chat__icon" width="18" height="18" viewBox="0
 						</ul>
 					</li>
 					<li<?php echo 'blog' === $v5_nav_current ? ' class="is-current"' : ''; ?>>
-						<a href="/blog" class="desktop-item">My Blog</a>
+						<a href="/blog/" class="desktop-item">My Blog</a>
 						<input type="checkbox" id="showMega">
 						<label for="showMega" class="mobile-item">My Blog</label>
 						<div class="mega-box">
