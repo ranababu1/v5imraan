@@ -41,6 +41,18 @@ add_action(
 	100
 );
 
+// Jetpack enqueues the sharing stylesheet late, so drop it again at print time.
+add_action(
+	'wp_print_styles',
+	function () {
+		if ( apply_filters( 'v5imraan_disable_jetpack_sharing', true ) ) {
+			wp_dequeue_style( 'sharedaddy' );
+			wp_dequeue_style( 'social-logos' );
+		}
+	},
+	100
+);
+
 /*
  * 2. Defer scripts that nothing needs before the page is parsed.
  * Deferred scripts still run in order and before DOMContentLoaded, so
