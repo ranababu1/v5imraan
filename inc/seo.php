@@ -467,3 +467,93 @@ if ( ! function_exists( 'v5imraan_social_meta_tags' ) ) :
 	}
 endif;
 add_action( 'wp_head', 'v5imraan_social_meta_tags', 4 );
+if ( ! function_exists( 'v5imraan_front_page_schema' ) ) :
+	/**
+	 * Hand-written @graph for the front page (house pattern).
+	 */
+	function v5imraan_front_page_schema() {
+		if ( ! is_front_page() ) {
+			return;
+		}
+		$home    = home_url( '/' );
+		$person  = home_url( '/author/imran/#person' );
+		$website = home_url( '/#website' );
+		$lang    = get_bloginfo( 'language' );
+		$graph   = array(
+			'@context' => 'https://schema.org',
+			'@graph'   => array(
+				array(
+					'@type'         => 'Person',
+					'@id'           => $person,
+					'name'          => 'Imranul Haque Mazumder',
+					'alternateName' => array( 'Imran', 'Imraan', 'Imran M' ),
+					'url'           => home_url( '/author/imran/' ),
+					'description'   => 'Imranul Haque Mazumder is a Tech Leader and Associate Director of Technology at CleverTap who builds end-to-end AI systems and writes about AI, system design, Java, cloud and engineering leadership.',
+					'jobTitle'      => 'Tech Leader',
+					'image'         => array(
+						'@type'  => 'ImageObject',
+						'url'    => home_url( '/wp-content/uploads/2026/10/imraan-portrait.webp' ),
+						'width'  => 1145,
+						'height' => 1374,
+					),
+					'hasCredential' => array(
+						'@type'              => 'EducationalOccupationalCredential',
+						'name'               => 'Project Management Professional (PMP)',
+						'credentialCategory' => 'certification',
+						'recognizedBy'       => array(
+							'@type' => 'Organization',
+							'name'  => 'Project Management Institute',
+							'url'   => 'https://www.pmi.org/',
+						),
+					),
+					'knowsAbout'    => array( 'Artificial Intelligence', 'System Design', 'Java', 'Cloud Architecture', 'Engineering Leadership' ),
+					'worksFor'      => array(
+						'@type' => 'Organization',
+						'name'  => 'CleverTap',
+						'url'   => 'https://clevertap.com/',
+					),
+					'sameAs'        => array(
+						'https://www.linkedin.com/in/imazumder/',
+						'https://github.com/ranababu1',
+						'https://x.com/ihm185',
+						'https://www.instagram.com/imraan.dev/',
+						'https://www.quora.com/profile/Imran-M-4',
+						'https://medium.com/@imrn.dev/about',
+						'https://about.me/imraan',
+						'https://topmate.io/mazumder',
+					),
+				),
+				array(
+					'@type'           => 'WebSite',
+					'@id'             => $website,
+					'url'             => $home,
+					'name'            => 'Imraan',
+					'description'     => 'Personal website and technical blog of Imranul Haque Mazumder, covering software engineering, AI, system design, cloud, architecture, and technology.',
+					'publisher'       => array( '@id' => $person ),
+					'inLanguage'      => $lang,
+					'potentialAction' => array(
+						'@type'       => 'SearchAction',
+						'target'      => array(
+							'@type'       => 'EntryPoint',
+							'urlTemplate' => home_url( '/?s={search_term_string}' ),
+						),
+						'query-input' => 'required name=search_term_string',
+					),
+				),
+				array(
+					'@type'      => array( 'WebPage', 'ProfilePage' ),
+					'@id'        => $home . '#webpage',
+					'url'        => $home,
+					'name'       => wp_get_document_title(),
+					'isPartOf'   => array( '@id' => $website ),
+					'about'      => array( '@id' => $person ),
+					'mainEntity' => array( '@id' => $person ),
+					'inLanguage' => $lang,
+				),
+			),
+		);
+		$graph['@graph'][2]['primaryImageOfPage'] = array( '@type' => 'ImageObject', 'url' => home_url( '/wp-content/uploads/2026/10/imraan-portrait.webp' ) );
+		echo "\n" . '<script type="application/ld+json">' . wp_json_encode( $graph, JSON_UNESCAPED_SLASHES | JSON_UNESCAPED_UNICODE ) . '</script>' . "\n";
+	}
+endif;
+add_action( 'wp_head', 'v5imraan_front_page_schema', 3 );

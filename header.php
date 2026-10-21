@@ -21,6 +21,7 @@ $v5_chat_icon   = '<svg class="nav-chat__icon" width="18" height="18" viewBox="0
 	<link rel="profile" href="https://gmpg.org/xfn/11">
 	<link rel="icon" href="<?php echo esc_url( home_url( '/wp-content/uploads/2020/12/cropped-fav-32x32.png' ) ); ?>" sizes="32x32">
 	<link rel="icon" href="<?php echo esc_url( home_url( '/wp-content/uploads/2020/12/cropped-fav-192x192.png' ) ); ?>" sizes="192x192">
+	<script src="https://analytics.ahrefs.com/analytics.js" data-key="yFp27iiWkCVN/wwhlycpzQ" async></script>
 	<?php wp_head(); ?>
 </head>
 
