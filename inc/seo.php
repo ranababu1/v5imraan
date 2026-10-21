@@ -557,3 +557,31 @@ if ( ! function_exists( 'v5imraan_front_page_schema' ) ) :
 	}
 endif;
 add_action( 'wp_head', 'v5imraan_front_page_schema', 3 );
+
+if ( ! function_exists( 'v5imraan_term_meta_description' ) ) :
+	/**
+	 * Use the hand-written term meta description (term meta key wpseo_desc)
+	 * on category, tag and taxonomy archives when one is set.
+	 *
+	 * Yoast keeps term SEO in its own option and indexables, which the
+	 * site tooling cannot write. This lets a description saved as term meta
+	 * win over the stored Yoast value, for the meta, Open Graph and X tags.
+	 *
+	 * @param string $description Description Yoast is about to print.
+	 * @return string
+	 */
+	function v5imraan_term_meta_description( $description ) {
+		if ( ! ( is_category() || is_tag() || is_tax() ) ) {
+			return $description;
+		}
+		$term = get_queried_object();
+		if ( ! ( $term instanceof WP_Term ) ) {
+			return $description;
+		}
+		$custom = trim( (string) get_term_meta( $term->term_id, 'wpseo_desc', true ) );
+		return '' !== $custom ? $custom : $description;
+	}
+endif;
+add_filter( 'wpseo_metadesc', 'v5imraan_term_meta_description', 20 );
+add_filter( 'wpseo_opengraph_desc', 'v5imraan_term_meta_description', 20 );
+add_filter( 'wpseo_twitter_description', 'v5imraan_term_meta_description', 20 );
