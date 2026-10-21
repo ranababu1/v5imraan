@@ -704,7 +704,7 @@ if ( ! function_exists( 'v5imraan_category_archive_schema' ) ) :
 
 		$node = array(
 			'@type'      => 'CollectionPage',
-			'@id'        => $url . '#webpage',
+			'@id'        => $url . '#collection',
 			'url'        => $url,
 			'name'       => wp_specialchars_decode( wp_get_document_title(), ENT_QUOTES ),
 			'isPartOf'   => array( '@id' => $website ),
