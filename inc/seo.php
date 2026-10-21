@@ -629,3 +629,129 @@ if ( ! function_exists( 'v5imraan_blog_index_twitter_desc' ) ) :
 	}
 endif;
 add_filter( 'wpseo_twitter_description', 'v5imraan_blog_index_twitter_desc', 20 );
+
+if ( ! function_exists( 'v5imraan_category_archive_schema' ) ) :
+	/**
+	 * CollectionPage graph for category archives, in the house @graph
+	 * pattern: one script, linked to the site Person and WebSite by @id.
+	 *
+	 * Yoast's own schema is switched off on this site, so category pages
+	 * otherwise print no structured data at all.
+	 */
+	function v5imraan_category_archive_schema() {
+		if ( ! is_category() ) {
+			return;
+		}
+		$term  = get_queried_object();
+		$query = isset( $GLOBALS['wp_query'] ) ? $GLOBALS['wp_query'] : null;
+		if ( ! ( $term instanceof WP_Term ) || ! ( $query instanceof WP_Query ) || ! $query->have_posts() ) {
+			return;
+		}
+		$term_url = get_term_link( $term );
+		if ( is_wp_error( $term_url ) ) {
+			return;
+		}
+		$paged   = max( 1, (int) get_query_var( 'paged' ) );
+		$url     = $paged > 1 ? trailingslashit( $term_url ) . 'page/' . $paged . '/' : $term_url;
+		$person  = home_url( '/author/imran/#person' );
+		$website = home_url( '/#website' );
+		$lang    = get_bloginfo( 'language' );
+
+		$desc = trim( (string) get_term_meta( $term->term_id, 'wpseo_desc', true ) );
+		if ( '' === $desc ) {
+			$desc = wp_strip_all_tags( term_description( $term ) );
+			$desc = mb_strimwidth( trim( preg_replace( '/\s+/', ' ', $desc ) ), 0, 300, '...' );
+		}
+
+		$items = array();
+		$pos   = 1;
+		foreach ( $query->posts as $p ) {
+			$items[] = array(
+				'@type'    => 'ListItem',
+				'position' => $pos++,
+				'url'      => get_permalink( $p ),
+				'name'     => wp_strip_all_tags( get_the_title( $p ) ),
+			);
+		}
+
+		$crumbs = array(
+			array(
+				'@type'    => 'ListItem',
+				'position' => 1,
+				'name'     => 'Home',
+				'item'     => home_url( '/' ),
+			),
+		);
+		$ancestors = array_reverse( get_ancestors( $term->term_id, 'category', 'taxonomy' ) );
+		foreach ( $ancestors as $ancestor_id ) {
+			$ancestor = get_term( $ancestor_id, 'category' );
+			$link     = $ancestor ? get_term_link( $ancestor ) : '';
+			if ( $ancestor && ! is_wp_error( $link ) ) {
+				$crumbs[] = array(
+					'@type'    => 'ListItem',
+					'position' => count( $crumbs ) + 1,
+					'name'     => wp_specialchars_decode( $ancestor->name, ENT_QUOTES ),
+					'item'     => $link,
+				);
+			}
+		}
+		$crumbs[] = array(
+			'@type'    => 'ListItem',
+			'position' => count( $crumbs ) + 1,
+			'name'     => wp_specialchars_decode( $term->name, ENT_QUOTES ),
+			'item'     => $term_url,
+		);
+
+		$node = array(
+			'@type'      => 'CollectionPage',
+			'@id'        => $url . '#webpage',
+			'url'        => $url,
+			'name'       => wp_specialchars_decode( wp_get_document_title(), ENT_QUOTES ),
+			'isPartOf'   => array( '@id' => $website ),
+			'author'     => array( '@id' => $person ),
+			'publisher'  => array( '@id' => $person ),
+			'about'      => array(
+				'@type' => 'Thing',
+				'name'  => wp_specialchars_decode( $term->name, ENT_QUOTES ),
+			),
+			'breadcrumb' => array( '@id' => $url . '#breadcrumb' ),
+			'mainEntity' => array( '@id' => $url . '#itemlist' ),
+			'inLanguage' => $lang,
+		);
+		if ( '' !== $desc ) {
+			$node['description'] = $desc;
+		}
+
+		$graph = array(
+			'@context' => 'https://schema.org',
+			'@graph'   => array(
+				array(
+					'@type' => 'Person',
+					'@id'   => $person,
+					'name'  => 'Imranul Haque Mazumder',
+					'url'   => home_url( '/author/imran/' ),
+				),
+				array(
+					'@type'     => 'WebSite',
+					'@id'       => $website,
+					'url'       => home_url( '/' ),
+					'name'      => 'Imraan',
+					'publisher' => array( '@id' => $person ),
+				),
+				$node,
+				array(
+					'@type'           => 'BreadcrumbList',
+					'@id'             => $url . '#breadcrumb',
+					'itemListElement' => $crumbs,
+				),
+				array(
+					'@type'           => 'ItemList',
+					'@id'             => $url . '#itemlist',
+					'itemListElement' => $items,
+				),
+			),
+		);
+		echo "\n" . '<script type="application/ld+json">' . wp_json_encode( $graph, JSON_UNESCAPED_SLASHES | JSON_UNESCAPED_UNICODE ) . '</script>' . "\n";
+	}
+endif;
+add_action( 'wp_head', 'v5imraan_category_archive_schema', 3 );
