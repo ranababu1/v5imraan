@@ -585,3 +585,47 @@ endif;
 add_filter( 'wpseo_metadesc', 'v5imraan_term_meta_description', 20 );
 add_filter( 'wpseo_opengraph_desc', 'v5imraan_term_meta_description', 20 );
 add_filter( 'wpseo_twitter_description', 'v5imraan_term_meta_description', 20 );
+
+if ( ! function_exists( 'v5imraan_blog_index_title' ) ) :
+	/**
+	 * Title for the posts page (/blog/ and /blog/page/N/).
+	 *
+	 * Yoast's posts-page template left paginated pages as "- Page N of M",
+	 * and printed no og:title or X title on /blog/. This builds one title
+	 * for all of them: "Blog | Site" and "Blog - Page N of M | Site".
+	 *
+	 * @param string $title Title Yoast is about to print.
+	 * @return string
+	 */
+	function v5imraan_blog_index_title( $title ) {
+		if ( ! is_home() || is_front_page() ) {
+			return $title;
+		}
+		$site  = wp_specialchars_decode( get_bloginfo( 'name' ), ENT_QUOTES );
+		$paged = max( 1, (int) get_query_var( 'paged' ) );
+		if ( $paged > 1 ) {
+			$total = (int) $GLOBALS['wp_query']->max_num_pages;
+			return sprintf( 'Blog - Page %1$d of %2$d | %3$s', $paged, max( $paged, $total ), $site );
+		}
+		return 'Blog | ' . $site;
+	}
+endif;
+add_filter( 'wpseo_title', 'v5imraan_blog_index_title', 20 );
+add_filter( 'wpseo_opengraph_title', 'v5imraan_blog_index_title', 20 );
+add_filter( 'wpseo_twitter_title', 'v5imraan_blog_index_title', 20 );
+
+if ( ! function_exists( 'v5imraan_blog_index_twitter_desc' ) ) :
+	/**
+	 * Give /blog/ an X description that matches its Open Graph one.
+	 *
+	 * @param string $description Description Yoast is about to print.
+	 * @return string
+	 */
+	function v5imraan_blog_index_twitter_desc( $description ) {
+		if ( ! is_home() || is_front_page() || '' !== trim( (string) $description ) ) {
+			return $description;
+		}
+		return v5imraan_meta_description();
+	}
+endif;
+add_filter( 'wpseo_twitter_description', 'v5imraan_blog_index_twitter_desc', 20 );
