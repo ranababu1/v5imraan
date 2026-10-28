@@ -2443,6 +2443,8 @@ nav .wrapper ul li {
 
 .sf__legal {
   display: flex;
+  flex-wrap: wrap;
+  row-gap: 8px;
   list-style: none;
   margin: 0;
   padding: 0;
@@ -2460,6 +2462,21 @@ nav .wrapper ul li {
 }
 
 .sf__legal a:hover {
+  color: #ffffff;
+}
+
+/* "Cookie preferences" reopens the Complianz banner; looks like the links. */
+.sf__legal-btn {
+  padding: 0;
+  border: 0;
+  background: none;
+  font: inherit;
+  color: rgba(203, 213, 225, 0.75);
+  cursor: pointer;
+}
+
+.sf__legal-btn:hover,
+.sf__legal-btn:focus-visible {
   color: #ffffff;
 }
 

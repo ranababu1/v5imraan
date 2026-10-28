@@ -67,6 +67,10 @@ $v5_privacy_url = function_exists( 'get_privacy_policy_url' ) ? get_privacy_poli
 				<?php if ( $v5_privacy_url ) : ?>
 					<li><a href="<?php echo esc_url( $v5_privacy_url ); ?>">Privacy</a></li>
 				<?php endif; ?>
+				<li><a href="<?php echo esc_url( home_url( '/cookie-policy/' ) ); ?>">Cookie Policy</a></li>
+				<?php if ( defined( 'CMPLZ_VERSION' ) ) : // Complianz opens its banner from any .cmplz-show-banner element. ?>
+					<li><button type="button" class="sf__legal-btn cmplz-show-banner">Cookie preferences</button></li>
+				<?php endif; ?>
 				<li><a href="<?php echo esc_url( home_url( '/contact/' ) ); ?>">Contact</a></li>
 			</ul>
 		</div>
