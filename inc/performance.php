@@ -1,8 +1,7 @@
 <?php
 /**
- * Front-end performance: Jetpack sharing off, deferred scripts, and
- * AdSense / Clarity loaded only after the reader interacts or the page
- * has finished loading.
+ * Front-end performance: Jetpack sharing off and deferred scripts.
+ * AdSense / Clarity / Ahrefs loading lives in inc/consent.php.
  *
  * Every piece can be switched off with a filter:
  *   v5imraan_disable_jetpack_sharing, v5imraan_defer_scripts,
@@ -104,65 +103,7 @@ add_filter(
 );
 
 /*
- * 3. AdSense and Microsoft Clarity after first interaction, or 3 seconds
- * after window load, whichever comes first.
+ * 3. AdSense, Microsoft Clarity and Ahrefs are loaded by the consent-gated
+ * loader in inc/consent.php (still after first interaction or 3 seconds
+ * after window load for AdSense and Clarity).
  */
-add_action(
-	'wp_head',
-	function () {
-		if ( ! apply_filters( 'v5imraan_delay_third_party', true ) ) {
-			return;
-		}
-		// Take over the Clarity plugin's inline tag so it can be delayed.
-		// If the plugin or its option is not found, its own tag is left alone.
-		$id = function_exists( 'clarity_add_script_to_header' ) ? (string) get_option( 'clarity_project_id', '' ) : '';
-		if ( '' !== $id && remove_action( 'wp_head', 'clarity_add_script_to_header' ) ) {
-			$GLOBALS['v5imraan_clarity_id'] = $id;
-		}
-	},
-	0
-);
-
-add_action(
-	'wp_footer',
-	function () {
-		if ( ! apply_filters( 'v5imraan_delay_third_party', true ) ) {
-			return;
-		}
-		$ads     = ! is_front_page();
-		$clarity = isset( $GLOBALS['v5imraan_clarity_id'] ) ? preg_replace( '/[^a-z0-9]/i', '', $GLOBALS['v5imraan_clarity_id'] ) : '';
-		if ( ! $ads && '' === $clarity ) {
-			return;
-		}
-		?>
-<script id="v5-delayed-third-party">
-(function () {
-	var done = false;
-	var evts = [ 'pointerdown', 'keydown', 'touchstart', 'scroll', 'mousemove' ];
-	function add( src, attrs ) {
-		var s = document.createElement( 'script' );
-		s.async = true;
-		s.src = src;
-		for ( var k in attrs ) { s.setAttribute( k, attrs[ k ] ); }
-		document.head.appendChild( s );
-	}
-	function go() {
-		if ( done ) { return; }
-		done = true;
-		evts.forEach( function ( e ) { window.removeEventListener( e, go, { passive: true } ); } );
-		<?php if ( $ads ) : ?>
-		add( 'https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-1106747567696734', { 'data-ad-client': 'ca-pub-1106747567696734', 'crossorigin': 'anonymous' } );
-		<?php endif; ?>
-		<?php if ( '' !== $clarity ) : ?>
-		window.clarity = window.clarity || function () { ( window.clarity.q = window.clarity.q || [] ).push( arguments ); };
-		add( 'https://www.clarity.ms/tag/<?php echo esc_js( $clarity ); ?>?ref=wordpress', {} );
-		<?php endif; ?>
-	}
-	evts.forEach( function ( e ) { window.addEventListener( e, go, { passive: true } ); } );
-	window.addEventListener( 'load', function () { setTimeout( go, 3000 ); } );
-})();
-</script>
-		<?php
-	},
-	99
-);
