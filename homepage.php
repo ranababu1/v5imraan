@@ -309,9 +309,9 @@ get_header(); ?>
   <section class="hp-cta">
     <div class="container hp-cta__inner">
       <p class="hp-cta__kicker">Have an AI system or platform challenge you&rsquo;re working through?</p>
-      <h2 class="hp-cta__heading">Let&rsquo;s <a href="https://wa.me/9854082826">connect</a> and build something that scales</h2>
+      <h2 class="hp-cta__heading">Let&rsquo;s <a href="https://wa.me/919854082826">connect</a> and build something that scales</h2>
       <div class="hp-cta__actions">
-        <a href="https://wa.me/9854082826" class="hp-cta__btn">Start the conversation</a>
+        <a href="https://wa.me/919854082826" class="hp-cta__btn">Start the conversation</a>
         <a href="https://t.me/i18587" class="hp-cta__secondary">or message on Telegram</a>
       </div>
     </div>

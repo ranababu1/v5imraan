@@ -755,3 +755,21 @@ if ( ! function_exists( 'v5imraan_category_archive_schema' ) ) :
 	}
 endif;
 add_action( 'wp_head', 'v5imraan_category_archive_schema', 3 );
+
+if ( ! function_exists( 'v5imraan_strip_internal_nofollow' ) ) :
+	/**
+	 * Drop rel="nofollow" from the comment reply and cancel-reply links.
+	 *
+	 * Core prints both with nofollow, and they always point back to the
+	 * same post (#respond or ?replytocom), so crawlers flagged every post
+	 * as linking to itself with nofollow. External links are untouched.
+	 *
+	 * @param string $link Link HTML.
+	 * @return string
+	 */
+	function v5imraan_strip_internal_nofollow( $link ) {
+		return preg_replace( '/\srel=(["\'])nofollow\1/i', '', (string) $link );
+	}
+endif;
+add_filter( 'cancel_comment_reply_link', 'v5imraan_strip_internal_nofollow', 20 );
+add_filter( 'comment_reply_link', 'v5imraan_strip_internal_nofollow', 20 );
