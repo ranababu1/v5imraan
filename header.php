@@ -142,7 +142,7 @@ $v5_chat_icon   = '<svg class="nav-chat__icon" width="18" height="18" viewBox="0
 						<input type="checkbox" id="showDropChat">
 						<label for="showDropChat" class="mobile-item">Chat With Me</label>
 						<ul class="drop-menu">
-							<li><a href="https://wa.me/9854082826">via Whatsapp</a></li>
+							<li><a href="https://wa.me/919854082826">via Whatsapp</a></li>
 							<li><a href="https://t.me/i18587">via Telegram</a></li>
 						</ul>
 					</li>
@@ -150,7 +150,7 @@ $v5_chat_icon   = '<svg class="nav-chat__icon" width="18" height="18" viewBox="0
 				<details class="nav-chat-mobile">
 					<summary class="nav-chat__pill"><?php echo $v5_chat_icon; // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped -- static SVG. ?><span>Chat With Me</span></summary>
 					<ul class="nav-chat-mobile__menu">
-						<li><a href="https://wa.me/9854082826">via Whatsapp</a></li>
+						<li><a href="https://wa.me/919854082826">via Whatsapp</a></li>
 						<li><a href="https://t.me/i18587">via Telegram</a></li>
 					</ul>
 				</details>

@@ -309,8 +309,10 @@ add_action(
 	'wp_enqueue_scripts',
 	function () {
 		if ( is_page( 'timeline' ) ) {
-			wp_enqueue_style( 'v5-timeline', get_stylesheet_directory_uri() . '/css/timeline.css', array( 'main-style' ), v5imraan_asset_version( 'css/timeline.css' ) );
-			wp_enqueue_script( 'v5-timeline', get_stylesheet_directory_uri() . '/js/timeline.js', array(), v5imraan_asset_version( 'js/timeline.js' ), true );
+			$tl_css = v5imraan_asset_file( 'css/timeline.css' );
+			$tl_js  = v5imraan_asset_file( 'js/timeline.js' );
+			wp_enqueue_style( 'v5-timeline', get_stylesheet_directory_uri() . '/' . $tl_css, array( 'main-style' ), v5imraan_asset_version( $tl_css ) );
+			wp_enqueue_script( 'v5-timeline', get_stylesheet_directory_uri() . '/' . $tl_js, array(), v5imraan_asset_version( $tl_js ), true );
 		}
 	},
 	20
