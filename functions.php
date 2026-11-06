@@ -24,6 +24,28 @@ if ( ! function_exists( 'v5imraan_asset_version' ) ) :
 	}
 endif;
 
+if ( ! function_exists( 'v5imraan_asset_file' ) ) :
+	/**
+	 * Minified copy of a theme asset when one exists, else the source.
+	 *
+	 * css/blog.css -> css/blog.min.css, js/main.js -> js/main.min.js.
+	 * The .min files are built by scripts/minify.js; rerun it after
+	 * editing a source file. Pair with v5imraan_asset_version() on the
+	 * returned path so the version follows the file actually served.
+	 *
+	 * @param string $file Path relative to the theme directory.
+	 * @return string Path relative to the theme directory.
+	 */
+	function v5imraan_asset_file( $file ) {
+		$file = ltrim( $file, '/' );
+		$min  = preg_replace( '/\.(css|js)$/', '.min.$1', $file );
+		if ( apply_filters( 'v5imraan_use_minified_assets', true ) && $min !== $file && file_exists( get_stylesheet_directory() . '/' . $min ) ) {
+			return $min;
+		}
+		return $file;
+	}
+endif;
+
 /**
  * Sets up theme defaults and registers support for various WordPress features.
  *
@@ -134,13 +156,20 @@ add_action( 'widgets_init', 'v5imraan_widgets_init' );
  * the homepage blog strip and the 404 page.
  */
 function v5imraan_scripts() {
-	wp_enqueue_style( 'main-style', get_stylesheet_uri(), array(), v5imraan_asset_version( 'style.css' ) );
+	$style = v5imraan_asset_file( 'style.css' );
+	wp_enqueue_style( 'main-style', get_stylesheet_directory_uri() . '/' . $style, array(), v5imraan_asset_version( $style ) );
 	wp_style_add_data( 'main-style', 'rtl', 'replace' );
+	if ( 'style.css' !== $style ) {
+		wp_style_add_data( 'main-style', 'suffix', '.min' );
+	}
 
-	wp_enqueue_style( 'v5-blog', get_stylesheet_directory_uri() . '/css/blog.css', array( 'main-style' ), v5imraan_asset_version( 'css/blog.css' ) );
+	$blog = v5imraan_asset_file( 'css/blog.css' );
+	wp_enqueue_style( 'v5-blog', get_stylesheet_directory_uri() . '/' . $blog, array( 'main-style' ), v5imraan_asset_version( $blog ) );
 
-	wp_enqueue_script( 'v5imraan-navigation', get_stylesheet_directory_uri() . '/js/navigation.js', array(), v5imraan_asset_version( 'js/navigation.js' ), true );
-	wp_enqueue_script( 'main-js', get_stylesheet_directory_uri() . '/js/main.js', array(), v5imraan_asset_version( 'js/main.js' ), true );
+	$nav  = v5imraan_asset_file( 'js/navigation.js' );
+	$main = v5imraan_asset_file( 'js/main.js' );
+	wp_enqueue_script( 'v5imraan-navigation', get_stylesheet_directory_uri() . '/' . $nav, array(), v5imraan_asset_version( $nav ), true );
+	wp_enqueue_script( 'main-js', get_stylesheet_directory_uri() . '/' . $main, array(), v5imraan_asset_version( $main ), true );
 
 	if ( is_singular() && comments_open() && get_option( 'thread_comments' ) ) {
 		wp_enqueue_script( 'comment-reply' );
