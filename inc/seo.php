@@ -773,3 +773,31 @@ if ( ! function_exists( 'v5imraan_strip_internal_nofollow' ) ) :
 endif;
 add_filter( 'cancel_comment_reply_link', 'v5imraan_strip_internal_nofollow', 20 );
 add_filter( 'comment_reply_link', 'v5imraan_strip_internal_nofollow', 20 );
+
+if ( ! function_exists( 'v5imraan_term_meta_title' ) ) :
+	/**
+	 * Use the hand-written term SEO title (term meta key wpseo_title) on
+	 * category, tag and taxonomy archives when one is set.
+	 *
+	 * Same reason as v5imraan_term_meta_description(): the stored Yoast
+	 * term title lives in Yoast's indexables, which the site tooling
+	 * cannot refresh, so a title saved as term meta wins here.
+	 *
+	 * @param string $title Title Yoast is about to print.
+	 * @return string
+	 */
+	function v5imraan_term_meta_title( $title ) {
+		if ( ! ( is_category() || is_tag() || is_tax() ) || is_paged() ) {
+			return $title;
+		}
+		$term = get_queried_object();
+		if ( ! ( $term instanceof WP_Term ) ) {
+			return $title;
+		}
+		$custom = trim( (string) get_term_meta( $term->term_id, 'wpseo_title', true ) );
+		return '' !== $custom ? $custom : $title;
+	}
+endif;
+add_filter( 'wpseo_title', 'v5imraan_term_meta_title', 20 );
+add_filter( 'wpseo_opengraph_title', 'v5imraan_term_meta_title', 20 );
+add_filter( 'wpseo_twitter_title', 'v5imraan_term_meta_title', 20 );
