@@ -189,8 +189,8 @@ function v5imraan_adsense_script_tag( $tag, $handle ) {
 }
 
 function v5imraan_enqueue_adsense() {
-	if ( is_front_page() ) {
-		return; // Same behavior as before: no ads on the homepage.
+	if ( ! is_singular( 'post' ) ) {
+		return; // Auto ads only on single posts, not the homepage, archives or pages.
 	}
 	if ( apply_filters( 'v5imraan_delay_third_party', true ) ) {
 		return; // Loaded after interaction or window load by inc/performance.php.
