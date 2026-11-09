@@ -129,7 +129,7 @@ add_action(
 		if ( ! apply_filters( 'v5imraan_delay_third_party', true ) ) {
 			return;
 		}
-		$ads     = ! is_front_page();
+		$ads     = is_singular( 'post' ); // Auto ads only on single posts.
 		$clarity = isset( $GLOBALS['v5imraan_clarity_id'] ) ? preg_replace( '/[^a-z0-9]/i', '', $GLOBALS['v5imraan_clarity_id'] ) : '';
 		if ( ! $ads && '' === $clarity ) {
 			return;
