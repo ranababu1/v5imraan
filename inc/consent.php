@@ -113,7 +113,7 @@ function v5imraan_consent_services() {
 		);
 	}
 
-	if ( ! is_front_page() ) {
+	if ( is_singular( 'post' ) ) { // Auto ads only on single posts.
 		$services[] = array(
 			'id'       => 'adsense',
 			'category' => 'marketing',
