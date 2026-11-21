@@ -199,6 +199,37 @@ if ( ! function_exists( 'v5imraan_archive_heading' ) ) :
 	}
 endif;
 
+if ( ! function_exists( 'v5imraan_get_archive_hub' ) ) :
+	/**
+	 * Optional hub content shown above the post grid of a category archive.
+	 *
+	 * The content lives in a page whose slug is "<category-slug>-hub"
+	 * (for example "dsa-hub" for the /dsa/ category). Keep that page
+	 * private: visitors never see it at its own URL, only inside the
+	 * category archive. Editing the page updates the hub without a theme
+	 * deploy. Only the first page of the archive shows it.
+	 *
+	 * @return string Sanitised HTML, or an empty string when there is no hub.
+	 */
+	function v5imraan_get_archive_hub() {
+		if ( ! is_category() || is_paged() ) {
+			return '';
+		}
+
+		$term = get_queried_object();
+		if ( ! $term || empty( $term->slug ) ) {
+			return '';
+		}
+
+		$hub = get_page_by_path( $term->slug . '-hub', OBJECT, 'page' );
+		if ( ! $hub || ! in_array( $hub->post_status, array( 'publish', 'private' ), true ) ) {
+			return '';
+		}
+
+		return wp_kses_post( $hub->post_content );
+	}
+endif;
+
 if ( ! function_exists( 'v5imraan_get_author_bio' ) ) :
 	/**
 	 * Author biography with the theme's fallback text.
