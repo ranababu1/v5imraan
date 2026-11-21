@@ -63,6 +63,13 @@ $archive = v5imraan_archive_heading();
 	<div class="blog-listing">
 		<div class="container">
 
+			<?php $archive_hub = v5imraan_get_archive_hub(); ?>
+			<?php if ( $archive_hub ) : ?>
+				<div class="archive-hub">
+					<?php echo $archive_hub; // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped -- sanitised with wp_kses_post() in v5imraan_get_archive_hub(). ?>
+				</div>
+			<?php endif; ?>
+
 			<?php if ( have_posts() ) : ?>
 
 				<p class="blog-listing__count">
