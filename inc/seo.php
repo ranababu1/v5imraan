@@ -497,13 +497,29 @@ if ( ! function_exists( 'v5imraan_front_page_schema' ) ) :
 						'height' => 1374,
 					),
 					'hasCredential' => array(
-						'@type'              => 'EducationalOccupationalCredential',
-						'name'               => 'Project Management Professional (PMP)',
-						'credentialCategory' => 'certification',
-						'recognizedBy'       => array(
-							'@type' => 'Organization',
-							'name'  => 'Project Management Institute',
-							'url'   => 'https://www.pmi.org/',
+						array(
+							'@type'              => 'EducationalOccupationalCredential',
+							'name'               => 'Project Management Professional (PMP)',
+							'credentialCategory' => 'certification',
+							'url'                => 'https://www.credly.com/badges/a802fd91-b124-489d-9c74-12e366e0ed93',
+							'validFrom'          => '2023-08',
+							'recognizedBy'       => array(
+								'@type' => 'Organization',
+								'name'  => 'Project Management Institute',
+								'url'   => 'https://www.pmi.org/',
+							),
+						),
+						array(
+							'@type'              => 'EducationalOccupationalCredential',
+							'name'               => 'Project Management Professional (PMP) Renewal',
+							'credentialCategory' => 'certification',
+							'url'                => 'https://www.credly.com/badges/a802fd91-b124-489d-9c74-12e366e0ed93',
+							'validFrom'          => '2026-07',
+							'recognizedBy'       => array(
+								'@type' => 'Organization',
+								'name'  => 'Project Management Institute',
+								'url'   => 'https://www.pmi.org/',
+							),
 						),
 					),
 					'knowsAbout'    => array( 'Artificial Intelligence', 'System Design', 'Java', 'Cloud Architecture', 'Engineering Leadership' ),

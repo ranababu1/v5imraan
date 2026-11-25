@@ -161,53 +161,65 @@ get_header(); ?>
     </div>
   </section>
 
-  <!-- Awards & Recognition -->
+  <!-- Awards & Certifications -->
   <section id="awards" class="hp-awards">
     <div class="container">
       <div class="hp-section-head" data-reveal>
         <p class="hp-eyebrow">Recognition</p>
-        <h2 class="hp-heading hp-heading--gradient">Awards &amp; Promotions</h2>
+        <h2 class="hp-heading hp-heading--gradient">Awards &amp; Certifications</h2>
       </div>
       <div class="awards-layout" data-reveal>
         <ul class="awards-list">
           <li>
             <button type="button" class="award-row js-award" data-award="a1" aria-pressed="true">
+              <span class="award-row__year">2026</span>
+              <span class="award-row__title">PMP Renewed</span>
+            </button>
+          </li>
+          <li>
+            <button type="button" class="award-row js-award" data-award="a2" aria-pressed="false">
               <span class="award-row__year">2025</span>
               <span class="award-row__title">Promoted to Associate Director</span>
             </button>
           </li>
           <li>
-            <button type="button" class="award-row js-award" data-award="a2" aria-pressed="false">
+            <button type="button" class="award-row js-award" data-award="a3" aria-pressed="false">
               <span class="award-row__year">2024</span>
               <span class="award-row__title">Shining Star Award</span>
             </button>
           </li>
           <li>
-            <button type="button" class="award-row js-award" data-award="a3" aria-pressed="false">
+            <button type="button" class="award-row js-award" data-award="a4" aria-pressed="false">
+              <span class="award-row__year">2023</span>
+              <span class="award-row__title">PMP Certified</span>
+            </button>
+          </li>
+          <li>
+            <button type="button" class="award-row js-award" data-award="a5" aria-pressed="false">
               <span class="award-row__year">2023</span>
               <span class="award-row__title">Ultimate Team Award</span>
             </button>
           </li>
           <li>
-            <button type="button" class="award-row js-award" data-award="a4" aria-pressed="false">
+            <button type="button" class="award-row js-award" data-award="a6" aria-pressed="false">
               <span class="award-row__year">2022</span>
               <span class="award-row__title">Promoted to Head of SW Dev</span>
             </button>
           </li>
           <li>
-            <button type="button" class="award-row js-award" data-award="a5" aria-pressed="false">
+            <button type="button" class="award-row js-award" data-award="a7" aria-pressed="false">
               <span class="award-row__year">2021</span>
               <span class="award-row__title">Trailblazer Award</span>
             </button>
           </li>
           <li>
-            <button type="button" class="award-row js-award" data-award="a6" aria-pressed="false">
+            <button type="button" class="award-row js-award" data-award="a8" aria-pressed="false">
               <span class="award-row__year">2019</span>
               <span class="award-row__title">Promoted to Team Lead</span>
             </button>
           </li>
           <li>
-            <button type="button" class="award-row js-award" data-award="a7" aria-pressed="false">
+            <button type="button" class="award-row js-award" data-award="a9" aria-pressed="false">
               <span class="award-row__year">2018</span>
               <span class="award-row__title">iLead Award</span>
             </button>
@@ -216,48 +228,64 @@ get_header(); ?>
 
         <div class="award-panel">
           <div class="award-details" id="a1details" style="display: block;">
+            <img class="award-panel__icon" src="<?php echo esc_url( get_stylesheet_directory_uri() ); ?>/img/pmp.webp" alt="PMP badge" loading="lazy" decoding="async">
+            <span class="award-panel__year">July 2026</span>
+            <h3 class="award-panel__title">PMP Renewed</h3>
+            <p class="award-panel__desc">Renewed the Project Management Professional (PMP) certification with the Project Management Institute (PMI) in July 2026.</p>
+            <a class="award-panel__verify" href="<?php echo esc_url( 'https://www.credly.com/badges/a802fd91-b124-489d-9c74-12e366e0ed93' ); ?>" target="_blank" rel="noopener">Verify</a>
+          </div>
+
+          <div class="award-details" id="a2details" style="display: none;">
             <img class="award-panel__icon" src="<?php echo esc_url( get_stylesheet_directory_uri() ); ?>/img/promotions.webp" alt="" loading="lazy" decoding="async">
             <span class="award-panel__year">2025</span>
             <h3 class="award-panel__title">Promoted to Associate Director</h3>
             <p class="award-panel__desc">Promoted to Associate Director in recognition of sustained engineering leadership, AI systems delivery, and measurable impact across platform, team, and business outcomes.</p>
           </div>
 
-          <div class="award-details" id="a2details" style="display: none;">
+          <div class="award-details" id="a3details" style="display: none;">
             <img class="award-panel__icon" src="<?php echo esc_url( get_stylesheet_directory_uri() ); ?>/img/awards.webp" alt="" loading="lazy" decoding="async">
             <span class="award-panel__year">2024</span>
             <h3 class="award-panel__title">Shining Star Award</h3>
             <p class="award-panel__desc">Recognized for exceptional performance and outstanding contributions to engineering outcomes, delivering high-impact systems that moved the needle on business results.</p>
           </div>
 
-          <div class="award-details" id="a3details" style="display: none;">
+          <div class="award-details" id="a4details" style="display: none;">
+            <img class="award-panel__icon" src="<?php echo esc_url( get_stylesheet_directory_uri() ); ?>/img/pmp.webp" alt="PMP badge" loading="lazy" decoding="async">
+            <span class="award-panel__year">August 2023</span>
+            <h3 class="award-panel__title">PMP Certified</h3>
+            <p class="award-panel__desc">Earned the Project Management Professional (PMP) certification from the Project Management Institute (PMI) in August 2023.</p>
+            <a class="award-panel__verify" href="<?php echo esc_url( 'https://www.credly.com/badges/a802fd91-b124-489d-9c74-12e366e0ed93' ); ?>" target="_blank" rel="noopener">Verify</a>
+          </div>
+
+          <div class="award-details" id="a5details" style="display: none;">
             <img class="award-panel__icon" src="<?php echo esc_url( get_stylesheet_directory_uri() ); ?>/img/awards.webp" alt="" loading="lazy" decoding="async">
             <span class="award-panel__year">2023</span>
             <h3 class="award-panel__title">Ultimate Team Award</h3>
             <p class="award-panel__desc">Awarded for driving exceptional cross-functional collaboration that brought a critical, high-stakes project to completion under tight deadlines and complex stakeholder dynamics.</p>
           </div>
 
-          <div class="award-details" id="a4details" style="display: none;">
+          <div class="award-details" id="a6details" style="display: none;">
             <img class="award-panel__icon" src="<?php echo esc_url( get_stylesheet_directory_uri() ); ?>/img/promotions.webp" alt="" loading="lazy" decoding="async">
             <span class="award-panel__year">2022</span>
             <h3 class="award-panel__title">Promoted to Head of SW Dev</h3>
             <p class="award-panel__desc">Promoted to Head of Software Development, recognizing engineering leadership, platform delivery excellence, and a consistent track record of mentoring and growing high-performing teams.</p>
           </div>
 
-          <div class="award-details" id="a5details" style="display: none;">
+          <div class="award-details" id="a7details" style="display: none;">
             <img class="award-panel__icon" src="<?php echo esc_url( get_stylesheet_directory_uri() ); ?>/img/awards.webp" alt="" loading="lazy" decoding="async">
             <span class="award-panel__year">2021</span>
             <h3 class="award-panel__title">Trailblazer Award</h3>
             <p class="award-panel__desc">Awarded for pioneering AI-driven approaches and platform innovations that set new delivery standards across the organization.</p>
           </div>
 
-          <div class="award-details" id="a6details" style="display: none;">
+          <div class="award-details" id="a8details" style="display: none;">
             <img class="award-panel__icon" src="<?php echo esc_url( get_stylesheet_directory_uri() ); ?>/img/promotions.webp" alt="" loading="lazy" decoding="async">
             <span class="award-panel__year">2019</span>
             <h3 class="award-panel__title">Promoted to Team Lead</h3>
             <p class="award-panel__desc">First promotion to Team Lead, recognizing demonstrated leadership potential, technical depth, and consistent high performance as an individual contributor.</p>
           </div>
 
-          <div class="award-details" id="a7details" style="display: none;">
+          <div class="award-details" id="a9details" style="display: none;">
             <img class="award-panel__icon" src="<?php echo esc_url( get_stylesheet_directory_uri() ); ?>/img/awards.webp" alt="" loading="lazy" decoding="async">
             <span class="award-panel__year">2018</span>
             <h3 class="award-panel__title">iLead Award</h3>
