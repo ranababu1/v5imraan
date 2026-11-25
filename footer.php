@@ -27,7 +27,12 @@ $v5_privacy_url = function_exists( 'get_privacy_policy_url' ) ? get_privacy_poli
 	<div class="container sf__inner">
 		<div class="sf__main">
 			<div class="sf__brand">
-				<p class="sf__wordmark" aria-hidden="true">Imraan</p>
+				<a class="sf__mark" id="sf-mark" href="<?php echo esc_url( home_url( '/' ) ); ?>" aria-label="<?php esc_attr_e( 'Imraan home', 'v5imraan' ); ?>">
+					<span class="sf__wordmark">Imraan</span>
+					<span class="sf__mark-shine" id="sf-mark-shine" aria-hidden="true">
+						<span class="sf__wordmark sf__wordmark--outline">Imraan</span>
+					</span>
+				</a>
 				<p class="sf__tagline">Engineering leader, builder, writer and a father. Curious by default. Always building, breaking, building better. Could use a 48-hour day.</p>
 			</div>
 			<div class="sf__cols">
