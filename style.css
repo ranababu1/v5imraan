@@ -1391,7 +1391,7 @@ nav .wrapper ul li {
   color: #94a3b8;
 }
 
-/** Awards & Promotions. **/
+/** Awards & Certifications. **/
 .hp-awards {
   padding: 120px 0;
   background: #e2e8f0;
@@ -1509,6 +1509,21 @@ nav .wrapper ul li {
   font-size: 19px;
   line-height: 1.7;
   color: #475569;
+}
+
+.award-panel__verify {
+  display: inline-flex;
+  align-items: center;
+  margin-top: 22px;
+  font-size: 16px;
+  font-weight: 600;
+  color: #2563eb;
+  text-decoration: none;
+}
+
+.award-panel__verify:hover {
+  color: #1d4ed8;
+  text-decoration: underline;
 }
 
 /** Tech Insights From My Blog. **/
@@ -2776,6 +2791,14 @@ nav .wrapper ul li {
 
 .award-panel__desc {
   color: rgba(203, 213, 225, 0.8);
+}
+
+.award-panel__verify {
+  color: #cbd5e1;
+}
+
+.award-panel__verify:hover {
+  color: #f1f5f9;
 }
 
 .hp-post-grid .post-card__title a {
