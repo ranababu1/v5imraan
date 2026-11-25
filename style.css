@@ -2343,6 +2343,7 @@ nav .wrapper ul li {
 }
 
 .sf__wordmark {
+  display: block;
   margin: 0;
   font-size: clamp(76px, 15vw, 196px);
   font-weight: 800;
@@ -2353,6 +2354,66 @@ nav .wrapper ul li {
   background-clip: text;
   -webkit-text-fill-color: transparent;
   color: #e2e8f0;
+}
+
+/* Pointer-following bright outline over the wordmark. */
+.sf__mark {
+  position: relative;
+  display: block;
+  width: max-content;
+  max-width: 100%;
+  padding: 0.08em 0.1em;
+  margin: -0.08em -0.1em;
+  text-decoration: none;
+  color: inherit;
+  overflow: visible;
+}
+
+.sf__mark:focus-visible {
+  outline: 2px solid rgba(255, 226, 190, 0.85);
+  outline-offset: 6px;
+}
+
+.sf__mark-shine {
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  -webkit-mask-image: radial-gradient(0px at 50% 50%, #fff 0%, transparent 100%);
+  mask-image: radial-gradient(0px at 50% 50%, #fff 0%, transparent 100%);
+  -webkit-mask-repeat: no-repeat;
+  mask-repeat: no-repeat;
+  -webkit-mask-size: 100% 100%;
+  mask-size: 100% 100%;
+}
+
+.sf__wordmark--outline {
+  background: none;
+  -webkit-background-clip: border-box;
+  background-clip: border-box;
+  -webkit-text-fill-color: transparent;
+  color: transparent;
+  -webkit-text-stroke: 0.028em #fff8ee;
+  text-shadow:
+    0 0 0.04em rgba(255, 248, 238, 0.95),
+    0 0 0.12em rgba(255, 226, 190, 0.9),
+    0 0 0.28em rgba(251, 191, 140, 0.55);
+}
+
+/* Touch: a soft static highlight. JS may take over while a finger is down. */
+@media (hover: none), (pointer: coarse) {
+  .sf__mark-shine:not(.is-live) {
+    -webkit-mask-image: radial-gradient(42% 80% at 28% 50%, #fff 0%, #fff 22%, transparent 72%);
+    mask-image: radial-gradient(42% 80% at 28% 50%, #fff 0%, #fff 22%, transparent 72%);
+    opacity: 0.7;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .sf__mark-shine {
+    -webkit-mask-image: radial-gradient(38% 80% at 32% 50%, #fff 0%, #fff 18%, transparent 70%) !important;
+    mask-image: radial-gradient(38% 80% at 32% 50%, #fff 0%, #fff 18%, transparent 70%) !important;
+    opacity: 0.55;
+  }
 }
 
 .sf__tagline {

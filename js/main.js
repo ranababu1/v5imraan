@@ -329,4 +329,70 @@
 			}
 		} );
 	}
+
+	/* ---------------------------------------------------------------
+	 * Footer wordmark: a bright outline follows the pointer, fading
+	 * out when it leaves. Reduced motion keeps a static highlight.
+	 * ------------------------------------------------------------- */
+	var markStage = document.getElementById( 'sf-mark' );
+	var markShine = document.getElementById( 'sf-mark-shine' );
+	var markMotionOk = ! ( window.matchMedia && window.matchMedia( '(prefers-reduced-motion: reduce)' ).matches );
+
+	if ( markStage && markShine && markMotionOk ) {
+		var markPx = 0;
+		var markPy = 0;
+		var markTx = 0;
+		var markTy = 0;
+		var markR = 0;
+		var markTr = 0;
+		var markMoved = false;
+		var markTick = 0;
+
+		var markApply = function () {
+			var g = 'radial-gradient(' + markR + 'px at ' + markPx + 'px ' + markPy + 'px, #fff 0%, #fff 40%, transparent 100%)';
+			markShine.style.webkitMaskImage = g;
+			markShine.style.maskImage = g;
+		};
+
+		var markLoop = function () {
+			markPx += ( markTx - markPx ) * 0.22;
+			markPy += ( markTy - markPy ) * 0.22;
+			markR += ( markTr - markR ) * 0.12;
+			if ( markR < 0.4 && markTr === 0 ) {
+				markR = 0;
+				markApply();
+				markTick = 0;
+				markShine.classList.remove( 'is-live' );
+				return;
+			}
+			markApply();
+			markTick = window.requestAnimationFrame( markLoop );
+		};
+
+		var markStart = function () {
+			if ( ! markTick ) {
+				markShine.classList.add( 'is-live' );
+				markTick = window.requestAnimationFrame( markLoop );
+			}
+		};
+
+		markStage.addEventListener( 'pointermove', function ( event ) {
+			var rect = markStage.getBoundingClientRect();
+			markTx = event.clientX - rect.left;
+			markTy = event.clientY - rect.top;
+			if ( ! markMoved ) {
+				markPx = markTx;
+				markPy = markTy;
+				markMoved = true;
+			}
+			markTr = Math.max( 56, rect.width * 0.16 );
+			markStart();
+		} );
+
+		markStage.addEventListener( 'pointerleave', function () {
+			markTr = 0;
+			markMoved = false;
+			markStart();
+		} );
+	}
 } )();
