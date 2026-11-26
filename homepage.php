@@ -224,6 +224,24 @@ get_header(); ?>
               <span class="award-row__title">iLead Award</span>
             </button>
           </li>
+          <li>
+            <button type="button" class="award-row js-award" data-award="a10" aria-pressed="false">
+              <span class="award-row__year">2016</span>
+              <span class="award-row__title">Promoted to Web Development Manager</span>
+            </button>
+          </li>
+          <li>
+            <button type="button" class="award-row js-award" data-award="a11" aria-pressed="false">
+              <span class="award-row__year">2014</span>
+              <span class="award-row__title">Top Rated Seller (Web Dev, SEO) on Fiverr</span>
+            </button>
+          </li>
+          <li>
+            <button type="button" class="award-row js-award" data-award="a12" aria-pressed="false">
+              <span class="award-row__year">2010</span>
+              <span class="award-row__title">First 5-star feedback on an Elance web development project</span>
+            </button>
+          </li>
         </ul>
 
         <div class="award-panel">
@@ -290,6 +308,27 @@ get_header(); ?>
             <span class="award-panel__year">2018</span>
             <h3 class="award-panel__title">iLead Award</h3>
             <p class="award-panel__desc">Successfully retained a critical account by rapidly acquiring and delivering niche MarTech expertise. With no available replacement, stepped up, excelled, and earned direct accolades from the client.</p>
+          </div>
+
+          <div class="award-details" id="a10details" style="display: none;">
+            <img class="award-panel__icon" src="<?php echo esc_url( get_stylesheet_directory_uri() ); ?>/img/promotions.webp" alt="" loading="lazy" decoding="async">
+            <span class="award-panel__year">2016</span>
+            <h3 class="award-panel__title">Promoted to Web Development Manager</h3>
+            <p class="award-panel__desc">Promoted to Web Development Manager.</p>
+          </div>
+
+          <div class="award-details" id="a11details" style="display: none;">
+            <img class="award-panel__icon" src="<?php echo esc_url( get_stylesheet_directory_uri() ); ?>/img/awards.webp" alt="" loading="lazy" decoding="async">
+            <span class="award-panel__year">2014</span>
+            <h3 class="award-panel__title">Top Rated Seller (Web Dev, SEO) on Fiverr</h3>
+            <p class="award-panel__desc">Named a Top Rated Seller for web development and SEO on Fiverr.</p>
+          </div>
+
+          <div class="award-details" id="a12details" style="display: none;">
+            <img class="award-panel__icon" src="<?php echo esc_url( get_stylesheet_directory_uri() ); ?>/img/awards.webp" alt="" loading="lazy" decoding="async">
+            <span class="award-panel__year">2010</span>
+            <h3 class="award-panel__title">First 5-star feedback on an Elance web development project</h3>
+            <p class="award-panel__desc">Received the first 5-star feedback on an Elance web development project.</p>
           </div>
         </div>
       </div>
